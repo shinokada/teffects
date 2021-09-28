@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<style>
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Inter", sans-serif;
+	background-color: #FFF;
+}
+
+.text-box {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+h1 {
+	font-size: 8vw;
+	font-weight: 900;
+	background-color: #f4e990;
+	color: #4465aa;
+	display: block;
+	padding: .5em;
+}
+
+h1:nth-child(2) {
+	position: absolute;
+	background-color: #4465aa;
+	color: #f4e990;
+	clip-path: inset(-1% -1% 50% -1%); // Added the negative values to prevent icky "bleed" in Chrome
+}
+
+p {
+	font-size: 2vw;
+	font-weight: 900;
+	margin-top: 1em;
+	text-align: center;
+	span {
+		display: block;
+		transform: rotate(90deg);
+		margin-top: .25em;
+	}
+}
+
+// only to center the elements in the pen preview and viewport
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="text-box">
+		<h1>AWESOME</h1>
+		<h1>AWESOME</h1>
+	</div>
+</div>
+</body>
+</html>

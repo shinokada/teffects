@@ -4,6 +4,14 @@ set -eu
 
 # shellcheck disable=SC2034
 VERSION="0.0.2"
+SCRIPT_NAME=$(basename "$0")
+
+# check os
+if [[ $(uname) == "Linux" ]]; then
+    FIREFOX="/usr/bin/firefox"
+elif [[ $(uname) == "Darwin" ]]; then
+    FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
+fi
 
 readlinkf() {
     [ "${1:-}" ] || return 1
@@ -37,39 +45,156 @@ readlinkf() {
 
 self=$(readlinkf "$0")
 script_dir=${self%/*}
+# echo "$script_dir"
+
+# remove files in outputs dir
+if [ -n "$(ls "${script_dir}"/outputs)" ]; then
+    echo "Removing files in $script_dir/outputs."
+    rm -- "$script_dir"/outputs/*
+fi
 
 # shellcheck disable=SC1091
-{
-    . "${script_dir}/lib/getoptions.sh"
-    . "${script_dir}/lib/clip.sh"
+. "${script_dir}/lib/getoptions.sh"
+
+# shellcheck disable=SC1083
+parser_definition() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} [command] [options...] [arguments...]"
+    msg -- '' 'Options:'
+    disp :usage -h --help
+    disp VERSION --version
+
+    msg -- '' 'Commands: '
+    msg -- 'Use command -h for a command help.'
+    cmd clip -- "Clip image."
+    cmd retro -- "Retro image."
+    cmd split -- "Split text."
+    cmd sticker -- "Sticker text."
+
+    msg -- '' "Examples:
+Clip an image: 
+    $SCRIPT_NAME clip 
+Retro banner: 
+    $SCRIPT_NAME retro
+Split text: 
+    $SCRIPT_NAME split
+Sticker text: 
+    $SCRIPT_NAME sticker
+Display the version:
+    $SCRIPT_NAME --version
+Display help:
+    $SCRIPT_NAME -h | --help
+"
 }
 
-check_cmd() {
-    if [[ ! $(command -v "$1") ]]; then
-        if [[ $1 = "code" ]]; then
-            app="VS Code"
-        else
-            app=$1
-        fi
-        echo "It seems like you don't have ${app}."
-        echo "Please install ${app}."
-        exit 1
-    fi
+eval "$(getoptions parser_definition parse "$0") exit 1"
+parse "$@"
+eval "set -- $REST"
+
+# clip
+font_type() {
+    case $OPTARG in
+    500) FONT_ATT=":wght@500" ;;
+    700) FONT_ATT=":wght@700" ;;
+    900) FONT_ATT=":wght@900" ;;
+    esac
 }
 
-check_cmd wkhtmltoimage
+FONT_ATT=''
+FONT_WEIGHT='500 | 700 | 900'
+
+parser_definition_clip() {
+    setup REST plus:true help:usage abbr:true -- \
+        "Usage: ${2##*/} clip [options...] [arguments...]" ''
+    msg -- 'Clip an image to texts.' ''
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param TEXT -t --text init:="It's Friday." -- "-t 'Your Text to print'"
+    param FONT_NAME -f --font init:="Luckiest Guy" -- "-f 'Font Name'"
+    param SIZE -s --size init:=180 -- "-s 120 will set CSS font-size: 120px"
+    param BKIMG -i --image init:="${script_dir}/assets/flower.jpg" -- "-i background-image.jpg"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "-b 900. This sets the font weight. Choose from 500|700|900."
+    disp :usage -h --help
+    disp VERSION --version
+}
+
+# retro
+parser_definition_retro() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} retro [options] [arguments]"
+    msg -- 'Options:'
+    param HEADER -H --header init:="RETRO" -- "accepts --header word / --header=word"
+    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader word / --subheader=word"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
+    disp :usage -h --help
+}
+
+# split
+parser_definition_split() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} split [options] [arguments]"
+    msg -- 'Options:'
+    param HEADER -H --header init:="SPLIT" -- "accepts --header word / --header=word"
+    param COLOR -c --color init:="#fff" -- "Color"
+    param BCOLOR -b --bcolor init:="#000" -- "Background Color"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
+    disp :usage -h --help
+}
+
+# sticker
+parser_definition_split() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} split [options] [arguments]"
+    msg -- 'Options:'
+    param HEADER -H --header init:="SPLIT" -- "accepts --header word / --header=word"
+    param COLOR -c --color init:="#fff" -- "Color"
+    param BCOLOR -b --bcolor init:="#000" -- "Background Color"
+    param SPLIT_OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
+    disp :usage -h --help
+}
 
 if [ $# -gt 0 ]; then
     cmd=$1
     shift
     case $cmd in
     clip)
+        echo "Clipping ..."
         eval "$(getoptions parser_definition_clip parse "$0")"
         parse "$@"
         eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/clip.sh"
         fn_clip "$@"
         ;;
-
+    retro)
+        echo "Retro ..."
+        eval "$(getoptions parser_definition_retro parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/retro.sh"
+        fn_retro "$@"
+        ;;
+    split)
+        echo "Split ..."
+        eval "$(getoptions parser_definition_split parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/split.sh"
+        fn_split "$@"
+        ;;
+    sticker)
+        echo "Split ..."
+        eval "$(getoptions parser_definition_sticker parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/sticker.sh"
+        fn_sticker "$@"
+        ;;
     --) ;; # no subcommand, arguments only
     esac
 fi
