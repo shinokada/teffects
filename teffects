@@ -144,14 +144,13 @@ parser_definition_split() {
 }
 
 # sticker
-parser_definition_split() {
+parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} split [options] [arguments]"
     msg -- 'Options:'
     param HEADER -H --header init:="SPLIT" -- "accepts --header word / --header=word"
-    param COLOR -c --color init:="#fff" -- "Color"
-    param BCOLOR -b --bcolor init:="#000" -- "Background Color"
-    param SPLIT_OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
+    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader word / --subheader=word"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
     disp :usage -h --help
 }
 
