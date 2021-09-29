@@ -11,6 +11,19 @@ if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
 elif [[ $(uname) == "Darwin" ]]; then
     FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
+    # check if Firefox is running. If it is, ask if the script can close it.
+    if pgrep -f firefox; then
+        printf "Can I close Firefox? (yes/y/no/n)"
+        read -r RES
+        USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
+        if [ "$USER_ANS" = "Y" ]; then
+            killall firefox
+        else
+            echo "Exiting ..."
+            exit
+        fi
+    fi
+
 fi
 
 readlinkf() {

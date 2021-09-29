@@ -1,5 +1,5 @@
 fn_sticker() {
-    cat <<EOF >"${script_dir}/outputs/sticker.html"
+	cat <<EOF >"${script_dir}/outputs/sticker.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -72,14 +72,14 @@ fn_sticker() {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/sticker.png" "file:///${script_dir}/outputs/sticker.html" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	# check if $RETRO_OUTPUT exist
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/sticker.png" "file:///${script_dir}/outputs/sticker.html" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    echo "Split image is done! Open $OUTPUT_DIR/retro.png."
+	echo "Sticker image is done! Open $OUTPUT_DIR/sticker.png."
 }
