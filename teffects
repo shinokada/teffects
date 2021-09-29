@@ -9,8 +9,6 @@ SCRIPT_NAME=$(basename "$0")
 # check os
 if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
-elif [[ $(uname) == "Darwin" ]]; then
-    FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
     # check if Firefox is running. If it is, ask if the script can close it.
     if pgrep -f firefox; then
         printf "Can I close Firefox? (yes/y/no/n)"
@@ -23,7 +21,8 @@ elif [[ $(uname) == "Darwin" ]]; then
             exit
         fi
     fi
-
+elif [[ $(uname) == "Darwin" ]]; then
+    FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
 
 readlinkf() {
