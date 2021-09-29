@@ -50,7 +50,7 @@ script_dir=${self%/*}
 # remove files in outputs dir
 if [ -n "$(ls "${script_dir}"/outputs)" ]; then
     echo "Removing files in $script_dir/outputs."
-    rm -- "$script_dir"/outputs/*
+    rm -- "$script_dir"/outputs/*.*
 fi
 
 # shellcheck disable=SC1091
