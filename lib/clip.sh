@@ -4,7 +4,7 @@ GF="https://fonts.googleapis.com/css2?family=${GFONT}${FONT_ATT}&display=swap"
 
 fn_clip() {
 
-    cat <<EOF >"${script_dir}/outputs/clip.html"
+  cat <<EOF >"${script_dir}/outputs/clip.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -21,6 +21,7 @@ body {
   padding:0;
   margin:0;
   font-family: "Luckiest Guy";
+  background-color:#eee;
 }
 
 /* wkhtmltoimage doesn't support flex. */
@@ -49,18 +50,18 @@ h1 {
 </html>
 EOF
 
-    wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/clip.html" "${OUTPUT_DIR}/clip.png" >/dev/null 2>&1 || {
-        echo "Something weng wrong."
-        exit
-    }
-    # echo "$CHROME"
+  wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/clip.html" "${OUTPUT_DIR}/clip.png" >/dev/null 2>&1 || {
+    echo "Something weng wrong."
+    exit
+  }
+  # echo "$CHROME"
 
-    # eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/${CLIP_OUTPUT}.png" "${script_dir}/outputs/clip.html" >/dev/null 2>&1 || {
-    #     echo "Something went wrong."
-    #     exit
-    # }
+  # eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/${CLIP_OUTPUT}.png" "${script_dir}/outputs/clip.html" >/dev/null 2>&1 || {
+  #     echo "Something went wrong."
+  #     exit
+  # }
 
-    # eval "$FIREFOX" --headless --screenshot "${script_dir}/outputs/${CLIP_OUTPUT}.png" "file:///${script_dir}/outputs/clip.html" >/dev/null 2>&1 || exit
+  # eval "$FIREFOX" --headless --screenshot "${script_dir}/outputs/${CLIP_OUTPUT}.png" "file:///${script_dir}/outputs/clip.html" >/dev/null 2>&1 || exit
 
-    echo "Clip image is done! Open $OUTPUT_DIR/clip.png."
+  echo "Clip image is done! Open $OUTPUT_DIR/clip.png."
 }

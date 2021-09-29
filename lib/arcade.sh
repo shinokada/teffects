@@ -1,25 +1,25 @@
 fn_arcade() {
-    STR=''
-    # convert to lowercase
-    LOWER=$(echo "$HEADER" | tr '[:upper:]' '[:lower:]')
-    IFS=" " read -ra ADDR <<<"$LOWER"
-    for WORD in "${ADDR[@]}"; do
-        # echo "$WORD"
-        WITH_SPACE=$(echo "$WORD" | sed 's/./& /g')
-        STR+="<ol>"
-        for i in $WITH_SPACE; do
-            STR+="<li class=\"$i\"></li>"
-        done
-        STR+="</ol>"
+  STR=''
+  # convert to lowercase
+  LOWER=$(echo "$HEADER" | tr '[:upper:]' '[:lower:]')
+  IFS=" " read -ra ADDR <<<"$LOWER"
+  for WORD in "${ADDR[@]}"; do
+    # echo "$WORD"
+    WITH_SPACE=$(echo "$WORD" | sed 's/./& /g')
+    STR+="<ol>"
+    for i in $WITH_SPACE; do
+      STR+="<li class=\"$i\"></li>"
     done
-    echo $STR
-    # exit
-    # WITH_SPACE=$(echo "$LOWER" | sed 's/./& /g')
-    # for i in $WITH_SPACE; do
-    #     STR+="<li class=\"$i\"></li>"
-    # done
+    STR+="</ol>"
+  done
+  # echo $STR
+  # exit
+  # WITH_SPACE=$(echo "$LOWER" | sed 's/./& /g')
+  # for i in $WITH_SPACE; do
+  #     STR+="<li class=\"$i\"></li>"
+  # done
 
-    cat <<EOF >"${script_dir}/outputs/arcade.html"
+  cat <<EOF >"${script_dir}/outputs/arcade.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -31,6 +31,8 @@ body {
   padding: 30px;
   background-color: #eee;
   text-align:center;
+  width:${WIDTH}px;
+  height:${HEIGHT}px;
 }
 .snow-bros li {
   width: 80px;
@@ -228,15 +230,15 @@ body {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/arcade.png" "file:///${script_dir}/outputs/arcade.html" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/arcade.png" "file:///${script_dir}/outputs/arcade.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    echo "Something went wrong."
+    exit
+  }
 
-    echo "Split image is done! Open $OUTPUT_DIR/arcade.png."
+  echo "Arcade image is done! Open $OUTPUT_DIR/arcade.png."
 
 }

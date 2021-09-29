@@ -176,6 +176,8 @@ parser_definition_arcade() {
     msg -- 'Options:'
     param HEADER -H --header init:="arcade" -- "accepts --header word / --header=word"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     disp :usage -h --help
 }
 
