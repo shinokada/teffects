@@ -18,3 +18,7 @@ Options:
 ```sh
 $ teffects retro -H Super -S Duper -d ~/Downloads
 ```
+
+## Credit
+
+Retro is inspired by [Yoav Kadosh's Retro Text Effect Pure CSS](https://codepen.io/ykadosh/pen/zYNxVKr).

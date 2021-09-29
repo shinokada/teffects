@@ -26,3 +26,7 @@ Clip an image to texts.
 ```sh
 $ teffects clip -t "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
 ```
+
+## Credit
+
+Clip is inspired by [this video](https://www.youtube.com/watch?v=9Kr3T4Ndl-o).

@@ -22,3 +22,7 @@ Options:
 $ teffects split -H AWESOME -w 800 -e 200 -d ~/Downloads
 $ teffects split -H "AWESOME" -c "#4465aa" -b "#f4e990" -w 900 -e 500 -d ~/Downloads
 ```
+
+## Credit
+
+Split is inspired by [Håvard Brynjulfsen's Split text with clip-path](https://codepen.io/havardob/pen/PoPaWaE).

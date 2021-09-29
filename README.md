@@ -2,8 +2,6 @@
 
 ## Overview
 
-- Clip is inspired by [this video](https://www.youtube.com/watch?v=9Kr3T4Ndl-o)
-- Retro is inspired by [this code](https://codepen.io/ykadosh/pen/zYNxVKr)
 - Split is inspired by [this code](https://codepen.io/havardob/pen/PoPaWaE)
 - Sticker is inspired by [this code](https://codepen.io/5t3ph/pen/mdVZYpr)
 - 3d is inspired by [this code](https://codepen.io/havardob/pen/WNQwvze)

@@ -18,3 +18,7 @@ Options:
 ```sh
 $ teffects sticker -H Teffects -S Rocks -d ~/Downloads
 ```
+
+## Credit
+
+Sticker is inspired by [Stephanie Eckles's CSS Sticker](https://codepen.io/5t3ph/pen/mdVZYpr).
