@@ -16,6 +16,9 @@ fn_split() {
 body {
 	font-family: "Inter", sans-serif;
 	background-color: #FFF;
+	width:${WIDTH}px;
+	height:${HEIGHT}px;
+	text-align:center;
 }
 
 .text-box {
@@ -53,7 +56,6 @@ p {
 	}
 }
 
-// only to center the elements in the pen preview and viewport
 .container {
 	position: absolute;
 	top: 0;
@@ -83,7 +85,7 @@ EOF
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi
-	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/split.png" "file:///${script_dir}/outputs/split.html" >/dev/null 2>&1 || {
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/split.png" "file:///${script_dir}/outputs/split.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
 		echo "Something went wrong."
 		exit
 	}

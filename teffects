@@ -129,13 +129,12 @@ parser_definition_clip() {
     param TEXT -t --text init:="It's Friday." -- "-t 'Your Text to print'"
     param FONT_NAME -f --font init:="Luckiest Guy" -- "-f 'Font Name'"
     param SIZE -s --size init:=180 -- "-s 120 will set CSS font-size: 120px"
-    param BKIMG -i --image init:="${script_dir}/assets/flower.jpg" -- "-i background-image.jpg"
+    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "-i background-image.jpg"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
     param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "-b 900. This sets the font weight. Choose from 500|700|900."
     disp :usage -h --help
-    disp VERSION --version
 }
 
 # retro
@@ -158,6 +157,8 @@ parser_definition_split() {
     param COLOR -c --color init:="#fff" -- "Color"
     param BCOLOR -b --bcolor init:="#000" -- "Background Color"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     disp :usage -h --help
 }
 
