@@ -1,5 +1,8 @@
 # Text Effects, TEFFECTS
 
+<p align="center">
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/teffects.png" />
+
 ## Overview
 
 Teffects automates creating header images.
