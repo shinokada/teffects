@@ -12,3 +12,9 @@ Options:
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
   -h, --help
 ```
+
+## Examples
+
+```sh
+$ teffects retro -H Super -S Duper -d ~/Downloads
+```

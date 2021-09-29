@@ -13,3 +13,9 @@ Options:
   -e, --height HEIGHT         -h 800. The default height is 1200px.
   -h, --help
 ```
+
+## Examples
+
+```sh
+$ teffects arcade -H "arcade texts" -w 800 -e 300 -d ~/Downloads
+```

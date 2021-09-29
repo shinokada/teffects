@@ -10,5 +10,11 @@ Options:
   -H, --header HEADER         accepts --header word / --header=word
   -S, --subheader SUB_HEADER  accepts --subheader word / --subheader=word
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
-  -h, --help    
+  -h, --help
+```
+
+## Examples
+
+```sh
+$ teffects sticker -H Teffects -S Rocks -d ~/Downloads
 ```

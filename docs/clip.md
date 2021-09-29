@@ -1,7 +1,7 @@
 # Clip
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/arcade.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip.png" /> 
 </p>
 
 ```sh
@@ -19,4 +19,10 @@ Clip an image to texts.
   -e,     --height HEIGHT     -h 800. The default height is 1200px.
   -b,     --bold WEIGHT       -b 900. This sets the font weight. Choose from 500|700|900.
   -h,     --help
+```
+
+## Examples
+
+```sh
+$ teffects clip -t "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
 ```
