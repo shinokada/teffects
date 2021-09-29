@@ -2,9 +2,7 @@
 
 ## Overview
 
-- Split is inspired by [this code](https://codepen.io/havardob/pen/PoPaWaE)
-- Sticker is inspired by [this code](https://codepen.io/5t3ph/pen/mdVZYpr)
-- 3d is inspired by [this code](https://codepen.io/havardob/pen/WNQwvze)
+Teffects automates creating header images.
 
 ## Requirement
 
