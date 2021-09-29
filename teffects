@@ -11,7 +11,7 @@ if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
     # check if Firefox is running. If it is, ask if the script can close it.
     if pgrep -f firefox; then
-        printf "Can I close Firefox? (yes/y/no/n)"
+        printf "We need to close Firefox in order to proceed. May I close Firefox? (yes/y/no/n)"
         read -r RES
         USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
         if [ "$USER_ANS" = "Y" ]; then
