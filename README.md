@@ -8,6 +8,8 @@ Teffects automates creating header images.
 
 To run the clip command you need [wkhtmlpdf/wkhtmltoimage](https://wkhtmltopdf.org/downloads.html).
 
+Tested on macOS and Ubuntu.
+
 ## Installation
 
 Using [Awesome package manager](https://github.com/shinokada/awesome):

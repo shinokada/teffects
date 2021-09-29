@@ -129,7 +129,7 @@ parser_definition_clip() {
     param TEXT -t --text init:="It's Friday." -- "-t 'Your Text to print'"
     param FONT_NAME -f --font init:="Luckiest Guy" -- "-f 'Font Name'"
     param SIZE -s --size init:=180 -- "-s 120 will set CSS font-size: 120px"
-    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "-i background-image.jpg"
+    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "-i /Absolute/path/to/image.jpg"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
     param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
