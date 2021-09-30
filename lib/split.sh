@@ -1,5 +1,7 @@
+MODULE="split"
+
 fn_split() {
-	cat <<EOF >"${script_dir}/outputs/split.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -85,10 +87,10 @@ EOF
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi
-	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/split.png" "file:///${script_dir}/outputs/split.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
 		echo "Something went wrong."
 		exit
 	}
 
-	echo "Split image is done! Open $OUTPUT_DIR/split.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

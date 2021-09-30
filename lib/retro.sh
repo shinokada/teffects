@@ -1,4 +1,4 @@
-MODULE="3d"
+MODULE="retro"
 
 fn_retro() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
@@ -110,7 +110,7 @@ EOF
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi
-	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1 || {
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
 		echo "Something went wrong."
 		exit
 	}

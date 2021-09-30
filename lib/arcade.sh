@@ -30,9 +30,20 @@ fn_arcade() {
 body {
   padding: 30px;
   background-color: #eee;
-  text-align:center;
+  text-align:${ALIGN};
   width:${WIDTH}px;
   height:${HEIGHT}px;
+}
+.container {
+	 position: absolute;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 bottom: 0;
+	 width: 100%;
+	 display: flex;
+	 align-items: center;
+	 justify-content: center;
 }
 .snow-bros li {
   width: 80px;

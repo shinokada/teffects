@@ -18,7 +18,7 @@ fn_3d() {
 }
  body {
 	 font-family: "Inter", sans-serif;
-	 background-color: #fbd7e3;
+	 background-color: ${BCOLOR};
 }
  .container {
 	 position: absolute;
@@ -33,7 +33,7 @@ fn_3d() {
 }
  h1 {
 	 text-align:center;
-	 color: #fcdde8;
+	 color: ${COLOR};
 	 /*font-size: calc(1em + 20vw);*/
 	 font-size: ${SIZE}px;
 	 line-height:${LINE_HEIGHT}px;

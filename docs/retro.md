@@ -9,9 +9,11 @@
 ```sh
 Usage: teffects retro [options] [arguments]
 Options:
-  -t, --text TEXT         accepts --text value / --text=value
-  -s, --subtext SUB_TEXT  accepts --subtext value / --subtext=value
+  -e, --height HEIGHT         -h 800. The default height is 1200px.
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
+  -s, --subtext SUB_TEXT      accepts --subtext value / --subtext=value
+  -t, --text TEXT             accepts --text value / --text=value
+  -w, --width WIDTH           -w 1240. The default width is 1600px.
   -h, --help
 ```
 
