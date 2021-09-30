@@ -218,8 +218,8 @@ parser_definition_retro() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} retro [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="RETRO" -- "accepts --header value / --header=value"
-    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader value / --subheader=value"
+    param TEXT -t --text init:="RETRO" -- "accepts --text value / --text=value"
+    param SUB_TEXT -s --subtext init:="Text Effect" -- "accepts --subtext value / --subtext=value"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     disp :usage -h --help
 }

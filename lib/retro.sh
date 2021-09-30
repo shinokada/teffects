@@ -1,5 +1,7 @@
+MODULE="3d"
+
 fn_retro() {
-    cat <<EOF >"${script_dir}/outputs/retro.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -93,25 +95,25 @@ fn_retro() {
 <div class="grid"></div>
 <div class="lines"></div>
 <h1>
-  <span>${HEADER}</span>
-  <span>${HEADER}</span>
+  <span>${TEXT}</span>
+  <span>${TEXT}</span>
 </h1>
-<h2>${SUB_HEADER}</h2>
+<h2>${SUB_TEXT}</h2>
 </body>
 </html>
 EOF
 
-    # wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/retro.html" "${script_dir}/outputs/retroimage.jpg" >/dev/null 2>&1 || exit
+	# wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/retro.html" "${script_dir}/outputs/retroimage.jpg" >/dev/null 2>&1 || exit
 
-    # eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/retroimage.png" "${script_dir}/outputs/retro.html" >/dev/null 2>&1 || exit
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/retro.png" "file:///${script_dir}/outputs/retro.html" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	# eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/retroimage.png" "${script_dir}/outputs/retro.html" >/dev/null 2>&1 || exit
+	# check if $RETRO_OUTPUT exist
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    echo "Retro image is done! Open $OUTPUT_DIR/retro.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }
