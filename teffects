@@ -78,16 +78,23 @@ parser_definition() {
 
     msg -- '' 'Commands: '
     msg -- 'Use command -h for a command help.'
+    cmd 3d -- "3D letters."
+    cmd arcade -- "Arcade typography."
     cmd clip -- "Clip image."
+    cmd layer -- "Layered text-shadow effect."
+    cmd neon -- "Neon light text."
+    cmd popart -- "Pop art text."
     cmd retro -- "Retro image."
     cmd split -- "Split text."
     cmd sticker -- "Sticker text."
-    cmd 3d -- "3D letters."
-    cmd arcade -- "Arcade typography"
 
     msg -- '' "Examples:
 Clip an image: 
-    $SCRIPT_NAME clip 
+    $SCRIPT_NAME clip
+Neon light text
+    $SCRIPT_NAME neon
+Pop art effect
+    $SCRIPT_NAME popart 
 Retro banner: 
     $SCRIPT_NAME retro
 Split text: 
@@ -98,6 +105,8 @@ Sticker text:
     $SCRIPT_NAME 3d
 Arcade typography
     $SCRIPT_NAME arcade
+Layered text-shadow effect
+    $SCRIPT_NAME layer
 Display the version:
     $SCRIPT_NAME --version
 Display help:
@@ -126,7 +135,7 @@ parser_definition_clip() {
         "Usage: ${2##*/} clip [options...] [arguments...]" ''
     msg -- 'Clip an image to texts.' ''
     msg label:"OPTIONS" -- "DESCRIPTION"
-    param TEXT -t --text init:="It's Friday." -- "-t 'Your Text to print'"
+    param TEXT -t --text init:="It's Friday." -- "-t 'Your text to print'"
     param FONT_NAME -f --font init:="Luckiest Guy" -- "-f 'Font Name'"
     param SIZE -s --size init:=180 -- "-s 120 will set CSS font-size: 120px"
     param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "-i /Absolute/path/to/image.jpg"
@@ -137,13 +146,80 @@ parser_definition_clip() {
     disp :usage -h --help
 }
 
+# 3d
+parser_definition_3d() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} 3d [options] [arguments]"
+    msg -- 'Options:'
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
+    param TEXT -t --text init:="Three D" -- "accepts --text value / --text=value"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    disp :usage -h --help
+}
+
+# arcade
+parser_definition_arcade() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} arcade [options] [arguments]"
+    msg -- 'Options:'
+    param TEXT -t --text init:="arcade" -- "accepts --text value / --text=value"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    disp :usage -h --help
+}
+
+# layer
+parser_definition_layer() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} layer [options] [arguments]"
+    msg -- 'Options:'
+    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    disp :usage -h --help
+}
+
+# neon
+parser_definition_neon() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} neon [options] [arguments]"
+    msg -- 'Options:'
+    param ALIGN -a --align init=:"center" -- "Text alignment."
+    param BCOLOR -b --bcolor init:="#192824" -- "Background Color"
+    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    disp :usage -h --help
+}
+
+# popart
+parser_definition_popart() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} popart [options] [arguments]"
+    msg -- 'Options:'
+    param ALIGN -a --align init=:"center" -- "Text alignment."
+    param BCOLOR -b --bcolor init:="#faff04" -- "Background Color"
+    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    disp :usage -h --help
+}
+
 # retro
 parser_definition_retro() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} retro [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="RETRO" -- "accepts --header word / --header=word"
-    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader word / --subheader=word"
+    param HEADER -H --header init:="RETRO" -- "accepts --header value / --header=value"
+    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader value / --subheader=value"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     disp :usage -h --help
 }
@@ -153,7 +229,7 @@ parser_definition_split() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} split [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="SPLIT" -- "accepts --header word / --header=word"
+    param HEADER -H --header init:="SPLIT" -- "accepts --header value / --header=value"
     param COLOR -c --color init:="#fff" -- "Color"
     param BCOLOR -b --bcolor init:="#000" -- "Background Color"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
@@ -167,30 +243,9 @@ parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} sticker [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="STICKER" -- "accepts --header word / --header=word"
-    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader word / --subheader=word"
+    param HEADER -H --header init:="STICKER" -- "accepts --header value / --header=value"
+    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader value / --subheader=value"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    disp :usage -h --help
-}
-
-# 3d
-parser_definition_3d() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} 3d [options] [arguments]"
-    msg -- 'Options:'
-    param HEADER -H --header init:="Three D" -- "accepts --header word / --header=word"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs/" -- "-d /Path/to/dir without the trailing slash."
-    disp :usage -h --help
-}
-
-parser_definition_arcade() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} arcade [options] [arguments]"
-    msg -- 'Options:'
-    param HEADER -H --header init:="arcade" -- "accepts --header word / --header=word"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     disp :usage -h --help
 }
 
@@ -198,6 +253,24 @@ if [ $# -gt 0 ]; then
     cmd=$1
     shift
     case $cmd in
+    3d)
+        echo "3D..."
+        eval "$(getoptions parser_definition_3d parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/3d.sh"
+        fn_3d "$@"
+        ;;
+    arcade)
+        echo "Arcade ..."
+        eval "$(getoptions parser_definition_arcade parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/arcade.sh"
+        fn_arcade "$@"
+        ;;
     clip)
         echo "Clip ..."
         eval "$(getoptions parser_definition_clip parse "$0")"
@@ -206,6 +279,33 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/clip.sh"
         fn_clip "$@"
+        ;;
+    layer)
+        echo "Layer ..."
+        eval "$(getoptions parser_definition_layer parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/layer.sh"
+        fn_layer "$@"
+        ;;
+    neon)
+        echo "Neon ..."
+        eval "$(getoptions parser_definition_neon parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/neon.sh"
+        fn_neon "$@"
+        ;;
+    popart)
+        echo "Layer ..."
+        eval "$(getoptions parser_definition_popart parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/popart.sh"
+        fn_popart "$@"
         ;;
     retro)
         echo "Retro ..."
@@ -234,24 +334,7 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/lib/sticker.sh"
         fn_sticker "$@"
         ;;
-    3d)
-        echo "3D..."
-        eval "$(getoptions parser_definition_3d parse "$0")"
-        parse "$@"
-        eval "set -- $REST"
-        # shellcheck disable=SC1091
-        . "${script_dir}/lib/3d.sh"
-        fn_3d "$@"
-        ;;
-    arcade)
-        echo "Arcade ..."
-        eval "$(getoptions parser_definition_arcade parse "$0")"
-        parse "$@"
-        eval "set -- $REST"
-        # shellcheck disable=SC1091
-        . "${script_dir}/lib/arcade.sh"
-        fn_arcade "$@"
-        ;;
+
     --) ;; # no subcommand, arguments only
     esac
 fi

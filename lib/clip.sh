@@ -2,6 +2,14 @@ GFONT="${FONT_NAME// /+}"
 # BROWSER_HEIGHT=$(($HEIGHT - 200))
 GF="https://fonts.googleapis.com/css2?family=${GFONT}${FONT_ATT}&display=swap"
 
+# check_bg
+echo "$BKIMG"
+if [ ! -f "$BKIMG" ]; then
+  echo "You image is not found."
+  echo "Please use the absolute path to your image. /Path/to/image.jpg"
+  exit 1
+fi
+
 fn_clip() {
 
   cat <<EOF >"${script_dir}/outputs/clip.html"
@@ -45,7 +53,7 @@ h1 {
 </style>
 </head>
 <body>
-<h1 class="center">$TEXT</h1>
+<h1 class="center">${TEXT}</h1>
 </body>
 </html>
 EOF

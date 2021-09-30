@@ -4,13 +4,15 @@
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip.png" /> 
 </p>
 
+## Options
+
 ```sh
 Usage: teffects clip [options...] [arguments...]
 
 Clip an image to texts.
 
   OPTIONS                     DESCRIPTION
-  -t,     --text TEXT         -t 'Your Text to print'
+  -t,     --text TEXT         -t 'Your text to print'
   -f,     --font FONT_NAME    -f 'Font Name'
   -s,     --size SIZE         -s 120 will set CSS font-size: 120px
   -i,     --image BKIMG       -i /Absolute/path/to/image.jpg
@@ -24,7 +26,7 @@ Clip an image to texts.
 ## Examples
 
 ```sh
-$ teffects clip -t "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
+$ teffects clip -H "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
 ```
 
 ## Credit

@@ -4,11 +4,13 @@
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/sticker.png" /> 
 </p>
 
+## Options
+
 ```sh
 Usage: teffects sticker [options] [arguments]
 Options:
-  -H, --header HEADER         accepts --header word / --header=word
-  -S, --subheader SUB_HEADER  accepts --subheader word / --subheader=word
+  -H, --header HEADER         accepts --header value / --header=value
+  -S, --subheader SUB_HEADER  accepts --subheader value / --subheader=value
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
   -h, --help
 ```

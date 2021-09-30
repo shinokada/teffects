@@ -4,10 +4,12 @@
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/split.png" /> 
 </p>
 
+## Options
+
 ```sh
 Usage: teffects split [options] [arguments]
 Options:
-  -H, --header HEADER         accepts --header word / --header=word
+  -H, --header HEADER         accepts --header value / --header=value
   -c, --color COLOR           Color
   -b, --bcolor BCOLOR         Background Color
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.

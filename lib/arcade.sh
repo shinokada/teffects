@@ -1,7 +1,7 @@
 fn_arcade() {
   STR=''
   # convert to lowercase
-  LOWER=$(echo "$HEADER" | tr '[:upper:]' '[:lower:]')
+  LOWER=$(echo "$TEXT" | tr '[:upper:]' '[:lower:]')
   IFS=" " read -ra ADDR <<<"$LOWER"
   for WORD in "${ADDR[@]}"; do
     # echo "$WORD"
