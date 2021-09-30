@@ -1,3 +1,5 @@
+MODULE="arcade"
+
 fn_arcade() {
   STR=''
   # convert to lowercase
@@ -8,6 +10,36 @@ fn_arcade() {
     WITH_SPACE=$(echo "$WORD" | sed 's/./& /g')
     STR+="<ol>"
     for i in $WITH_SPACE; do
+      if [ "$i" = 0 ]; then
+        i="zero"
+      fi
+      if [ "$i" = 1 ]; then
+        i="one"
+      fi
+      if [ "$i" = 2 ]; then
+        i="two"
+      fi
+      if [ "$i" = 3 ]; then
+        i="three"
+      fi
+      if [ "$i" = 4 ]; then
+        i="four"
+      fi
+      if [ "$i" = 5 ]; then
+        i="five"
+      fi
+      if [ "$i" = 6 ]; then
+        i="six"
+      fi
+      if [ "$i" = 7 ]; then
+        i="seven"
+      fi
+      if [ "$i" = 8 ]; then
+        i="eight"
+      fi
+      if [ "$i" = 9 ]; then
+        i="nine"
+      fi
       STR+="<li class=\"$i\"></li>"
     done
     STR+="</ol>"
@@ -19,7 +51,7 @@ fn_arcade() {
   #     STR+="<li class=\"$i\"></li>"
   # done
 
-  cat <<EOF >"${script_dir}/outputs/arcade.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -245,11 +277,11 @@ EOF
   if [ ! -d "$OUTPUT_DIR" ]; then
     mkdir -p "$OUTPUT_DIR"
   fi
-  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/arcade.png" "file:///${script_dir}/outputs/arcade.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
     echo "Something went wrong."
     exit
   }
 
-  echo "Arcade image is done! Open $OUTPUT_DIR/arcade.png."
+  echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 
 }

@@ -1,6 +1,7 @@
+MODULE="neon"
+
 fn_neon() {
-    MODULE="neon"
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -25,14 +26,18 @@ body {
 }
 
 .neon {
-  margin: calc(50vh - 40px) auto 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*margin: calc(50vh - 40px) auto 0 auto;*/
   font-size: ${SIZE}px;
   text-transform: uppercase;
   font-family: "Archivo Black", "Archivo", sans-serif;
   font-weight: normal;
   display: block;
   height: auto;
-  text-align: center;
+  text-align: ${ALIGN};
   color: white;
   animation: neon 3s infinite;
 }
@@ -57,19 +62,19 @@ body {
 </style>
 </head>
 <body>
-<div class="neon">${HEADER}</div>
+<div class="neon">${TEXT}</div>
 </body>
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    echo "Something went wrong."
+    exit
+  }
 
-    echo "Pop art image is done! Open $OUTPUT_DIR/$MODULE.png."
+  echo "Pop art image is done! Open $OUTPUT_DIR/$MODULE.png."
 }

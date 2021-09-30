@@ -1,5 +1,7 @@
+MODULE="sticker"
+
 fn_sticker() {
-	cat <<EOF >"${script_dir}/outputs/sticker.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -24,12 +26,14 @@ fn_sticker() {
 	 font-family: "Alegreya Sans SC", sans-serif;
 	 font-weight: 900;
 	 font-style: italic;
-	 font-size: clamp(3rem, 15vw, 10rem);
+	 /*font-size: clamp(3rem, 15vw, 10rem);*/
+	 font-size: ${SIZE}px;
 	 text-transform: uppercase;
 	 color: var(--c5);
 }
  .sticker-lg {
-	 font-size: clamp(6rem, 30vw, 20rem);
+	 /*font-size: clamp(6rem, 30vw, 20rem);*/
+	 font-size: ${LSIZE}px;
 }
  .sticker span {
 	 background: linear-gradient(var(--shine-angle), rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 35%, rgba(255, 255, 255, 0.98) 49.95%, rgba(255, 255, 255, 0.98) 50.15%, rgba(255, 0, 0, 0) 65%, rgba(255, 0, 0, 0)), linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
@@ -62,12 +66,26 @@ fn_sticker() {
 	 line-height: 1;
 	 color: var(--c5);
 }
+.container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
 </style>
 </head>
 <body>
-<span class="sticker sticker-lg" data-text="${HEADER}"><span>${HEADER}</span></span>
+<div class="container">
+<span class="sticker sticker-lg" data-text="${TEXT}"><span>${TEXT}</span></span>
 
-<span class="sticker" data-text="${SUB_HEADER}" style="--shine-angle: 8deg;"><span>${SUB_HEADER}</span></span>
+<span class="sticker" data-text="${SUB_TEXT}" style="--shine-angle: 8deg;"><span>${SUB_TEXT}</span></span>
+</div>
 </body>
 </html>
 EOF
@@ -76,10 +94,10 @@ EOF
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi
-	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/sticker.png" "file:///${script_dir}/outputs/sticker.html" >/dev/null 2>&1 || {
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
 		echo "Something went wrong."
 		exit
 	}
 
-	echo "Sticker image is done! Open $OUTPUT_DIR/sticker.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

@@ -179,10 +179,12 @@ parser_definition_layer() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} layer [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param BCOLOR -b --bcolor init:="#d52e3f" -- "Background Color"
     param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
+    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
     disp :usage -h --help
 }
 
@@ -193,7 +195,7 @@ parser_definition_neon() {
     msg -- 'Options:'
     param ALIGN -a --align init=:"center" -- "Text alignment."
     param BCOLOR -b --bcolor init:="#192824" -- "Background Color"
-    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
+    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
     param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
@@ -207,8 +209,8 @@ parser_definition_popart() {
         "Usage: ${2##*/} popart [options] [arguments]"
     msg -- 'Options:'
     param ALIGN -a --align init=:"center" -- "Text alignment."
-    param BCOLOR -b --bcolor init:="#faff04" -- "Background Color"
-    param HEADER -H --header init:="Teffects" -- "accepts --header value / --header=value"
+    param BCOLOR -b --bcolor init:="#faff04" -- "Background color"
+    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
     param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
     param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
@@ -234,13 +236,14 @@ parser_definition_split() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} split [options] [arguments]"
     msg -- 'Options:'
-    param BCOLOR -b --bcolor init:="#000" -- "Background Color"
+    param BCOLOR -b --bcolor init:="#000" -- "Background color"
+    param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
     param COLOR -c --color init:="#fff" -- "Color"
     param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
     param TEXT -t --text init:="SPLIT" -- "accepts --text value / --text=value"
     param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-
     disp :usage -h --help
 }
 
@@ -249,9 +252,14 @@ parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} sticker [options] [arguments]"
     msg -- 'Options:'
-    param HEADER -H --header init:="STICKER" -- "accepts --header value / --header=value"
-    param SUB_HEADER -S --subheader init:="Text Effect" -- "accepts --subheader value / --subheader=value"
+    param BCOLOR -b --bcolor init:="#eee" -- "Background Color"
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param LSIZE -l --lsize init:=160 -- "-l 180 will set CSS top font-size: 180px"
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS second line font-size: 180px"
+    param SUB_TEXT -u --subtext init:="Text Effect" -- "accepts --subtext value / --subtext=value"
+    param TEXT -t --text init:="STICKER" -- "accepts --text value / --text=value"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
     disp :usage -h --help
 }
 

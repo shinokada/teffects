@@ -9,9 +9,9 @@
 ```sh
 Usage: teffects split [options] [arguments]
 Options:
-  -H, --header HEADER         accepts --header value / --header=value
-  -c, --color COLOR           Color
-  -b, --bcolor BCOLOR         Background Color
+  -t, --text TEXT             accepts --header value / --header=value
+  -c, --color COLOR           Font color
+  -b, --bcolor BCOLOR         Background color
   -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
   -w, --width WIDTH           -w 1240. The default width is 1600px.
   -e, --height HEIGHT         -h 800. The default height is 1200px.

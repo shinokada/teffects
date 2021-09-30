@@ -17,7 +17,7 @@ fn_split() {
 
 body {
 	font-family: "Inter", sans-serif;
-	background-color: #FFF;
+	background-color: ${BOCOLOR};
 	width:${WIDTH}px;
 	height:${HEIGHT}px;
 	text-align:center;
@@ -31,7 +31,7 @@ body {
 }
 
 h1 {
-	font-size: 8vw;
+	font-size: ${SIZE}px;
 	font-weight: 900;
 	background-color: ${BCOLOR};
 	color: ${COLOR};
@@ -75,8 +75,8 @@ p {
 <body>
 <div class="container">
 	<div class="text-box">
-		<h1>${HEADER}</h1>
-		<h1>${HEADER}</h1>
+		<h1>${TEXT}</h1>
+		<h1>${TEXT}</h1>
 	</div>
 </div>
 </body>

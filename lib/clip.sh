@@ -1,3 +1,4 @@
+MODULE="clip"
 GFONT="${FONT_NAME// /+}"
 # BROWSER_HEIGHT=$(($HEIGHT - 200))
 GF="https://fonts.googleapis.com/css2?family=${GFONT}${FONT_ATT}&display=swap"
@@ -12,7 +13,7 @@ fi
 
 fn_clip() {
 
-  cat <<EOF >"${script_dir}/outputs/clip.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -58,7 +59,7 @@ h1 {
 </html>
 EOF
 
-  wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/clip.html" "${OUTPUT_DIR}/clip.png" >/dev/null 2>&1 || {
+  wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/${MODULE}.html" "${OUTPUT_DIR}/${MODULE}.png" >/dev/null 2>&1 || {
     echo "Something weng wrong."
     exit
   }
@@ -71,5 +72,5 @@ EOF
 
   # eval "$FIREFOX" --headless --screenshot "${script_dir}/outputs/${CLIP_OUTPUT}.png" "file:///${script_dir}/outputs/clip.html" >/dev/null 2>&1 || exit
 
-  echo "Clip image is done! Open $OUTPUT_DIR/clip.png."
+  echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }
