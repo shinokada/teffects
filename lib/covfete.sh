@@ -25,7 +25,7 @@ fn_covfete() {
 	 display: inline;
 	 font-size: ${SIZE}vw;
 	 text-transform: uppercase;
-	 color: #f49e4c;
+	 color: ${COLOR};
 }
  @media (min-width: 700px) {
 	 h1 {
@@ -40,7 +40,7 @@ fn_covfete() {
  @supports (-webkit-background-clip: text) {
 	 h1 {
 		 color: transparent;
-		 background: linear-gradient(7deg, #f5ee9e 50%, #f49e4c 0);
+		 background: linear-gradient(7deg, #f5ee9e 50%, ${COLOR} 0);
 		 -webkit-background-clip: text;
 	}
 }

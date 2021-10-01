@@ -235,6 +235,7 @@ parser_definition_covfete() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
+    param COLOR -c --color init:="#f49e4c" -- "$VAR_COLOR Default: #f49e4c"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=15 -- "$VAR_SIZE in vw."
