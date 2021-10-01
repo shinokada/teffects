@@ -1,9 +1,20 @@
-MODULE="strokeshadow"
+MODULE="stroshadow"
 
-# for line-height
+# for line-height and text-shadow
 if [ "$SIZE" -gt 0 ]; then
     LHEIGHT=$(echo "$SIZE*1.2" | bc)
     LINE_HEIGHT="${LHEIGHT%%.*}"
+    TEXT_SHADOW=3
+    if [ $SIZE -lt 180 ]; then
+        TEXT_SHADOW=5
+    else
+        TEXT_SHADOW=6
+    fi
+fi
+
+CLASS="stroke shadow"
+if [ "$BEHIND" ]; then
+    CLASS="stroke-shadow"
 fi
 
 fn_strokeshadow() {
@@ -15,6 +26,23 @@ fn_strokeshadow() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <style>
+body {
+	 background-color: ${BCOLOR};
+	 text-align: ${ALIGN};
+}
+p {
+	 font-size: ${SIZE}px;
+	 font-weight: bold;
+	 letter-spacing: 5px;
+	 margin: 0;
+}
+.container {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width:100%;
+}
 .stroke {
 	 -webkit-text-stroke-width: 2px;
 	 -moz-text-stroke-width: 2px;
@@ -22,69 +50,19 @@ fn_strokeshadow() {
 	 -moz-text-stroke-color: #111827;
 	 color: transparent;
 }
- .shadow {
-	 text-shadow: 6px 6px #db2777;
+.shadow {
+	 text-shadow: ${TEXT_SHADOW}px ${TEXT_SHADOW}px ${COLOR};
 }
- .stroke-shadow {
-	 color: #fef3c7;
-	 text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px #db2777;
+.stroke-shadow {
+	 color: ${BCOLOR};
+	 text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px ${COLOR};
 }
- .halftone {
-	 position: relative;
-}
- .halftone:after {
-	 content: "Hello";
-	 background: url("data:image/png;
-	base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAADCAYAAABWKLW/AAAAHElEQVQYV2NUVFT8f//+fUYGBgYGMAEDcA5IBQCKJQVmn76DhAAAAABJRU5ErkJggg==") repeat;
-	 font-size: 15vw;
-	 letter-spacing: 6px;
-	 left: calc(50% + 6px);
-	 position: absolute;
-	 top: calc(50% + 6px);
-	 transform: translate(-50%, -50%);
-	 z-index: -1;
-	 -webkit-text-stroke-width: 0;
-	 -moz-text-stroke-width: 0;
-	 -webkit-background-clip: text;
-	 -moz-background-clip: text;
-	 background-clip: text;
-	 -webkit-text-fill-color: transparent;
-	 -moz-text-fill-color: transparent;
-}
- .halftone-color:after {
-	 background-color: #db2777;
-}
- body {
-	 background-color: #fef3c7;
-	 display: grid;
-	 height: 100vh;
-	 place-content: center;
-	 text-align: center;
-}
- body p {
-	 font-size: 15vw;
-	 font-weight: bold;
-	 letter-spacing: 5px;
-	 margin: 0;
-}
- body .grid {
-	 display: grid;
-	 grid-gap: 5vw;
-	 grid-template-columns: 1fr;
-}
- @media screen and (min-width: 768px) {
-	 body .grid {
-		 grid-template-columns: 1fr 1fr;
-	}
-}
+
 </style>
 </head>
 <body>
-<div class="grid">
-    <p class="stroke shadow">Hello</p>
-    <p class="stroke-shadow">Hello</p>
-    <p class="stroke halftone">Hello</p>
-    <p class="stroke halftone halftone-color">Hello</p>
+<div class="container">
+    <p class="${CLASS}">${TEXT}</p>
 </div>
 </body>
 </html>

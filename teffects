@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="0.0.4"
+VERSION="0.0.5"
 SCRIPT_NAME=$(basename "$0")
 
 # check os
@@ -80,7 +80,7 @@ parser_definition() {
     msg -- 'Use command -h for a command help.'
     cmd 3d -- "3D letters."
     cmd arcade -- "Arcade typography."
-    cmd blob -- "Blob text muliple colors."
+    cmd blob -- "Blob text with muliple colors."
     cmd clip -- "Clip image."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light text."
@@ -88,10 +88,19 @@ parser_definition() {
     cmd retro -- "Retro image."
     cmd split -- "Split text."
     cmd sticker -- "Sticker text."
+    cmd strokeshadow -- "Strokes and shadows effects."
 
     msg -- '' "Examples:
 Clip an image: 
     $SCRIPT_NAME clip
+3D letters
+    $SCRIPT_NAME 3d
+Arcade typography
+    $SCRIPT_NAME arcade
+Blob text with muliple colors
+    $SCRIPT_NAME blob
+Layered text-shadow effect
+    $SCRIPT_NAME layer
 Neon light text
     $SCRIPT_NAME neon
 Pop art effect
@@ -102,12 +111,9 @@ Split text:
     $SCRIPT_NAME split
 Sticker text: 
     $SCRIPT_NAME sticker
-3D letters
-    $SCRIPT_NAME 3d
-Arcade typography
-    $SCRIPT_NAME arcade
-Layered text-shadow effect
-    $SCRIPT_NAME layer
+Strokes and shadows effects
+    $SCRIPT_NAME strokeshadow
+
 Display the version:
     $SCRIPT_NAME --version
 Display help:
@@ -278,6 +284,23 @@ parser_definition_sticker() {
     disp :usage -h --help
 }
 
+# strokeshadow
+parser_definition_strokeshadow() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} popart [options] [arguments]"
+    msg -- 'Options:'
+    flag BEHIND --behind
+    param ALIGN -a --align init=:"center" -- "Text alignment."
+    param BCOLOR -b --bcolor init:="#fef3c7" -- "Background color"
+    param COLOR -c --color init:="#db2777" -- "Shadow color"
+    param TEXT -t --text init:="Stroke & shadow" -- "accepts --text value / --text=value"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
+    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+    disp :usage -h --help
+}
+
 if [ $# -gt 0 ]; then
     cmd=$1
     shift
@@ -372,7 +395,15 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/lib/sticker.sh"
         fn_sticker "$@"
         ;;
-
+    strokeshadow)
+        echo "Sticker ..."
+        eval "$(getoptions parser_definition_strokeshadow parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/strokeshadow.sh"
+        fn_strokeshadow "$@"
+        ;;
     --) ;; # no subcommand, arguments only
     esac
 fi
