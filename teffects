@@ -94,6 +94,7 @@ parser_definition() {
     cmd clip -- "Clip image."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light text."
+    cmd pinchy -- "Pinchy text."
     cmd popart -- "Pop art text."
     cmd retro -- "Retro image."
     cmd split -- "Split text."
@@ -257,6 +258,24 @@ parser_definition_neon() {
     disp :usage -h --help
 }
 
+# pinchy
+parser_definition_pinchy() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} pinchy [options] [arguments]" ''
+
+    msg -- 'Creates pinchy texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=150 -- "$VAR_SIZE Default: 150"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    disp :usage -h --help
+}
+
 # popart
 parser_definition_popart() {
     setup REST help:usage abbr:true -- \
@@ -411,6 +430,15 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/neon.sh"
         fn_neon "$@"
+        ;;
+    pinchy)
+        echo "Layer ..."
+        eval "$(getoptions parser_definition_pinchy parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/pinchy.sh"
+        fn_pinchy "$@"
         ;;
     popart)
         echo "Layer ..."
