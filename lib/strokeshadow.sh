@@ -1,4 +1,4 @@
-MODULE="stroshadow"
+MODULE="strokeshadow"
 
 # for line-height and text-shadow
 if [ "$SIZE" -gt 0 ]; then
