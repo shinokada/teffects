@@ -8,13 +8,17 @@
 
 ```sh
 Usage: teffects arcade [options] [arguments]
-Options:
-  -a, --align ALIGN           Text alignment.
-  -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
-  -e, --height HEIGHT         -h 800. The default height is 1200px.
-  -t, --text TEXT             accepts --text value / --text=value
-  -w, --width WIDTH           -w 1240. The default width is 1600px.
-  -h, --help 
+
+Creates arcade texts.
+All parameters accepts --param value and --param=value form.
+
+  OPTIONS                     DESCRIPTION
+  -a, --align ALIGN           Text alignment. Default: center.
+  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: /Users/shinichiokada/Bash_Projects/Teffects/teffects/outputs
+  -e, --height HEIGHT         Image height. Default: 1200px.
+  -t, --text TEXT             Your text to print.
+  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
+  -h, --help  
 ```
 
 ## Examples

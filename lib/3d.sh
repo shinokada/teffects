@@ -1,7 +1,7 @@
 MODULE="3d"
-# LINE_HEIGHT=$((SIZE * 1.2)) | bc
-# LHEIGHT=$(echo "$SIZE*1.2" | bc)
-# LINE_HEIGHT="${LHEIGHT%%.*}"
+LINE_HEIGHT=$((SIZE * 1.2)) | bc
+LHEIGHT=$(echo "$SIZE*1.2" | bc)
+LINE_HEIGHT="${LHEIGHT%%.*}"
 
 fn_3d() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

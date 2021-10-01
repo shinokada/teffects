@@ -1,34 +1,26 @@
-# 3d
+# Blob
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/3d.png" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/blob.png" />
 </p>
 
 ## Options
 
 ```sh
-Usage: teffects 3d [options] [arguments]
+Usage: teffects arcade [options] [arguments]
 
-Creates 3d texts.
+Creates blob texts.
 All parameters accepts --param value and --param=value form.
-
   OPTIONS                     DESCRIPTION
-  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #fbd7e3
-  -c, --color COLOR           Font color. Enclose with quotes. Default: #fcdde8
-  -e, --height HEIGHT         Image height. Default: 1200px.
+  -a, --align ALIGN           Text alignment. Default: center.
   -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: /Users/shinichiokada/Bash_Projects/Teffects/teffects/outputs
+  -e, --height HEIGHT         Image height. Default: 1200px.
   -s, --size SIZE             Font-size. Use a number without px. Default: 120px
   -t, --text TEXT             Your text to print.
   -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
   -h, --help
 ```
 
-## Examples
-
-```sh
-$ teffects 3d -d ~/Downloads
-```
-
 ## Credit
 
-3d is inspired by [Håvard Brynjulfsen's 3D letters - sugar sweet](https://codepen.io/havardob/pen/WNQwvze).
+Blob is inspired by [Amli's Animated Blobs Text - Multiple Colors](https://codepen.io/uzcho_/pen/LaPqWJ)

@@ -8,14 +8,20 @@
 
 ```sh
 Usage: teffects split [options] [arguments]
-Options:
-  -t, --text TEXT             accepts --header value / --header=value
-  -c, --color COLOR           Font color
-  -b, --bcolor BCOLOR         Background color
-  -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
-  -w, --width WIDTH           -w 1240. The default width is 1600px.
-  -e, --height HEIGHT         -h 800. The default height is 1200px.
-  -h, --help   
+
+Creates split texts.
+All parameters accepts --param value and --param=value form.
+
+  OPTIONS                     DESCRIPTION
+  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #000
+  -o, --bocolor BOCOLOR       Body color
+  -c, --color COLOR           Font color. Enclose with quotes. Default: #fff
+  -e, --height HEIGHT         Image height. Default: 1200px.
+  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: /Users/shinichiokada/Bash_Projects/Teffects/teffects/outputs
+  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
+  -t, --text TEXT             Your text to print.
+  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
+  -h, --help
 ```
 
 ## Examples

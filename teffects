@@ -59,6 +59,16 @@ self=$(readlinkf "$0")
 script_dir=${self%/*}
 # echo "$script_dir"
 
+# Variables for options
+VAR_ALIGN="Text alignment. Default: center."
+VAR_BCOLOR="Background color. Enclose with quotes."
+VAR_COLOR="Font color. Enclose with quotes."
+VAR_HEIGHT="Image height. Default: 1200px."
+VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${script_dir}/outputs"
+VAR_SIZE="Font-size. Use a number without px. Default: 120px"
+VAR_TEXT="Your text to print."
+VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
+
 # remove files in outputs dir
 if [ -n "$(ls "${script_dir}"/outputs)" ]; then
     echo "Removing files in $script_dir/outputs."
@@ -91,7 +101,7 @@ parser_definition() {
     cmd strokeshadow -- "Strokes and shadows effects."
 
     msg -- '' "Examples:
-Clip an image: 
+Clip an image 
     $SCRIPT_NAME clip
 3D letters
     $SCRIPT_NAME 3d
@@ -140,164 +150,207 @@ FONT_WEIGHT='500 | 700 | 900'
 parser_definition_clip() {
     setup REST plus:true help:usage abbr:true -- \
         "Usage: ${2##*/} clip [options...] [arguments...]" ''
-    msg -- 'Clip an image to texts.' ''
+
+    msg -- 'Creates cliped texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
     msg label:"OPTIONS" -- "DESCRIPTION"
-    param TEXT -t --text init:="It's Friday." -- "-t 'Your text to print'"
-    param FONT_NAME -f --font init:="Luckiest Guy" -- "-f 'Font Name'"
-    param SIZE -s --size init:=180 -- "-s 120 will set CSS font-size: 120px"
-    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "-i /Absolute/path/to/image.jpg"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "-b 900. This sets the font weight. Choose from 500|700|900."
+    param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "Font weight. Choose from 500|700|900."
+    param FONT_NAME -f --font init:="Luckiest Guy" -- "Font name. Default: Luckiest Guy."
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "Background image. Use an absolute path.  Default flower.jpg"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="It's Friday." -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # 3d
 parser_definition_3d() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} 3d [options] [arguments]"
-    msg -- 'Options:'
-    param BCOLOR -b --bcolor init:="#fbd7e3" -- "Background Color"
-    param COLOR -c --color init:="#fcdde8" -- "Color"
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param TEXT -t --text init:="Three D" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+        "Usage: ${2##*/} 3d [options] [arguments]" ''
+
+    msg -- 'Creates 3d texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#fbd7e3" -- "$VAR_BCOLOR Default: #fbd7e3"
+    param COLOR -c --color init:="#fcdde8" -- "$VAR_COLOR Default: #fcdde8"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="Three D" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # arcade
 parser_definition_arcade() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} arcade [options] [arguments]"
-    msg -- 'Options:'
-    param ALIGN -a --align init=:"center" -- "Text alignment."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param TEXT -t --text init:="arcade" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+        "Usage: ${2##*/} arcade [options] [arguments]" ''
+
+    msg -- 'Creates arcade texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param TEXT -t --text init:="arcade" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # blob
 parser_definition_blob() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} arcade [options] [arguments]"
-    msg -- 'Options:'
-    param ALIGN -a --align init=:"center" -- "Text alignment."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param TEXT -t --text init:="THE<br>BLOB" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+        "Usage: ${2##*/} arcade [options] [arguments]" ''
+
+    msg -- 'Creates blob texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.'
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # layer
 parser_definition_layer() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} layer [options] [arguments]"
-    msg -- 'Options:'
-    param BCOLOR -b --bcolor init:="#d52e3f" -- "Background Color"
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+        "Usage: ${2##*/} layer [options] [arguments]" ''
+
+    msg -- 'Creates layered texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#d52e3f" -- "$VAR_BCOLOR Default: #d52e3f"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # neon
 parser_definition_neon() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} neon [options] [arguments]"
-    msg -- 'Options:'
-    param ALIGN -a --align init=:"center" -- "Text alignment."
-    param BCOLOR -b --bcolor init:="#192824" -- "Background Color"
-    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+        "Usage: ${2##*/} neon [options] [arguments]" ''
+
+    msg -- 'Creates neon texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     disp :usage -h --help
 }
 
 # popart
 parser_definition_popart() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} popart [options] [arguments]"
-    msg -- 'Options:'
-    param ALIGN -a --align init=:"center" -- "Text alignment."
-    param BCOLOR -b --bcolor init:="#faff04" -- "Background color"
-    param TEXT -t --text init:="Teffects" -- "accepts --text value / --text=value"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+        "Usage: ${2##*/} popart [options] [arguments]" ''
+
+    msg -- 'Creates pop art texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     disp :usage -h --help
 }
 
 # retro
 parser_definition_retro() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} retro [options] [arguments]"
-    msg -- 'Options:'
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SUB_TEXT -s --subtext init:="Text Effect" -- "accepts --subtext value / --subtext=value"
-    param TEXT -t --text init:="RETRO" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+        "Usage: ${2##*/} retro [options] [arguments]" ''
+
+    msg -- 'Creates retro texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SUB_TEXT -s --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
+    param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # split
 parser_definition_split() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} split [options] [arguments]"
-    msg -- 'Options:'
-    param BCOLOR -b --bcolor init:="#000" -- "Background color"
+        "Usage: ${2##*/} split [options] [arguments]" ''
+
+    msg -- 'Creates split texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
-    param COLOR -c --color init:="#fff" -- "Color"
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param TEXT -t --text init:="SPLIT" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="SPLIT" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # sticker
 parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} sticker [options] [arguments]"
-    msg -- 'Options:'
-    param BCOLOR -b --bcolor init:="#eee" -- "Background Color"
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
+        "Usage: ${2##*/} sticker [options] [arguments]" ''
+
+    msg -- 'Creates sticker texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param LSIZE -l --lsize init:=160 -- "-l 180 will set CSS top font-size: 180px"
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS second line font-size: 180px"
-    param SUB_TEXT -u --subtext init:="Text Effect" -- "accepts --subtext value / --subtext=value"
-    param TEXT -t --text init:="STICKER" -- "accepts --text value / --text=value"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param SUB_TEXT -u --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
+    param TEXT -t --text init:="STICKER" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
 # strokeshadow
 parser_definition_strokeshadow() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} popart [options] [arguments]"
-    msg -- 'Options:'
-    flag BEHIND --behind
-    param ALIGN -a --align init=:"center" -- "Text alignment."
-    param BCOLOR -b --bcolor init:="#fef3c7" -- "Background color"
-    param COLOR -c --color init:="#db2777" -- "Shadow color"
-    param TEXT -t --text init:="Stroke & shadow" -- "accepts --text value / --text=value"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "-d /Path/to/dir without the trailing slash."
-    param SIZE -s --size init:=120 -- "-s 180 will set CSS font-size: 180px"
-    param WIDTH -w --width init:="1600" -- "-w 1240. The default width is 1600px."
-    param HEIGHT -e --height init:="1200" -- "-h 800. The default height is 1200px."
+        "Usage: ${2##*/} strokeshadow [options] [arguments]" ''
+
+    msg -- 'Creates stroke-shadow texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BEHIND --behind -- "Set the color behind the text."
+    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
+    param SCOLOR -c --color init:="#db2777" -- "Shadow color"
+    param TEXT -t --text init:="Stroke & shadow" -- "$VAR_TEXT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     disp :usage -h --help
 }
 
@@ -396,7 +449,7 @@ if [ $# -gt 0 ]; then
         fn_sticker "$@"
         ;;
     strokeshadow)
-        echo "Sticker ..."
+        echo "Strokeshadow ..."
         eval "$(getoptions parser_definition_strokeshadow parse "$0")"
         parse "$@"
         eval "set -- $REST"

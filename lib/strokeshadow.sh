@@ -51,11 +51,11 @@ p {
 	 color: transparent;
 }
 .shadow {
-	 text-shadow: ${TEXT_SHADOW}px ${TEXT_SHADOW}px ${COLOR};
+	 text-shadow: ${TEXT_SHADOW}px ${TEXT_SHADOW}px ${SCOLOR};
 }
 .stroke-shadow {
 	 color: ${BCOLOR};
-	 text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px ${COLOR};
+	 text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px ${SCOLOR};
 }
 
 </style>
