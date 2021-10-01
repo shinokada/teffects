@@ -46,6 +46,7 @@ fn_pinchy() {
 	 letter-spacing: 20px;
 	 text-align: ${ALIGN};
 	 color: sienna;
+     text-transform: uppercase;
 }
  
 </style>

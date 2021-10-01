@@ -92,6 +92,7 @@ parser_definition() {
     cmd arcade -- "Arcade typography."
     cmd blob -- "Blob text with muliple colors."
     cmd clip -- "Clip image."
+    cmd covfete -- "Background clipping texts."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light text."
     cmd pinchy -- "Pinchy text."
@@ -220,6 +221,24 @@ parser_definition_blob() {
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param SIZE -s --size init:=120 -- "$VAR_SIZE"
     param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# covfete
+parser_definition_covfete() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} covfete [options] [arguments]" ''
+
+    msg -- 'Covfete texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=15 -- "$VAR_SIZE in vw."
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -426,6 +445,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/clip.sh"
         fn_clip "$@"
+        ;;
+    covfete)
+        eval "$(getoptions parser_definition_covfete parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/covfete.sh"
+        fn_covfete "$@"
         ;;
     layer)
         eval "$(getoptions parser_definition_layer parse "$0")"
