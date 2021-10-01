@@ -100,6 +100,7 @@ parser_definition() {
     cmd split -- "Split text."
     cmd sticker -- "Sticker text."
     cmd strokeshadow -- "Strokes and shadows effects."
+    cmd svg -- "Styling with SVG"
 
     msg -- '' "Examples:
 Clip an image 
@@ -124,6 +125,8 @@ Sticker text:
     $SCRIPT_NAME sticker
 Strokes and shadows effects
     $SCRIPT_NAME strokeshadow
+Styling with SVG
+    $SCRIPT_NAME svg
 
 Display the version:
     $SCRIPT_NAME --version
@@ -373,12 +376,26 @@ parser_definition_strokeshadow() {
     disp :usage -h --help
 }
 
+# svg
+parser_definition_svg() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} svg [options] [arguments]" ''
+
+    msg -- 'Creates svg styling texts. Width and height is fixed to 1200x400.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=120 -- "$VAR_SIZE"
+    param TEXT -t --text init:="Teffects SVG" -- "$VAR_TEXT Default: Teffects SVG"
+    disp :usage -h --help
+}
+
 if [ $# -gt 0 ]; then
     cmd=$1
     shift
     case $cmd in
     3d)
-        echo "3D..."
         eval "$(getoptions parser_definition_3d parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -387,7 +404,6 @@ if [ $# -gt 0 ]; then
         fn_3d "$@"
         ;;
     arcade)
-        echo "Arcade ..."
         eval "$(getoptions parser_definition_arcade parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -396,7 +412,6 @@ if [ $# -gt 0 ]; then
         fn_arcade "$@"
         ;;
     blob)
-        echo "Blob ..."
         eval "$(getoptions parser_definition_blob parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -405,7 +420,6 @@ if [ $# -gt 0 ]; then
         fn_blob "$@"
         ;;
     clip)
-        echo "Clip ..."
         eval "$(getoptions parser_definition_clip parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -414,7 +428,6 @@ if [ $# -gt 0 ]; then
         fn_clip "$@"
         ;;
     layer)
-        echo "Layer ..."
         eval "$(getoptions parser_definition_layer parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -423,7 +436,6 @@ if [ $# -gt 0 ]; then
         fn_layer "$@"
         ;;
     neon)
-        echo "Neon ..."
         eval "$(getoptions parser_definition_neon parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -432,7 +444,6 @@ if [ $# -gt 0 ]; then
         fn_neon "$@"
         ;;
     pinchy)
-        echo "Layer ..."
         eval "$(getoptions parser_definition_pinchy parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -441,7 +452,6 @@ if [ $# -gt 0 ]; then
         fn_pinchy "$@"
         ;;
     popart)
-        echo "Layer ..."
         eval "$(getoptions parser_definition_popart parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -450,7 +460,6 @@ if [ $# -gt 0 ]; then
         fn_popart "$@"
         ;;
     retro)
-        echo "Retro ..."
         eval "$(getoptions parser_definition_retro parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -459,7 +468,6 @@ if [ $# -gt 0 ]; then
         fn_retro "$@"
         ;;
     split)
-        echo "Split ..."
         eval "$(getoptions parser_definition_split parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -468,7 +476,6 @@ if [ $# -gt 0 ]; then
         fn_split "$@"
         ;;
     sticker)
-        echo "Sticker ..."
         eval "$(getoptions parser_definition_sticker parse "$0")"
         parse "$@"
         eval "set -- $REST"
@@ -477,13 +484,20 @@ if [ $# -gt 0 ]; then
         fn_sticker "$@"
         ;;
     strokeshadow)
-        echo "Strokeshadow ..."
         eval "$(getoptions parser_definition_strokeshadow parse "$0")"
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
         . "${script_dir}/lib/strokeshadow.sh"
         fn_strokeshadow "$@"
+        ;;
+    svg)
+        eval "$(getoptions parser_definition_svg parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/svg.sh"
+        fn_svg "$@"
         ;;
     --) ;; # no subcommand, arguments only
     esac
