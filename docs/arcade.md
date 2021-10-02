@@ -24,7 +24,7 @@ All parameters accepts --param value and --param=value form.
 ## Examples
 
 ```sh
-$ teffects arcade -H "arcade texts" -w 800 -e 300 -d ~/Downloads
+$ teffects arcade -t "arcade texts" -w 800 -e 300 -d ~/Downloads
 ```
 
 ## Credit

@@ -26,8 +26,8 @@ All parameters accepts --param value and --param=value form.
 ## Examples
 
 ```sh
-$ teffects popart -H "Bold, bright and brash" -e 600
-$ teffects popart -H "Bold, bright" -e 600 -b purple -s 200 -a left
+$ teffects popart -t "Bold, bright and brash" -e 600
+$ teffects popart -t "Bold, bright" -e 600 -b purple -s 200 -a left
 ```
 
 ## Credit

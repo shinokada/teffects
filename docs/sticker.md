@@ -27,7 +27,7 @@ All parameters accepts --param value and --param=value form.
 ## Examples
 
 ```sh
-$ teffects sticker -H Teffects -S Rocks -d ~/Downloads
+$ teffects sticker -t Teffects -S Rocks -d ~/Downloads
 ```
 
 ## Credit

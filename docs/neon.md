@@ -26,7 +26,7 @@ All parameters accepts --param value and --param=value form.
 ## Examples
 
 ```sh
-$ teffects neon -H "Teffects NEON LIGHTS" -b purple -s 80 -e 800 -w 1020
+$ teffects neon -t "Teffects NEON LIGHTS" -b purple -s 80 -e 800 -w 1020
 ```
 
 ## Credit
