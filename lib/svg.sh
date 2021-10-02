@@ -2,16 +2,23 @@ MODULE="svg"
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
-    LHEIGHT=$(echo "$SIZE*1.2" | bc)
-    LINE_HEIGHT="${LHEIGHT%%.*}"
+  LHEIGHT=$(echo "$SIZE*1.2" | bc)
+  LINE_HEIGHT="${LHEIGHT%%.*}"
 fi
 
 TEXT=$(echo $TEXT | tr '[:lower:]' '[:upper:]')
 WIDTH=1200
 HEIGHT=400
 
+if [ "$LOWER_CASE" ]; then
+  # echo "$TEXT_TRANSFORM"
+  CASE="text-transform:lowercase;"
+else
+  CASE=""
+fi
+
 fn_svg() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -21,21 +28,19 @@ fn_svg() {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 
-svg {
-  background: ${BCOLOR};
-}
 
 text {
   fill: #35322a;
   filter: url('#money');
   font-family: 'Playfair Display', 'Georgia', serif;
-  font-size: 120px;
+  font-size: ${SIZE}vw;
   font-weight: 900;
+  ${CASE};
 }
 
 html {
   align-items: center;
-  background: #ebe7e0;
+  background: ${BCOLOR};
   display: flex;
   justify-content: center;
   min-height: 100vh;
@@ -122,14 +127,14 @@ html {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    echo "Something went wrong."
+    exit
+  }
 
-    echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+  echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

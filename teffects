@@ -98,6 +98,7 @@ parser_definition() {
     cmd pinchy -- "Pinchy text."
     cmd popart -- "Pop art text."
     cmd retro -- "Retro image."
+    cmd slide -- "Stripe, clip, and gradient texts"
     cmd split -- "Split text."
     cmd sticker -- "Sticker text."
     cmd strokeshadow -- "Strokes and shadows effects."
@@ -120,6 +121,8 @@ Pop art effect
     $SCRIPT_NAME popart 
 Retro banner: 
     $SCRIPT_NAME retro
+Slide text:
+    $SCRIPT_NAME slide
 Split text: 
     $SCRIPT_NAME split
 Sticker text: 
@@ -151,6 +154,8 @@ font_type() {
 
 FONT_ATT=''
 FONT_WEIGHT='500 | 700 | 900'
+
+TEXT_CASES='capitalize | uppercase | lowercase | none'
 
 parser_definition_clip() {
     setup REST plus:true help:usage abbr:true -- \
@@ -335,6 +340,24 @@ parser_definition_retro() {
     disp :usage -h --help
 }
 
+# slide
+parser_definition_slide() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} slide [options] [arguments]" ''
+
+    msg -- 'Creates split texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Unit: vw"
+    param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
 # split
 parser_definition_split() {
     setup REST help:usage abbr:true -- \
@@ -401,13 +424,15 @@ parser_definition_svg() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} svg [options] [arguments]" ''
 
-    msg -- 'Creates svg styling texts. Width and height is fixed to 1200x400.'
+    msg -- 'Creates svg styling texts. Limited to max 3-4 words. Width and height is fixed to 1200x400.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag LOWER_CASE -l --lower -- "text-transform:lowercase"
+    param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=120 -- "$VAR_SIZE"
-    param TEXT -t --text init:="Teffects SVG" -- "$VAR_TEXT Default: Teffects SVG"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE"
+    param TEXT -t --text init:="teffects svg" -- "$VAR_TEXT Default: Teffects SVG"
     disp :usage -h --help
 }
 
@@ -494,6 +519,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/retro.sh"
         fn_retro "$@"
+        ;;
+    slide)
+        eval "$(getoptions parser_definition_slide parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/slide.sh"
+        fn_slide "$@"
         ;;
     split)
         eval "$(getoptions parser_definition_split parse "$0")"

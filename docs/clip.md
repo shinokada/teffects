@@ -27,7 +27,7 @@ All parameters accepts --param value and --param=value form.
 ## Examples
 
 ```sh
-$ teffects clip -H "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
+$ teffects clip -t "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Downloads
 ```
 
 ## Credit
