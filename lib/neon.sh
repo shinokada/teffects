@@ -32,7 +32,6 @@ body {
   transform: translate(-50%, -50%);
   /*margin: calc(50vh - 40px) auto 0 auto;*/
   font-size: ${SIZE}px;
-  text-transform: uppercase;
   font-family: "Archivo Black", "Archivo", sans-serif;
   font-weight: normal;
   display: block;

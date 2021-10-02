@@ -2,12 +2,12 @@ MODULE="blob"
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
-    LHEIGHT=$(echo "$SIZE*1.2" | bc)
-    LINE_HEIGHT="${LHEIGHT%%.*}"
+	LHEIGHT=$(echo "$SIZE*1.2" | bc)
+	LINE_HEIGHT="${LHEIGHT%%.*}"
 fi
 
 fn_blob() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -17,16 +17,21 @@ fn_blob() {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 
-body{text-align:${ALIGN}}
-div{display:block;position:absolute}
+body{
+	text-align:${ALIGN};
+}
+div{
+	display:block;
+	position:absolute;
+}
 
 .container{
 	width:100%;
 	height:100%;
 	top:50%;
 	left:50%;
-	transform:translate(-50%,-50%)
-	}
+	transform:translate(-50%,-50%);
+}
 
 h1{
 	background:#fff;
@@ -40,10 +45,10 @@ h1{
 	font-weight:700;
 	flex-flow:row wrap;
 	align-content:center;
-	justify-content:center
+	justify-content:center;
 	}
 
-h1 span{width:100%;position:relative}
+h1 span{width:100%;position:relative;}
 
 h1 span:before{
 	background:linear-gradient(45deg,#fc5c7d,#6a82fb,#fc5c7d);
@@ -52,11 +57,11 @@ h1 span:before{
 	display:block;
 	position:absolute;
 	content:"";
-	mix-blend-mode:screen
+	mix-blend-mode:screen;
 	}
 
 [class*="blobs"]
-	{mix-blend-mode:color;animation:blobs 15s ease-in-out infinite alternate}
+	{mix-blend-mode:color;animation:blobs 15s ease-in-out infinite alternate;}
 
 .blobs_1{
 	background:#ff1493;
@@ -146,14 +151,14 @@ h1 span:before{
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	# check if $RETRO_OUTPUT exist
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

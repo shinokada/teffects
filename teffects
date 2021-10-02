@@ -88,20 +88,21 @@ parser_definition() {
 
     msg -- '' 'Commands: '
     msg -- 'Use command -h for a command help.'
-    cmd 3d -- "3D letters."
-    cmd arcade -- "Arcade typography."
-    cmd blob -- "Blob text with muliple colors."
+    cmd 3d -- "3D letters style texts."
+    cmd arcade -- "Arcade typography style texts."
+    cmd blob -- "Muliple colors blog style texts."
     cmd clip -- "Clip image."
     cmd covfete -- "Background clipping texts."
     cmd layer -- "Layered text-shadow effect."
-    cmd neon -- "Neon light text."
-    cmd pinchy -- "Pinchy text."
-    cmd popart -- "Pop art text."
-    cmd retro -- "Retro image."
-    cmd slide -- "Stripe, clip, and gradient texts"
-    cmd split -- "Split text."
-    cmd sticker -- "Sticker text."
-    cmd strokeshadow -- "Strokes and shadows effects."
+    cmd neon -- "Neon light style texts."
+    cmd pinchy -- "Pinchy style texts."
+    cmd popart -- "Pop art style texts."
+    cmd retro -- "Retro style texts."
+    cmd shade -- "Shaded style texts"
+    cmd slide -- "Stripe, clip, and gradient style texts"
+    cmd split -- "Split style texts."
+    cmd sticker -- "Sticker style texts."
+    cmd strokeshadow -- "Strokes and shadows effect texts."
     cmd svg -- "Styling with SVG"
 
     msg -- '' "Examples:
@@ -315,6 +316,7 @@ parser_definition_popart() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
+    param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=120 -- "$VAR_SIZE"
@@ -336,6 +338,24 @@ parser_definition_retro() {
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SUB_TEXT -s --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
     param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# shade
+parser_definition_shade() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} shade [options] [arguments]" ''
+
+    msg -- 'Creates shade style texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Unit: vw"
+    param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -519,6 +539,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/retro.sh"
         fn_retro "$@"
+        ;;
+    shade)
+        eval "$(getoptions parser_definition_shade parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/shade.sh"
+        fn_shade "$@"
         ;;
     slide)
         eval "$(getoptions parser_definition_slide parse "$0")"

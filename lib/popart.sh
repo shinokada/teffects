@@ -35,7 +35,7 @@ body{
     -webkit-text-stroke-width: 3px;
     -webkit-text-stroke-color: white;
     text-shadow: 
-	8px 8px #ff1f8f,
+	8px 8px ${COLOR},
 	20px 20px #000000;
 }
 </style>
