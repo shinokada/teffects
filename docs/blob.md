@@ -7,13 +7,13 @@
 ## Options
 
 ```sh
-Usage: teffects arcade [options] [arguments]
+Usage: teffects blob [options] [arguments]
 
 Creates blob texts.
 All parameters accepts --param value and --param=value form.
   OPTIONS                     DESCRIPTION
   -a, --align ALIGN           Text alignment. Default: center.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: /Users/shinichiokada/Bash_Projects/Teffects/teffects/outputs
+  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
   -e, --height HEIGHT         Image height. Default: 1200px.
   -s, --size SIZE             Font-size. Use a number without px. Default: 120px
   -t, --text TEXT             Your text to print.

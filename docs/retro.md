@@ -14,11 +14,11 @@ All parameters accepts --param value and --param=value form.
 
   OPTIONS                     DESCRIPTION
   -e, --height HEIGHT         Image height. Default: 1200px.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: /Users/shinichiokada/Bash_Projects/Teffects/teffects/outputs
+  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
   -s, --subtext SUB_TEXT      Subtext. Your text to print.
   -t, --text TEXT             Your text to print.
   -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
-  -h, --help
+  -h, --help 
 ```
 
 ## Examples

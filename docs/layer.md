@@ -8,12 +8,18 @@
 
 ```sh
 Usage: teffects layer [options] [arguments]
-Options:
-  -t, --header HEADER         accepts --header value / --header=value
-  -d, --dir OUTPUT_DIR        -d /Path/to/dir without the trailing slash.
-  -w, --width WIDTH           -w 1240. The default width is 1600px.
-  -e, --height HEIGHT         -h 800. The default height is 1200px.
-  -h, --help                  
+
+Creates layered texts.
+All parameters accepts --param value and --param=value form.
+
+  OPTIONS                     DESCRIPTION
+  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #d52e3f
+  -e, --height HEIGHT         Image height. Default: 1200px.
+  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
+  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
+  -t, --text TEXT             Your text to print.
+  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
+  -h, --help 
 ```
 
 ## Examples
