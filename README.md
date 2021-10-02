@@ -5,7 +5,7 @@
 
 ## Overview
 
-Teffects automates creating header images.
+Teffects automates creating header images for your articles, email, presentation and other purposes.
 
 ## Requirement
 
@@ -51,10 +51,19 @@ $ teffects sticker -d ~/Downloads
 
 - [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
 - [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
+- [blog](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
 - [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
+- [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
+- [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
+- [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
+- [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
+- [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
 - [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
+- [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
+- [slide](https://github.com/shinokada/teffects/blob/master/docs/slide.md)
 - [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
 - [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
+- [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
 
 ## Reference
 
