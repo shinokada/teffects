@@ -9,20 +9,21 @@ SCRIPT_NAME=$(basename "$0")
 # check os
 if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
-    # check if Firefox is running. If it is, ask if the script can close it.
-    if pgrep -f firefox; then
-        printf "We need to close Firefox in order to proceed. May I close Firefox? (yes/y/no/n)"
-        read -r RES
-        USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
-        if [ "$USER_ANS" = "Y" ]; then
-            killall firefox
-        else
-            echo "Exiting ..."
-            exit
-        fi
-    fi
 elif [[ $(uname) == "Darwin" ]]; then
     FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
+fi
+
+# check if Firefox is running. If it is, ask if the script can close it.
+if pgrep -f firefox; then
+    printf "We need to close Firefox in order to proceed. May I close Firefox? (yes/y/no/n)"
+    read -r RES
+    USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
+    if [ "$USER_ANS" = "Y" ]; then
+        killall firefox
+    else
+        echo "Exiting ..."
+        exit
+    fi
 fi
 
 readlinkf() {
@@ -155,8 +156,6 @@ font_type() {
 
 FONT_ATT=''
 FONT_WEIGHT='500 | 700 | 900'
-
-TEXT_CASES='capitalize | uppercase | lowercase | none'
 
 parser_definition_clip() {
     setup REST plus:true help:usage abbr:true -- \
