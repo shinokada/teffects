@@ -33,3 +33,10 @@ $ teffects clip -t "Bash script to clip an image to text" -w 1400 -e 900 -d ~/Do
 ## Credit
 
 Clip is inspired by [this video](https://www.youtube.com/watch?v=9Kr3T4Ndl-o).
+
+## Notes
+
+Clip uses wkhtmltoimage and can't handle advanced CSS.
+
+- font size should be px.
+- Not able to use flex.

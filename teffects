@@ -268,7 +268,7 @@ parser_definition_layer() {
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=120 -- "$VAR_SIZE Default: 120px."
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
@@ -288,7 +288,7 @@ parser_definition_neon() {
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=120 -- "$VAR_SIZE  Default: 120px."
+    param SIZE -s --size init:=10 -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help

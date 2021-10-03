@@ -20,23 +20,22 @@ fn_neon() {
   box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${BCOLOR};
+}
+
 body {
   font-family: "Archivo", sans-serif;
   background-color: ${BCOLOR};
  
 }
-html, body {
-	 width: 100%;
-	 height: 100%;
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
-	 font-family: "Archivo", sans-serif;
-  background-color: ${BCOLOR};
-}
-
 .neon {
-  font-size: ${SIZE}px;
+  font-size: ${SIZE}vw;
   font-family: "Archivo Black", "Archivo", sans-serif;
   font-weight: normal;
   display: block;

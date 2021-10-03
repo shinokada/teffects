@@ -2,7 +2,7 @@ MODULE="layer"
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
-    LHEIGHT=$(echo "$SIZE*1.2" | bc)
+    LHEIGHT=$(echo "$SIZE*1.1" | bc)
     LINE_HEIGHT="${LHEIGHT%%.*}"
 fi
 
@@ -16,12 +16,19 @@ fn_layer() {
  <link href="https://fonts.googleapis.com/css?family=Charmonman|Engagement|Baloo+Bhai|Ubuntu:700|Niconne&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
+html, body {
+	 width: 100%;
+	 height: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+}
+
 body{
-	font-size: ${SIZE}px;
+	font-size: ${SIZE}vw;
 	text-align: center;
-    height:${LINE_HEIGHT}px;
-    /*line-height: 90vh;*/
-    line-height: ${LINE_HEIGHT}px;
+    height:${LINE_HEIGHT}vw;
+    line-height: ${LINE_HEIGHT}vw;
 	color: #fcedd8;
 	background: ${BCOLOR};
 	font-family: 'Niconne', cursive;
@@ -37,11 +44,6 @@ body{
                   45px 45px 0px #c11a2b;
 }
 .container {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:100%;
     padding:${PADDING};
 }
 </style>
