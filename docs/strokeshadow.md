@@ -7,24 +7,7 @@
 
 ## Options
 
-```sh
-Usage: teffects strokeshadow [options] [arguments]
-
-Creates stroke-shadow texts.
-All parameters accepts --param value and --param=value form.
-
-  OPTIONS                     DESCRIPTION
-      --behind                Set the color behind the text.
-  -a, --align ALIGN           Text alignment. Default: center.
-  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #fef3c7
-  -c, --color SCOLOR          Shadow color
-  -t, --text TEXT             Your text to print.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
-  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
-  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
-  -e, --height HEIGHT         Image height. Default: 1200px.
-  -h, --help
-```
+Find all the options using `teffects strokeshadow -h`.
 
 ## Examples
 

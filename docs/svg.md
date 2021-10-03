@@ -6,21 +6,7 @@
 
 ## Options
 
-
-```sh
-Usage: teffects svg [options] [arguments]
-
-Creates svg styling texts. Limited to max 3-4 words. Width and height is fixed to 1200x400.
-All parameters accepts --param value and --param=value form.
-
-  OPTIONS                     DESCRIPTION
-  -l, --lower                 text-transform:lowercase
-  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #ebe7e0
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
-  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
-  -t, --text TEXT             Your text to print. Default: Teffects SVG
-  -h, --help
-```
+Find all the options using `teffects svg -h`.
 
 ## Examples
 

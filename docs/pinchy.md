@@ -6,21 +6,7 @@
 
 ## Options
 
-```sh
-Usage: teffects pinchy [options] [arguments]
-
-Creates pinchy texts.
-All parameters accepts --param value and --param=value form.
-
-  OPTIONS                     DESCRIPTION
-  -a, --align ALIGN           Text alignment. Default: center.
-  -t, --text TEXT             Your text to print.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
-  -s, --size SIZE             Font-size. Use a number without px. Default: 120px Default: 150
-  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
-  -e, --height HEIGHT         Image height. Default: 1200px.
-  -h, --help 
-```
+Find all the options using `teffects pinchy -h`.
 
 ## Examples
 

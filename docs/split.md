@@ -6,23 +6,7 @@
 
 ## Options
 
-```sh
-Usage: teffects split [options] [arguments]
-
-Creates split texts.
-All parameters accepts --param value and --param=value form.
-
-  OPTIONS                     DESCRIPTION
-  -b, --bcolor BCOLOR         Background color. Enclose with quotes. Default: #000
-  -o, --bocolor BOCOLOR       Body color
-  -c, --color COLOR           Font color. Enclose with quotes. Default: #fff
-  -e, --height HEIGHT         Image height. Default: 1200px.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
-  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
-  -t, --text TEXT             Your text to print.
-  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
-  -h, --help 
-```
+Find all the options using `teffects split -h`.
 
 ## Examples
 

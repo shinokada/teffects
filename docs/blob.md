@@ -6,20 +6,7 @@
 
 ## Options
 
-```sh
-Usage: teffects blob [options] [arguments]
-
-Creates blob texts.
-All parameters accepts --param value and --param=value form.
-  OPTIONS                     DESCRIPTION
-  -a, --align ALIGN           Text alignment. Default: center.
-  -d, --dir OUTPUT_DIR        Output directory. Use an absolute path without a trailing slash. Default: teffects/outputs directory.
-  -e, --height HEIGHT         Image height. Default: 1200px.
-  -s, --size SIZE             Font-size. Use a number without px. Default: 120px
-  -t, --text TEXT             Your text to print.
-  -w, --width WIDTH           Image width. Use a number without px. Default: 1600px.
-  -h, --help
-```
+Find all the options using `teffects blob -h`.
 
 ## Credit
 
