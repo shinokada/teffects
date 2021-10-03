@@ -307,7 +307,7 @@ parser_definition_pinchy() {
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=150 -- "$VAR_SIZE Default: 150px."
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     disp :usage -h --help
@@ -327,7 +327,7 @@ parser_definition_popart() {
     param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=120 -- "$VAR_SIZE Default: 120px."
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     disp :usage -h --help

@@ -2,7 +2,7 @@ MODULE="popart"
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
-    LHEIGHT=$(echo "$SIZE*1.2" | bc)
+    LHEIGHT=$(echo "$SIZE*1.1" | bc)
     LINE_HEIGHT="${LHEIGHT%%.*}"
 fi
 
@@ -16,6 +16,14 @@ fn_popart() {
  
 <style>
 @import url('https://fonts.googleapis.com/css?family=Montserrat:900i&display=swap');
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align:${ALIGN};
+}
 
 body{
     background:${BCOLOR};
@@ -23,13 +31,9 @@ body{
 }
 
 .popart{
-    text-align:${ALIGN};
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size:${SIZE}px;
-    line-height: ${LINE_HEIGHT}px;
+    
+    font-size:${SIZE}vw;
+    line-height: ${LINE_HEIGHT}vw;
     letter-spacing:0.1em;
     -webkit-text-fill-color: transparent;
     -webkit-text-stroke-width: 3px;
