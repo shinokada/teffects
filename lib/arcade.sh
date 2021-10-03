@@ -59,25 +59,17 @@ fn_arcade() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
 <style>
-body {
-  padding: 30px;
-  background-color: #eee;
-  text-align:${ALIGN};
-  width:${WIDTH}px;
-  height:${HEIGHT}px;
+html, body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Inter", sans-serif;
+	background-color: ${BCOLOR};
+	text-align:${ALIGN};
 }
-.container {
-	 position: absolute;
-	 top: 0;
-	 left: 0;
-	 right: 0;
-	 bottom: 0;
-	 width: 100%;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-   padding:100px;
-}
+
 .snow-bros li {
   width: 80px;
   height: 80px;

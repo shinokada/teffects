@@ -1,6 +1,6 @@
 MODULE="3d"
-LINE_HEIGHT=$((SIZE * 1.2)) | bc
-LHEIGHT=$(echo "$SIZE*1.2" | bc)
+# LINE_HEIGHT=$((SIZE * 1.1)) | bc
+LHEIGHT=$(echo "$SIZE*1.1" | bc)
 LINE_HEIGHT="${LHEIGHT%%.*}"
 
 fn_3d() {
@@ -14,30 +14,26 @@ fn_3d() {
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *, *:after, *:before {
-	 box-sizing: border-box;
+	box-sizing: border-box;
 }
- body {
-	 font-family: "Inter", sans-serif;
-	 background-color: ${BCOLOR};
+html, body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: "Inter", sans-serif;
+	background-color: ${BCOLOR};
+	text-align:center;
 }
- .container {
-	 position: absolute;
-	 top: 0;
-	 left: 0;
-	 right: 0;
-	 bottom: 0;
-	 width: 100%;
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-	 padding:100px;
+.container {
+	 padding:${PADDING};
 }
- h1 {
+h1 {
 	 text-align:center;
 	 color: ${COLOR};
-	 /*font-size: calc(1em + 20vw);*/
-	 font-size: ${SIZE}px;
-	 line-height:${LINE_HEIGHT}px;
+	 font-size: ${SIZE}vw;
+	 line-height:${LINE_HEIGHT}vw;
 	 font-weight: 900;
 	 text-shadow: -0.0075em 0.0075em 0 #fef2f6, 0.005em 0.005em 0 #f6a5c1, 0.01em 0.01em 0 #f7aac4, 0.015em 0.015em #f7aec7, 0.02em 0.02em 0 #f8b3ca, 0.025em 0.025em 0 #f8b7cd, 0.03em 0.03em 0 #f8bcd0, 0.035em 0.035em 0 #f9c0d3;
 }

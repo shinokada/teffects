@@ -23,14 +23,19 @@ fn_neon() {
 body {
   font-family: "Archivo", sans-serif;
   background-color: ${BCOLOR};
+ 
+}
+html, body {
+	 width: 100%;
+	 height: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
+	 font-family: "Archivo", sans-serif;
+  background-color: ${BCOLOR};
 }
 
 .neon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  /*margin: calc(50vh - 40px) auto 0 auto;*/
   font-size: ${SIZE}px;
   font-family: "Archivo Black", "Archivo", sans-serif;
   font-weight: normal;
@@ -39,6 +44,7 @@ body {
   text-align: ${ALIGN};
   color: white;
   animation: neon 3s infinite;
+  padding:${PADDING};
 }
 
 @keyframes neon {

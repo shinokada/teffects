@@ -1,7 +1,7 @@
 MODULE="covfete"
 
 fn_covfete() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -21,6 +21,9 @@ fn_covfete() {
 	 letter-spacing: 5px;
      text-align:center;
 }
+.container {
+	padding:${PADDING};
+}
  h1 {
 	 display: inline;
 	 font-size: ${SIZE}vw;
@@ -29,12 +32,12 @@ fn_covfete() {
 }
  @media (min-width: 700px) {
 	 h1 {
-		 font-size: 9vw;
+		 /*font-size: 9vw;*/
 	}
 }
  @media (min-width: 1400px) {
 	 h1 {
-		 font-size: 150px;
+		 /*font-size: 150px;*/
 	}
 }
  @supports (-webkit-background-clip: text) {
@@ -54,14 +57,14 @@ fn_covfete() {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	# check if $RETRO_OUTPUT exist
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

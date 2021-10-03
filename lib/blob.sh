@@ -17,13 +17,8 @@ fn_blob() {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 
-body{
-	text-align:${ALIGN};
-}
-div{
-	display:block;
-	position:absolute;
-}
+body{text-align:${ALIGN};}
+div{display:block;position:absolute}
 
 .container{
 	width:100%;
@@ -31,8 +26,7 @@ div{
 	top:50%;
 	left:50%;
 	transform:translate(-50%,-50%);
-	padding:100px;
-}
+	}
 
 h1{
 	background:#fff;
@@ -42,7 +36,7 @@ h1{
 	padding:0;
 	display:flex;
 	font-family:'Titan One',cursive;
-	font-size:${SIZE}px;
+	font-size:${SIZE}vw;
 	font-weight:700;
 	flex-flow:row wrap;
 	align-content:center;

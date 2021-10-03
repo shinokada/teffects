@@ -33,14 +33,19 @@ body {
   background-color:#eee;
 }
 
-/* wkhtmltoimage doesn't support flex. */
-/*.center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height:${HEIGHT}px;
-}*/
+html, body {
+	 width: 100%;
+	 height: 100%;
+	 display: flex;
+	 justify-content: center;
+	 align-items: center;
 
+     text-align:center;
+}
+
+.container {
+    padding:${PADDING};
+}
 h1 {
   font-size: ${SIZE}px;
   background-image: url($BKIMG);
@@ -54,7 +59,9 @@ h1 {
 </style>
 </head>
 <body>
+<div class="container">
 <h1 class="center">${TEXT}</h1>
+</div>
 </body>
 </html>
 EOF
