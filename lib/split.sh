@@ -15,6 +15,14 @@ fn_split() {
 	box-sizing: border-box;
 }
 
+html, body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 body {
 	font-family: "Inter", sans-serif;
 	background-color: ${BOCOLOR};
@@ -31,7 +39,7 @@ body {
 }
 
 h1 {
-	font-size: ${SIZE}px;
+	font-size: ${SIZE}vw;
 	font-weight: 900;
 	background-color: ${BCOLOR};
 	color: ${COLOR};
@@ -59,16 +67,6 @@ p {
 }
 
 .container {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
 	padding:${PADDING};
 }
 </style>

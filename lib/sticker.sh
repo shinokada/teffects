@@ -13,58 +13,15 @@ fn_sticker() {
 * {
 	 box-sizing: border-box;
 }
- .sticker {
-	 --c1: #ef548f;
-	 --c2: #ef8b6d;
-	 --c3: #cfef6b;
-	 --c4: #3bf0c1;
-	 --c5: #bb4af0;
-	 --shine-angle: 15deg;
-	 display: inline-grid;
-	 grid-template-areas: "text";
-	 place-items: center;
-	 font-family: "Alegreya Sans SC", sans-serif;
-	 font-weight: 900;
-	 font-style: italic;
-	 /*font-size: clamp(3rem, 15vw, 10rem);*/
-	 font-size: ${SIZE}px;
-	 text-transform: uppercase;
-	 color: var(--c5);
-}
- .sticker-lg {
-	 /*font-size: clamp(6rem, 30vw, 20rem);*/
-	 font-size: ${LSIZE}px;
-}
- .sticker span {
-	 background: linear-gradient(var(--shine-angle), rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 35%, rgba(255, 255, 255, 0.98) 49.95%, rgba(255, 255, 255, 0.98) 50.15%, rgba(255, 0, 0, 0) 65%, rgba(255, 0, 0, 0)), linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
-	 -webkit-background-clip: text;
-	 -webkit-text-fill-color: transparent;
-	 -webkit-text-stroke: 0.01em rgba(0, 0, 0, 0.6);
-}
- .sticker > *, .sticker::before, .sticker::after {
-	 grid-area: text;
-}
- .sticker::before, .sticker::after {
-	 content: attr(data-text);
-	 color: #fff;
-}
- .sticker::before {
-	 -webkit-text-stroke: 0.21em white;
-	 background: no-repeat linear-gradient(white, white) 15% 50% / 85% 60%;
-}
- .sticker::after {
-	 text-shadow: 0.07em 0.08em 0.05em rgba(0, 0, 0, 0.75), -0.07em -0.05em 0.05em rgba(0, 0, 0, 0.75);
-	 z-index: -2;
-}
- body {
-	 min-height: 100vh;
-	 min-height: -webkit-fill-available;
-	 display: grid;
-	 place-content: center;
-	 font-family: sans-serif;
-	 background-color: #d1dbe8;
-	 line-height: 1;
-	 color: var(--c5);
+body {
+	min-height: 100vh;
+	min-height: -webkit-fill-available;
+	display: grid;
+	place-content: center;
+	font-family: sans-serif;
+	background-color: #d1dbe8;
+	line-height: 1;
+	color: var(--c5);
 }
 .container {
 	position: absolute;
@@ -79,6 +36,51 @@ fn_sticker() {
 	flex-direction: column;
 	padding:${PADDING};
 }
+
+.sticker {
+	--c1: #ef548f;
+	--c2: #ef8b6d;
+	--c3: #cfef6b;
+	--c4: #3bf0c1;
+	--c5: #bb4af0;
+	--shine-angle: 15deg;
+	display: inline-grid;
+	grid-template-areas: "text";
+	place-items: center;
+	font-family: "Alegreya Sans SC", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+	/*font-size: clamp(3rem, 15vw, 10rem);*/
+	font-size: ${SIZE}vw;
+	text-transform: uppercase;
+	color: var(--c5);
+}
+.sticker-lg {
+	/*font-size: clamp(6rem, 30vw, 20rem);*/
+	font-size: ${LSIZE}vw;
+}
+.sticker span {
+	background: linear-gradient(var(--shine-angle), rgba(255, 0, 0, 0) 0%, rgba(255, 0, 0, 0) 35%, rgba(255, 255, 255, 0.98) 49.95%, rgba(255, 255, 255, 0.98) 50.15%, rgba(255, 0, 0, 0) 65%, rgba(255, 0, 0, 0)), linear-gradient(to right, var(--c1), var(--c2), var(--c3), var(--c4), var(--c5));
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	-webkit-text-stroke: 0.01em rgba(0, 0, 0, 0.6);
+}
+.sticker > *, .sticker::before, .sticker::after {
+	grid-area: text;
+}
+.sticker::before, .sticker::after {
+	content: attr(data-text);
+	color: #fff;
+}
+.sticker::before {
+	-webkit-text-stroke: 0.21em white;
+	background: no-repeat linear-gradient(white, white) 15% 50% / 85% 60%;
+}
+.sticker::after {
+	text-shadow: 0.07em 0.08em 0.05em rgba(0, 0, 0, 0.75), -0.07em -0.05em 0.05em rgba(0, 0, 0, 0.75);
+	z-index: -2;
+}
+
 </style>
 </head>
 <body>

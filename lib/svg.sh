@@ -28,6 +28,16 @@ fn_svg() {
 <style>
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 
+html {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${BCOLOR};
+  min-height: 100vh;
+  min-width: 600px;
+}
 
 text {
   fill: #35322a;
@@ -38,14 +48,7 @@ text {
   ${CASE};
 }
 
-html {
-  align-items: center;
-  background: ${BCOLOR};
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  min-width: 600px;
-}
+
 </style>
 </head>
 <body>

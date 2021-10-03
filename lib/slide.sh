@@ -1,7 +1,7 @@
 MODULE="slide"
 
 fn_slide() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -17,18 +17,13 @@ html {
 	 width: 100%;
 	 height: 100%;
 	 display: flex;
-	 align-items: center;
-	 justify-content: center;
+	 align-items: center;  
+	 justify-content: center;  
 	 font-family: 'Bungee Shade', cursive;
 	 background: ${BCOLOR};
-     
 }
 
  h1 {
-	 display: flex;
-	 align-items: center;
-	 justify-content: center;
-	 align-content: center;
 	 font-weight: normal;
 	 width: 100%;
 	 text-align: center;
@@ -58,14 +53,14 @@ img{
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	# check if $RETRO_OUTPUT exist
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

@@ -2,8 +2,6 @@ MODULE="strokeshadow"
 
 # for line-height and text-shadow
 if [ "$SIZE" -gt 0 ]; then
-    LHEIGHT=$(echo "$SIZE*1.2" | bc)
-    LINE_HEIGHT="${LHEIGHT%%.*}"
     TEXT_SHADOW=3
     if [ $SIZE -lt 180 ]; then
         TEXT_SHADOW=5
@@ -26,37 +24,40 @@ fn_strokeshadow() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <style>
-body {
-	 background-color: ${BCOLOR};
-	 text-align: ${ALIGN};
+html, body {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: ${BCOLOR};
+    text-align: ${ALIGN};
 }
-p {
-	 font-size: ${SIZE}px;
-	 font-weight: bold;
-	 letter-spacing: 5px;
-	 margin: 0;
-}
+
 .container {
-	position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width:100%;
     padding:${PADDING};
 }
+
+p {
+    font-size: ${SIZE}vw;
+    font-weight: bold;
+    letter-spacing: 5px;
+    margin: 0;
+}
+
 .stroke {
-	 -webkit-text-stroke-width: 2px;
-	 -moz-text-stroke-width: 2px;
-	 -webkit-text-stroke-color: #111827;
-	 -moz-text-stroke-color: #111827;
-	 color: transparent;
+    -webkit-text-stroke-width: 2px;
+    -moz-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #111827;
+    -moz-text-stroke-color: #111827;
+    color: transparent;
 }
 .shadow {
-	 text-shadow: ${TEXT_SHADOW}px ${TEXT_SHADOW}px ${SCOLOR};
+    text-shadow: ${TEXT_SHADOW}px ${TEXT_SHADOW}px ${SCOLOR};
 }
 .stroke-shadow {
-	 color: ${BCOLOR};
-	 text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px ${SCOLOR};
+    color: ${BCOLOR};
+    text-shadow: -2px 0 #111827, 0 -2px #111827, 2px 0 #111827, 0 2px #111827, 2px 2px #111827, -2px -2px #111827, -2px 2px #111827, 2px -2px #111827, 6px 6px ${SCOLOR};
 }
 
 </style>
