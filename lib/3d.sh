@@ -30,6 +30,7 @@ fn_3d() {
 	 display: flex;
 	 align-items: center;
 	 justify-content: center;
+	 padding:100px;
 }
  h1 {
 	 text-align:center;

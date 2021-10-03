@@ -69,6 +69,7 @@ p {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	padding:100px;
 }
 </style>
 </head>

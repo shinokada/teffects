@@ -76,6 +76,7 @@ body {
 	 display: flex;
 	 align-items: center;
 	 justify-content: center;
+   padding:100px;
 }
 .snow-bros li {
   width: 80px;
