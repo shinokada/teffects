@@ -49,21 +49,22 @@ $ teffects sticker -d ~/Downloads
 
 ## More details
 
-- [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
-- [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
-- [blog](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
-- [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
-- [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
-- [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
-- [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
-- [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
-- [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
-- [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
-- [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
-- [slide](https://github.com/shinokada/teffects/blob/master/docs/slide.md)
-- [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
-- [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
-- [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
+1. [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
+2. [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
+3. [blog](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
+4. [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
+5. [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
+6. [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
+7. [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
+8. [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
+9. [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
+10. [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
+11. [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
+12. [slide](https://github.com/shinokada/teffects/blob/master/docs/slide.md)
+13. [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
+14. [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
+15. [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
+16. [svg](https://github.com/shinokada/teffects/blob/master/docs/svg.md)
 
 ## Reference
 

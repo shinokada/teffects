@@ -1,4 +1,4 @@
-MODULE="svg"
+MODULE="shadow"
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
@@ -17,7 +17,7 @@ else
   CASE=""
 fi
 
-fn_svg() {
+fn_shadow() {
   cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >

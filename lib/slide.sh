@@ -23,6 +23,10 @@ html {
 	 background: ${BCOLOR};
 }
 
+.container{
+	padding: ${PADDING};
+}
+
  h1 {
 	 font-weight: normal;
 	 width: 100%;

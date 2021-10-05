@@ -33,7 +33,7 @@ fn_shade() {
 	 box-sizing: border-box;
 }
  body {
-	 background-color: #d0d0d0;
+	 background-color: ${BCOLOR};
 	 color: #444;
 	 text-align: center;
 	 font-family: 'Open Sans';

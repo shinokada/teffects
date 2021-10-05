@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="0.0.7"
+VERSION="0.0.8"
 SCRIPT_NAME=$(basename "$0")
 
 # check os
@@ -100,12 +100,13 @@ parser_definition() {
     cmd pinchy -- "Pinchy style texts."
     cmd popart -- "Pop art style texts."
     cmd retro -- "Retro style texts."
+    cmd rotate -- "Rotating texts."
     cmd shade -- "Shaded style texts"
+    cmd shadow -- "Styling with shadow lines"
     cmd slide -- "Stripe, clip, and gradient style texts"
     cmd split -- "Split style texts."
     cmd sticker -- "Sticker style texts."
     cmd strokeshadow -- "Strokes and shadows effect texts."
-    cmd svg -- "Styling with SVG"
 
     msg -- '' "Examples:
 Clip an image 
@@ -124,6 +125,8 @@ Pop art effect
     $SCRIPT_NAME popart 
 Retro banner: 
     $SCRIPT_NAME retro
+Styling with shadow lines
+    $SCRIPT_NAME shadow
 Slide text:
     $SCRIPT_NAME slide
 Split text: 
@@ -132,8 +135,6 @@ Sticker text:
     $SCRIPT_NAME sticker
 Strokes and shadows effects
     $SCRIPT_NAME strokeshadow
-Styling with SVG
-    $SCRIPT_NAME svg
 
 Display the version:
     $SCRIPT_NAME --version
@@ -350,6 +351,24 @@ parser_definition_retro() {
     disp :usage -h --help
 }
 
+# rotate
+parser_definition_rotate() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} rotate [options] [arguments]" ''
+
+    msg -- 'Creates rotating texts on a browser.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
+    disp :usage -h --help
+}
+
 # shade
 parser_definition_shade() {
     setup REST help:usage abbr:true -- \
@@ -359,12 +378,29 @@ parser_definition_shade() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
-    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
+    param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=10 -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# shadow
+parser_definition_shadow() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} shadow [options] [arguments]" ''
+
+    msg -- 'Creates shadow styling texts. Limited to max 3-4 words. Width and height are fixed to 1200x400.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag LOWER_CASE -l --lower -- "text-transform:lowercase"
+    param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
+    param TEXT -t --text init:="teffects svg" -- "$VAR_TEXT Default: Teffects SVG"
     disp :usage -h --help
 }
 
@@ -380,6 +416,7 @@ parser_definition_slide() {
     param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
     param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
@@ -447,23 +484,6 @@ parser_definition_strokeshadow() {
     param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
-    disp :usage -h --help
-}
-
-# svg
-parser_definition_svg() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} svg [options] [arguments]" ''
-
-    msg -- 'Creates svg styling texts. Limited to max 3-4 words. Width and height is fixed to 1200x400.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag LOWER_CASE -l --lower -- "text-transform:lowercase"
-    param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
-    param TEXT -t --text init:="teffects svg" -- "$VAR_TEXT Default: Teffects SVG"
     disp :usage -h --help
 }
 
@@ -551,6 +571,14 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/lib/retro.sh"
         fn_retro "$@"
         ;;
+    rotate)
+        eval "$(getoptions parser_definition_rotate parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/rotate.sh"
+        fn_rotate "$@"
+        ;;
     shade)
         eval "$(getoptions parser_definition_shade parse "$0")"
         parse "$@"
@@ -558,6 +586,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/shade.sh"
         fn_shade "$@"
+        ;;
+    shadow)
+        eval "$(getoptions parser_definition_shadow parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/shadow.sh"
+        fn_shadow "$@"
         ;;
     slide)
         eval "$(getoptions parser_definition_slide parse "$0")"
@@ -590,14 +626,6 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/strokeshadow.sh"
         fn_strokeshadow "$@"
-        ;;
-    svg)
-        eval "$(getoptions parser_definition_svg parse "$0")"
-        parse "$@"
-        eval "set -- $REST"
-        # shellcheck disable=SC1091
-        . "${script_dir}/lib/svg.sh"
-        fn_svg "$@"
         ;;
     --) ;; # no subcommand, arguments only
     esac
