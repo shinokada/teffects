@@ -364,8 +364,8 @@ parser_definition_rotate() {
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
+    param SIZE -s --size init:=6 -- "$VAR_SIZE Default: 6vw."
+    param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
     disp :usage -h --help
 }
 

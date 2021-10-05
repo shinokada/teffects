@@ -13,18 +13,23 @@ WORD_COLORS=(wisteria belize pomegranate green midnight)
 # for i in "${WORD_COLORS[@]}"; do
 #     echo $i
 # done
+echo "${#@}"
 
 SPAN_TEXT=''
-for TEXTS in "$@"; do
+if ((${#@} > 0)); then
+  for TEXTS in "$@"; do
     # replace spaces with &ensp;
     SUB="${TEXTS// /&ensp;}"
     RAN=$((RANDOM % 4))
     ADJ=${WORD_COLORS[$RAN]}
     SPAN_TEXT+="<span class='word $ADJ'>${SUB}</span>"
-done
+  done
+else
+  SPAN_TEXT="<span class='word wisteria'>rotates.</span><span class='word belize'>do&ensp;more.</span>"
+fi
 
 fn_rotate() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -71,7 +76,7 @@ p {
   float: left;
   transform: translateZ(25px);
   transform-origin: 50% 50% 25px;
-  letter-spacing: -3px;
+  letter-spacing: -5px;
 }
 
 .letter.out {
@@ -120,22 +125,22 @@ p {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
 
-    # open browser
-    if [[ $(uname) == "Linux" ]]; then
-        xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
-    elif [[ $(uname) == "Darwin" ]]; then
-        open "file:///${script_dir}/outputs/${MODULE}.html"
-    fi
+  # open browser
+  if [[ $(uname) == "Linux" ]]; then
+    xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+  elif [[ $(uname) == "Darwin" ]]; then
+    open "file:///${script_dir}/outputs/${MODULE}.html"
+  fi
 
-    # eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-    #     echo "Something went wrong."
-    #     exit
-    # }
+  # eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+  #     echo "Something went wrong."
+  #     exit
+  # }
 
-    echo "${MODULE} image is on a browser."
+  echo "${MODULE} image is on a browser."
 }
