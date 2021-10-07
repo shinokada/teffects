@@ -63,6 +63,7 @@ script_dir=${self%/*}
 # Variables for options
 VAR_ALIGN="Text alignment. Default: center."
 VAR_BCOLOR="Background color. Enclose with quotes."
+VAR_BROWSER="A browser will be open as the default. Not to open it, use +o or --no-open."
 VAR_COLOR="Font color. Enclose with quotes."
 VAR_HEIGHT="Image height. Default: 1200px."
 VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${SCRIPT_NAME}/outputs directory."
@@ -103,9 +104,9 @@ parser_definition() {
     cmd rotate -- "Rotating texts."
     cmd shade -- "Shaded style texts"
     cmd shadow -- "Styling with shadow lines"
-    cmd slide -- "Stripe, clip, and gradient style texts"
     cmd split -- "Split style texts."
     cmd sticker -- "Sticker style texts."
+    cmd stripe -- "Stripe, clip, and gradient style texts"
     cmd strokeshadow -- "Strokes and shadows effect texts."
 
     msg -- '' "Examples:
@@ -127,12 +128,12 @@ Retro banner:
     $SCRIPT_NAME retro
 Styling with shadow lines
     $SCRIPT_NAME shadow
-Slide text:
-    $SCRIPT_NAME slide
 Split text: 
     $SCRIPT_NAME split
 Sticker text: 
     $SCRIPT_NAME sticker
+Stripe text:
+    $SCRIPT_NAME stripe
 Strokes and shadows effects
     $SCRIPT_NAME strokeshadow
 
@@ -226,6 +227,7 @@ parser_definition_blob() {
     msg -- 'All parameters accepts --param value and --param=value form.'
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
@@ -280,10 +282,11 @@ parser_definition_neon() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} neon [options] [arguments]" ''
 
-    msg -- 'Creates neon texts.'
+    msg -- 'Creates an image with animated neon style text. This opens the default browser.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
@@ -356,11 +359,12 @@ parser_definition_rotate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} rotate [options] [arguments]" ''
 
-    msg -- 'Creates rotating texts on a browser.'
+    msg -- 'Creates animaged rotating texts on a browser.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
     msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
@@ -374,15 +378,16 @@ parser_definition_shade() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} shade [options] [arguments]" ''
 
-    msg -- 'Creates shade style texts.'
+    msg -- 'Creates animated shade-style texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
     param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=10 -- "$VAR_SIZE  Default: 10vw."
-    param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
+    param TEXT -t --text init:="SHADE" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -400,26 +405,7 @@ parser_definition_shadow() {
     param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
-    param TEXT -t --text init:="teffects svg" -- "$VAR_TEXT Default: Teffects SVG"
-    disp :usage -h --help
-}
-
-# slide
-parser_definition_slide() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} slide [options] [arguments]" ''
-
-    msg -- 'Creates split texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
-    param TEXT -t --text init:="Slide" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param TEXT -t --text init:="TEFFECTS SHADOW" -- "$VAR_TEXT Default: Teffects SVG"
     disp :usage -h --help
 }
 
@@ -461,6 +447,26 @@ parser_definition_sticker() {
     param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
     param SUB_TEXT -u --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
     param TEXT -t --text init:="STICKER" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# stripe
+parser_definition_stripe() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} stripe [options] [arguments]" ''
+
+    msg -- 'Creates animaged stripe-texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
+    param TEXT -t --text init:="STRIPE" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -595,14 +601,6 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/lib/shadow.sh"
         fn_shadow "$@"
         ;;
-    slide)
-        eval "$(getoptions parser_definition_slide parse "$0")"
-        parse "$@"
-        eval "set -- $REST"
-        # shellcheck disable=SC1091
-        . "${script_dir}/lib/slide.sh"
-        fn_slide "$@"
-        ;;
     split)
         eval "$(getoptions parser_definition_split parse "$0")"
         parse "$@"
@@ -618,6 +616,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/sticker.sh"
         fn_sticker "$@"
+        ;;
+    stripe)
+        eval "$(getoptions parser_definition_stripe parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/stripe.sh"
+        fn_stripe "$@"
         ;;
     strokeshadow)
         eval "$(getoptions parser_definition_strokeshadow parse "$0")"

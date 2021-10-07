@@ -1,6 +1,6 @@
-MODULE="slide"
+MODULE="stripe"
 
-fn_slide() {
+fn_stripe() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
@@ -44,14 +44,12 @@ html {
 		 background-position: 20px 0, 20px 0, 20px 0;
 	}
 }
-img{
-    
-}
+
 </style>
 </head>
 <body>
 <div class="container">
-	<h1 data-heading="Slide">${TEXT}</h1> 
+	<h1>${TEXT}</h1> 
 </div>
 </body>
 </html>
@@ -67,4 +65,14 @@ EOF
 	}
 
 	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+
+	if [ "$BROWSER" = 1 ]; then
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "file:///${script_dir}/outputs/${MODULE}.html"
+		fi
+		echo "${MODULE} image is on a browser."
+	fi
 }

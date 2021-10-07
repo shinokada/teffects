@@ -22,7 +22,7 @@ fn_covfete() {
      text-align:center;
 }
 .container {
-	padding:${PADDING};
+	padding:${PADDING}px;
 }
  h1 {
 	 display: inline;

@@ -142,5 +142,13 @@ EOF
   #     exit
   # }
 
-  echo "${MODULE} image is on a browser."
+  if [ "$BROWSER" = 1 ]; then
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "file:///${script_dir}/outputs/${MODULE}.html"
+    fi
+    echo "${MODULE} image is on a browser."
+  fi
 }
