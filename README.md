@@ -5,13 +5,12 @@
 
 ## Overview
 
-Teffects automates creating header images for your articles, email, presentation and other purposes.
+Teffects automates creating header images for your articles, email, presentation and other purposes. Tested on macOS and Ubuntu.
 
 ## Requirement
 
-To run the clip command you need [wkhtmlpdf/wkhtmltoimage](https://wkhtmltopdf.org/downloads.html).
-
-Tested on macOS and Ubuntu.
+- Firefox: Teffects uses Firefox to take a screenshot.
+- To run the clip command you need [wkhtmlpdf/wkhtmltoimage](https://wkhtmltopdf.org/downloads.html).
 
 ## Installation
 
@@ -49,22 +48,24 @@ $ teffects sticker -d ~/Downloads
 
 ## More details
 
-1. [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
-2. [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
-3. [blog](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
-4. [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
-5. [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
-6. [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
-7. [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
-8. [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
-9. [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
-10. [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
-11. [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
-12. [slide](https://github.com/shinokada/teffects/blob/master/docs/slide.md)
-13. [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
-14. [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
-15. [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
-16. [svg](https://github.com/shinokada/teffects/blob/master/docs/svg.md)
+- [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
+- [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
+- [blob](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
+- [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
+- [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
+- [glow](https://github.com/shinokada/teffects/blob/master/docs/glow.md)
+- [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
+- [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
+- [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
+- [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
+- [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
+- [rotate](https://github.com/shinokada/teffects/blob/master/docs/rotate.md)
+- [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
+- [shadow](https://github.com/shinokada/teffects/blob/master/docs/shadow.md)
+- [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
+- [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
+- [stripe](https://github.com/shinokada/teffects/blob/master/docs/stripe.md)
+- [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
 
 ## Reference
 
