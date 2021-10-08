@@ -1,7 +1,7 @@
 # Shadow
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/stripe.png" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow.png" />
 </p>
 
 ## Options

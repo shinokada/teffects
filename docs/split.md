@@ -3,7 +3,7 @@
 This is a CSS animation effect and it will open a browser.
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/split.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/split.png" />
 </p>
 
 ## Options

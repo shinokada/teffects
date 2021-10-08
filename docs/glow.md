@@ -1,5 +1,9 @@
 # Glow
 
+<p align="center">
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/glow.gif" />
+</p>
+
 This is a CSS animation effect and it will open a browser.
 
 ## Options
