@@ -174,13 +174,13 @@ parser_definition_clip() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "Font weight. Choose from 500|700|900."
     param FONT_NAME -f --font init:="Luckiest Guy" -- "Font name. Default: Luckiest Guy."
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "Background image. Use an absolute path. Default flower.jpg"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=120 -- "$VAR_SIZE Default: 120px."
+    param SIZE -s --size init:=120 validate:number -- "$VAR_SIZE Default: 120px."
     param TEXT -t --text init:="It's Friday." -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -195,12 +195,12 @@ parser_definition_3d() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     param BCOLOR -b --bcolor init:="#fbd7e3" -- "$VAR_BCOLOR Default: #fbd7e3"
     param COLOR -c --color init:="#fcdde8" -- "$VAR_COLOR Default: #fcdde8"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Three D" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -216,9 +216,9 @@ parser_definition_arcade() {
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param TEXT -t --text init:="arcade" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -234,11 +234,11 @@ parser_definition_blob() {
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -253,12 +253,12 @@ parser_definition_covfete() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
     param COLOR -c --color init:="#f49e4c" -- "$VAR_COLOR Default: #f49e4c"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=15 -- "$VAR_SIZE Default: 15vw."
+    param SIZE -s --size init:=15 validate:number -- "$VAR_SIZE Default: 15vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH."
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH."
     disp :usage -h --help
 }
 
@@ -273,14 +273,14 @@ parser_definition_glow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
+    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param LPADDING -l --letterpadding init:="0 5px" -- "$VAR_LPADDING"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 -- "$VAR_SIZE Default: 6vw."
+    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects glow" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -294,12 +294,12 @@ parser_definition_layer() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     param BCOLOR -b --bcolor init:="#d52e3f" -- "$VAR_BCOLOR Default: #d52e3f"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -316,11 +316,11 @@ parser_definition_neon() {
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE  Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -334,12 +334,12 @@ parser_definition_pinchy() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -355,11 +355,12 @@ parser_definition_popart() {
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
     param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+
     disp :usage -h --help
 }
 
@@ -372,11 +373,11 @@ parser_definition_retro() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param SUB_TEXT -s --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
     param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -394,7 +395,7 @@ parser_definition_rotate() {
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 -- "$VAR_SIZE Default: 6vw."
+    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
     disp :usage -h --help
 }
@@ -410,11 +411,11 @@ parser_definition_shade() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE  Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="SHADE" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -430,7 +431,7 @@ parser_definition_shadow() {
     flag LOWER_CASE -l --lower -- "text-transform:lowercase"
     param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw"
     param TEXT -t --text init:="TEFFECTS SHADOW" -- "$VAR_TEXT Default: Teffects SVG"
     disp :usage -h --help
 }
@@ -447,12 +448,12 @@ parser_definition_split() {
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="SPLIT" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -466,14 +467,14 @@ parser_definition_sticker() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param LSIZE -l --lsize init:=14 -- "Top text font-size. Default: 14vw"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param SUB_TEXT -u --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
     param TEXT -t --text init:="STICKER" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -488,12 +489,12 @@ parser_definition_stripe() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw"
     param TEXT -t --text init:="STRIPE" -- "$VAR_TEXT"
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -510,13 +511,17 @@ parser_definition_strokeshadow() {
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
     param SCOLOR -c --color init:="#db2777" -- "Shadow color"
-    param TEXT -t --text init:="Stroke & shadow" -- "$VAR_TEXT"
     param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 -- "$VAR_SIZE Default: 10vw."
-    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
-    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Stroke & shadow" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
+}
+
+number() {
+    case $OPTARG in *[!0-9]*) return 1 ;; esac
 }
 
 if [ $# -gt 0 ]; then

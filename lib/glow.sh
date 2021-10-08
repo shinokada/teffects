@@ -8,12 +8,12 @@ ZOOM_TIME=$(echo "(${LEN}*${DELAY_CONST}+999)/1000" | bc)
 i=0
 SPAN=""
 while [ $i -lt $LEN ]; do
-    SPAN+="<span style="--i:$((i + 1))">${TEXT:$i:1}</span>"
-    i=$(($i + 1))
+  SPAN+="<span style="--i:$((i + 1))">${TEXT:$i:1}</span>"
+  i=$(($i + 1))
 done
 
 fn_glow() {
-    cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -38,9 +38,9 @@ fn_glow() {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #111;
+  background-color: ${BCOLOR};
   text-align:center;
-  padding:${PADDING}px;
+  padding:${PADDING};
 }
 
 .text span {
@@ -81,24 +81,24 @@ fn_glow() {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    echo "Something went wrong."
+    exit
+  }
 
-    echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+  echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${script_dir}/outputs/${MODULE}.html"
-        fi
-        echo "${MODULE} image is on a browser."
+  if [ "$BROWSER" = 1 ]; then
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "file:///${script_dir}/outputs/${MODULE}.html"
     fi
+    echo "${MODULE} image is on a browser."
+  fi
 }
