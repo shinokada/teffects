@@ -1,13 +1,15 @@
 MODULE="retro"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 fn_retro() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Mr+Dafoe&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@900&display=swap');

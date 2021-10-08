@@ -67,6 +67,7 @@ VAR_BROWSER="A browser will be open as the default. Not to open it, use +o or --
 VAR_COLOR="Font color. Enclose with quotes."
 VAR_HEIGHT="Image height. Default: 1200px."
 VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${SCRIPT_NAME}/outputs directory."
+VAR_LPADDING="Letter padding. Default: 10px. e.g. 5px 10px."
 VAR_PADDING="Container padding. Default: 100px. e.g. 50px 100px."
 VAR_SIZE="Font-size. Use a number without a unit."
 VAR_TEXT="Your text to print."
@@ -96,6 +97,7 @@ parser_definition() {
     cmd blob -- "Muliple colors blog style texts."
     cmd clip -- "Clip image."
     cmd covfete -- "Background clipping texts."
+    cmd glow -- "Glowing texts."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light style texts."
     cmd pinchy -- "Pinchy style texts."
@@ -118,6 +120,8 @@ Arcade typography
     $SCRIPT_NAME arcade
 Blob text with muliple colors
     $SCRIPT_NAME blob
+Glowing texts
+    $SCRIPT_NAME
 Layered text-shadow effect
     $SCRIPT_NAME layer
 Neon light text
@@ -255,6 +259,28 @@ parser_definition_covfete() {
     param SIZE -s --size init:=15 -- "$VAR_SIZE Default: 15vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:="1600" -- "$VAR_WIDTH."
+    disp :usage -h --help
+}
+
+# glow
+parser_definition_glow() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} rotate [options] [arguments]" ''
+
+    msg -- 'Creates animaged rotating texts on a browser.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
+    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:="1200" -- "$VAR_HEIGHT"
+    param LPADDING -l --letterpadding init:="0 5px" -- "$VAR_LPADDING"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=6 -- "$VAR_SIZE Default: 6vw."
+    param TEXT -t --text init:="Teffects glow" -- "$VAR_TEXT"
+    param WIDTH -w --width init:="1600" -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -536,6 +562,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/covfete.sh"
         fn_covfete "$@"
+        ;;
+    glow)
+        eval "$(getoptions parser_definition_glow parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/glow.sh"
+        fn_glow "$@"
         ;;
     layer)
         eval "$(getoptions parser_definition_layer parse "$0")"

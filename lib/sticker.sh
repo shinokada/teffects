@@ -1,14 +1,16 @@
 MODULE="sticker"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 fn_sticker() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,900&display=swap" rel="stylesheet">
+	<title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+	<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:ital,wght@1,900&display=swap" rel="stylesheet">
 <style>
 * {
 	 box-sizing: border-box;

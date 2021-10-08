@@ -1,4 +1,5 @@
 MODULE="layer"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
@@ -11,17 +12,18 @@ fn_layer() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link href="https://fonts.googleapis.com/css?family=Charmonman|Engagement|Baloo+Bhai|Ubuntu:700|Niconne&display=swap" rel="stylesheet">
+    <title>${TITLE}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Charmonman|Engagement|Baloo+Bhai|Ubuntu:700|Niconne&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 html, body {
-	 width: 100%;
-	 height: 100%;
-	 display: flex;
-	 justify-content: center;
-	 align-items: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 body{

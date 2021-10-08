@@ -1,4 +1,5 @@
 MODULE="shadow"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
@@ -22,9 +23,10 @@ fn_shadow() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
+  <title>${TITLE}</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
- <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Playfair+Display:900');
 

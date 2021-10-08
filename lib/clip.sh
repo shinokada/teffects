@@ -1,4 +1,6 @@
 MODULE="clip"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+
 GFONT="${FONT_NAME// /+}"
 # BROWSER_HEIGHT=$(($HEIGHT - 200))
 GF="https://fonts.googleapis.com/css2?family=${GFONT}${FONT_ATT}&display=swap"
@@ -17,8 +19,9 @@ fn_clip() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <title>${TITLE}</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <style>
     @import url("$GF");
 html {

@@ -1,13 +1,15 @@
 MODULE="split"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 fn_split() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+	<title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
 *,
 *:after,

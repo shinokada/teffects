@@ -1,4 +1,5 @@
 MODULE="strokeshadow"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 # for line-height and text-shadow
 if [ "$SIZE" -gt 0 ]; then
@@ -20,9 +21,10 @@ fn_strokeshadow() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <title>${TITLE}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 <style>
 html, body {
     width: 100%;

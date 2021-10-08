@@ -1,13 +1,14 @@
 MODULE="shade"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 fn_shade() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shaded Text</title>
+	<title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="utf-8">
     <meta name="description" content="Shaded Text, a SVG+CSS3 experiment about animated shadows by RGG">
     <meta content="IE=edge" http-equiv="X-UA-Compatible">

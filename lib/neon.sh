@@ -1,13 +1,15 @@
 MODULE="neon"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 fn_neon() {
   cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+    <title>${TITLE}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 <style>
 :root {
   --shadow-color: #FF9E9E;
@@ -32,7 +34,7 @@ html, body {
 body {
   font-family: "Archivo", sans-serif;
   background-color: ${BCOLOR};
- 
+
 }
 .neon {
   font-size: ${SIZE}vw;

@@ -1,4 +1,5 @@
 MODULE="pinchy"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
@@ -13,9 +14,10 @@ fn_pinchy() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
+    <title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet">
 <style>
 @import url(https://fonts.googleapis.com/css?family=Alegreya+Sans:100,100italic,300,300italic);
 html, body {

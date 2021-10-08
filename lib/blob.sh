@@ -1,4 +1,5 @@
 MODULE="blob"
+TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then
@@ -11,9 +12,9 @@ fn_blob() {
 <!DOCTYPE html>
 <html lang="en" >
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
- 
+    <title>${TITLE}</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 @import url('https://fonts.googleapis.com/css?family=Titan+One');
 
