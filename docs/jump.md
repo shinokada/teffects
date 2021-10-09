@@ -1,19 +1,20 @@
-# Glow
+# Jump
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/glow.gif" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/jump.gif" />
 </p>
 
 This is a CSS animation effect and it will open a browser.
 
 ## Options
 
-Find all the options using `teffects glow -h`.
+Find all the options using `teffects jump -h`.
 
 ## Examples
 
 ```sh
-$ teffects glow -t "Teffects Glow Effects" -l "2px" -p 150px -g "#ff3299"
+$ teffects jump
+$ teffects jump -t "LOREM IPSUM" -c "#eee" -b "#EF6667" -s 4
 ```
 
 ## Credit

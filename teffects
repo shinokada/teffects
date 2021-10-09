@@ -65,6 +65,7 @@ VAR_ALIGN="Text alignment. Default: center."
 VAR_BCOLOR="Background color. Enclose with quotes."
 VAR_BROWSER="A browser will be open as the default. Not to open it, use +o or --no-open."
 VAR_COLOR="Font color. Enclose with quotes."
+VAR_GCOLOR="Grow color. Enclose with quotes."
 VAR_HEIGHT="Image height. Default: 1200px."
 VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${SCRIPT_NAME}/outputs directory."
 VAR_LPADDING="Letter padding. Default: 10px. e.g. 5px 10px."
@@ -98,6 +99,7 @@ parser_definition() {
     cmd clip -- "Clip image."
     cmd covfete -- "Background clipping texts."
     cmd glow -- "Glowing texts."
+    cmd jump -- "Jumping texts."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light style texts."
     cmd pinchy -- "Pinchy style texts."
@@ -121,7 +123,9 @@ Arcade typography
 Blob text with muliple colors
     $SCRIPT_NAME blob
 Glowing texts
-    $SCRIPT_NAME
+    $SCRIPT_NAME glow
+Jumping texts
+    $SCRIPT_NAME jump
 Layered text-shadow effect
     $SCRIPT_NAME layer
 Neon light text
@@ -265,22 +269,39 @@ parser_definition_covfete() {
 # glow
 parser_definition_glow() {
     setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} rotate [options] [arguments]" ''
+        "Usage: ${2##*/} glow [options] [arguments]" ''
 
-    msg -- 'Creates animaged rotating texts on a browser.'
+    msg -- 'Creates animaged glowing texts on a browser.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
+    msg -- 'Example: teffects glow -t "Teffects Glow Effects" -l "2px" -p 150px -g "#ff3299"' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param GCOLOR -g --gcolor init:="#00c2ba" -- "$VAR_GCOLOR Default: #00c2ba"
     param LPADDING -l --letterpadding init:="0 5px" -- "$VAR_LPADDING"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects glow" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# jump
+parser_definition_jump() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} jump [options] [arguments]" ''
+
+    msg -- 'Creates animaged glowing texts on a browser.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="aquamarine" -- "$VAR_BCOLOR Default: aquamarine"
+    param COLOR -c --color init:="#de38c8" -- "$VAR_COLOR Default: #de38c8"
+    param LPADDING -l --letterpadding init:="0 7px" -- "$VAR_LPADDING"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
+    param TEXT -t --text init:="TEFFECTS JUMP" -- "$VAR_TEXT"
     disp :usage -h --help
 }
 
@@ -393,7 +414,6 @@ parser_definition_rotate() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
-    param OUTPUT_DIR -d --dir init:="${script_dir}/outputs" -- "$VAR_OUTPUT_DIR"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
@@ -575,6 +595,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/glow.sh"
         fn_glow "$@"
+        ;;
+    jump)
+        eval "$(getoptions parser_definition_jump parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/jump.sh"
+        fn_jump "$@"
         ;;
     layer)
         eval "$(getoptions parser_definition_layer parse "$0")"

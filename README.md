@@ -30,20 +30,14 @@ You can find all options using `-h` or `--help` for each command.
 $ teffects 3d -h
 $ teffects arcade -h
 $ teffects clip -h
-$ teffects retro -h
-$ teffects split -h
-$ teffects sticker -h
 ```
 
 Examples:
 
 ```sh
-$ teffects 3d -d ~/Downloads
-$ teffects arcade -d ~/Downloads
-$ teffects clip -d ~/Downloads
-$ teffects retro -d ~/Downloads
-$ teffects split -d ~/Downloads
-$ teffects sticker -d ~/Downloads
+$ teffects 3d -t "Your Heading"-d ~/Downloads
+$ teffects arcade -t "Awesome Heading" -d ~/Downloads
+$ teffects clip -d -t "Amazing Heading" ~/Downloads
 ```
 
 ## More details
