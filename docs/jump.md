@@ -19,4 +19,4 @@ $ teffects jump -t "LOREM IPSUM" -c "#eee" -b "#EF6667" -s 4
 
 ## Credit
 
-Glow is inspired by [kiran raj r's Css Text Effect--Glow Effect3](https://codepen.io/kiran-r-raj/pen/OJmQQwO)
+Jump is inspired by [kiran raj r's Css Text Effect--fade Effect](https://codepen.io/kiran-r-raj/pen/QWvaPwE)
