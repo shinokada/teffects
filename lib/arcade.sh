@@ -1,5 +1,5 @@
 MODULE="arcade"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_arcade() {
   STR=''

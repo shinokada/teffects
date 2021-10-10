@@ -1,5 +1,5 @@
 MODULE="neon"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_neon() {
   cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

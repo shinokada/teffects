@@ -1,5 +1,5 @@
 MODULE="blob"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 # for line-height
 if [ "$SIZE" -gt 0 ]; then

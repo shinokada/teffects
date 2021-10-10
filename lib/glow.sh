@@ -1,5 +1,5 @@
 MODULE="glow"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 LEN=${#TEXT}
 DELAY_CONST=200
 # to round up add (denominator-1) to the numerator

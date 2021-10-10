@@ -1,5 +1,5 @@
 MODULE="retro"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_retro() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

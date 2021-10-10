@@ -1,5 +1,5 @@
 MODULE="stripe"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_stripe() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

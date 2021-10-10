@@ -1,5 +1,5 @@
 MODULE="strokeshadow"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 # for line-height and text-shadow
 if [ "$SIZE" -gt 0 ]; then

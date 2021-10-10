@@ -1,5 +1,5 @@
 MODULE="covfete"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower:]" "[:upper:]")
 
 fn_covfete() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

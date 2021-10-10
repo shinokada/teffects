@@ -1,5 +1,5 @@
 MODULE="sticker"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_sticker() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

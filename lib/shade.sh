@@ -1,5 +1,5 @@
 MODULE="shade"
-TITLE=$(echo $MODULE | tr [:lower:] [:upper:])
+TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
 
 fn_shade() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
