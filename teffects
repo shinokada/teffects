@@ -6,25 +6,6 @@ set -eu
 VERSION="1.0.0"
 SCRIPT_NAME=$(basename "$0")
 
-# check os
-if [[ $(uname) == "Linux" ]]; then
-    FIREFOX="/usr/bin/firefox"
-elif [[ $(uname) == "Darwin" ]]; then
-    FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
-fi
-
-# check if Firefox is running. If it is, ask if the script can close it.
-if pgrep -f firefox; then
-    printf "We need to close Firefox in order to proceed. May I close Firefox? (yes/y/no/n)"
-    read -r RES
-    USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
-    if [ "$USER_ANS" = "Y" ]; then
-        pkill -f firefox
-    else
-        echo "Exiting ..."
-        exit
-    fi
-fi
 
 readlinkf() {
     [ "${1:-}" ] || return 1
@@ -73,12 +54,6 @@ VAR_PADDING="Container padding. Default: 100px. e.g. 50px 100px."
 VAR_SIZE="Font-size. Use a number without a unit."
 VAR_TEXT="Your text to print."
 VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
-
-# remove files in outputs dir
-if [ -n "$(ls "${script_dir}"/outputs)" ]; then
-    echo "Removing files in $script_dir/outputs."
-    rm -- "$script_dir"/outputs/*.*
-fi
 
 # shellcheck disable=SC1091
 . "${script_dir}/lib/getoptions.sh"
@@ -155,6 +130,32 @@ Display help:
 eval "$(getoptions parser_definition parse "$0") exit 1"
 parse "$@"
 eval "set -- $REST"
+
+# check os
+if [[ $(uname) == "Linux" ]]; then
+    FIREFOX="/usr/bin/firefox"
+elif [[ $(uname) == "Darwin" ]]; then
+    FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
+fi
+
+# check if Firefox is running. If it is, ask if the script can close it.
+if pgrep -f firefox; then
+    printf "We need to close Firefox in order to proceed. May I close Firefox? (yes/y/no/n)"
+    read -r RES
+    USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
+    if [ "$USER_ANS" = "Y" ]; then
+        pkill -f firefox
+    else
+        echo "Exiting ..."
+        exit
+    fi
+fi
+
+# remove files in outputs dir
+if [ -n "$(ls "${script_dir}"/outputs)" ]; then
+    echo "Removing files in $script_dir/outputs."
+    rm -- "$script_dir"/outputs/*.*
+fi
 
 # clip
 font_type() {
