@@ -162,7 +162,7 @@ fi
 # remove files in outputs dir
 if [ -n "$(ls "$OUTPUT_DIR")" ]; then
     echo "Removing files in $OUTPUT_DIR."
-    rm -- "$OUTPUT_DIR/*.*
+    rm -- "$OUTPUT_DIR/"*.*
 fi
 
 # clip

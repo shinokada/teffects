@@ -30,7 +30,7 @@ else
 fi
 
 fn_rotate() {
-  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
