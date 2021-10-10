@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.0.3"
+VERSION="1.0.4"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -39,7 +39,7 @@ readlinkf() {
 
 self=$(readlinkf "$0")
 script_dir=${self%/*}
-# echo "$script_dir"
+# script_dir="/usr/share/teffects"
 
 # Variables for options
 VAR_ALIGN="Text alignment. Default: center."
@@ -48,6 +48,7 @@ VAR_BROWSER="A browser will be open as the default. Not to open it, use +o or --
 VAR_COLOR="Font color. Enclose with quotes."
 VAR_GCOLOR="Grow color. Enclose with quotes."
 VAR_HEIGHT="Image height. Default: 1200px."
+VAR_IMAGE="A image will be open as the default. Not to open it, use +i or --no-image."
 VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${OUTPUT_DIR} directory."
 VAR_LPADDING="Letter padding. Default: 10px. e.g. 5px 10px."
 VAR_PADDING="Container padding. Default: 100px. e.g. 50px 100px."
@@ -185,6 +186,7 @@ parser_definition_clip() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "Font weight. Choose from 500|700|900."
     param FONT_NAME -f --font init:="Luckiest Guy" -- "Font name. Default: Luckiest Guy."
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -206,6 +208,7 @@ parser_definition_3d() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#fbd7e3" -- "$VAR_BCOLOR Default: #fbd7e3"
     param COLOR -c --color init:="#fcdde8" -- "$VAR_COLOR Default: #fcdde8"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -226,6 +229,7 @@ parser_definition_arcade() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -245,6 +249,7 @@ parser_definition_blob() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -264,6 +269,7 @@ parser_definition_covfete() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
     param COLOR -c --color init:="#f49e4c" -- "$VAR_COLOR Default: #f49e4c"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -323,6 +329,7 @@ parser_definition_layer() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#d52e3f" -- "$VAR_BCOLOR Default: #d52e3f"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -343,6 +350,7 @@ parser_definition_neon() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -363,6 +371,7 @@ parser_definition_pinchy() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -382,6 +391,7 @@ parser_definition_popart() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
     param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
@@ -403,6 +413,7 @@ parser_definition_retro() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param SUB_TEXT -s --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
@@ -439,6 +450,7 @@ parser_definition_shade() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -458,6 +470,7 @@ parser_definition_shadow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag LOWER_CASE -l --lower -- "text-transform:lowercase"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw"
@@ -474,6 +487,7 @@ parser_definition_split() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
@@ -495,6 +509,7 @@ parser_definition_sticker() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -517,6 +532,7 @@ parser_definition_stripe() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -537,6 +553,7 @@ parser_definition_strokeshadow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BEHIND --behind -- "Set the color behind the text."
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
     param SCOLOR -c --color init:="#db2777" -- "Shadow color"

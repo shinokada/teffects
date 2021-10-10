@@ -6,7 +6,7 @@ GFONT="${FONT_NAME// /+}"
 GF="https://fonts.googleapis.com/css2?family=${GFONT}${FONT_ATT}&display=swap"
 
 # check_bg
-echo "$BKIMG"
+# echo "$BKIMG"
 if [ ! -f "$BKIMG" ]; then
   echo "You image is not found."
   echo "Please use the absolute path to your image. /Path/to/image.jpg"
@@ -73,5 +73,15 @@ EOF
     exit
   }
 
-  echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
+  if [ "$IMAGE" = 1 ]; then
+	  echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		fi
+	fi
+
+  echo "The image location is $OUTPUT_DIR/${MODULE}.png."
 }
