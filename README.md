@@ -14,11 +14,30 @@ Teffects automates creating header images for your articles, email, presentation
 
 ## Installation
 
+### Homebrew
+
+```sh
+$ brew tap shinokada/teffects
+$ brew install teffects
+```
+
+### Awesome package manager
+
 Using [Awesome package manager](https://github.com/shinokada/awesome):
 
 ```sh
 awesome install shinokada/teffects
 ```
+
+### Apt
+
+Download the latest debian package from [releases](https://github.com/shinokada/teffects/releases)
+
+```sh
+$ sudo apt install /path/to/teffects_XXXXX-X_all.deb
+```
+
+### Others
 
 Or download the repo and move to a bin directory.
 
