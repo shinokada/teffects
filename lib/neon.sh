@@ -1,5 +1,5 @@
 MODULE="neon"
-TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
+TITLE=${MODULE^^}
 
 fn_neon() {
   cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
@@ -87,9 +87,9 @@ EOF
   if [ "$BROWSER" = 1 ]; then
     # open browser
     if [[ $(uname) == "Linux" ]]; then
-      xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+      xdg-open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
     elif [[ $(uname) == "Darwin" ]]; then
-      open "file:///${script_dir}/outputs/${MODULE}.html"
+      open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
     fi
     echo "${MODULE} image is on a browser."
   fi

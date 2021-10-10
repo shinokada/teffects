@@ -1,5 +1,5 @@
 MODULE="split"
-TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
+TITLE=${MODULE^^}
 
 fn_split() {
 	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"

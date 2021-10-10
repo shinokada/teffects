@@ -1,5 +1,5 @@
 MODULE="rotate"
-TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
+TITLE=${MODULE^^}
 
 # for line-height
 # if [ "$SIZE" -gt 0 ]; then
@@ -14,7 +14,7 @@ WORD_COLORS=(wisteria belize pomegranate green midnight)
 # for i in "${WORD_COLORS[@]}"; do
 #     echo $i
 # done
-echo "${#@}"
+# echo "${#@}"
 
 SPAN_TEXT=''
 if ((${#@} > 0)); then
@@ -130,9 +130,9 @@ EOF
   if [ "$BROWSER" = 1 ]; then
     # open browser
     if [[ $(uname) == "Linux" ]]; then
-      xdg-open "file:///${script_dir}/outputs/${MODULE}.html"
+      xdg-open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
     elif [[ $(uname) == "Darwin" ]]; then
-      open "file:///${script_dir}/outputs/${MODULE}.html"
+      open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
     fi
     echo "${MODULE} image is on a browser."
   fi

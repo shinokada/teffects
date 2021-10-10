@@ -1,5 +1,5 @@
 MODULE="clip"
-TITLE=$(echo $MODULE | tr "[:lower]" "[:upper:]")
+TITLE=${MODULE^^}
 
 GFONT="${FONT_NAME// /+}"
 # BROWSER_HEIGHT=$(($HEIGHT - 200))
