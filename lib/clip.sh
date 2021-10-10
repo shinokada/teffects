@@ -15,7 +15,7 @@ fi
 
 fn_clip() {
 
-  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -68,18 +68,10 @@ h1 {
 </html>
 EOF
 
-  wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/${MODULE}.html" "${OUTPUT_DIR}/${MODULE}.png" >/dev/null 2>&1 || {
+  wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${OUTPUT_DIR}/${MODULE}.html" "${OUTPUT_DIR}/${MODULE}.png" >/dev/null 2>&1 || {
     echo "Something weng wrong."
     exit
   }
-  # echo "$CHROME"
-
-  # eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/${CLIP_OUTPUT}.png" "${script_dir}/outputs/clip.html" >/dev/null 2>&1 || {
-  #     echo "Something went wrong."
-  #     exit
-  # }
-
-  # eval "$FIREFOX" --headless --screenshot "${script_dir}/outputs/${CLIP_OUTPUT}.png" "file:///${script_dir}/outputs/clip.html" >/dev/null 2>&1 || exit
 
   echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
 }

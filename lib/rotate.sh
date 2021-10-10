@@ -30,7 +30,7 @@ else
 fi
 
 fn_rotate() {
-  cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -130,9 +130,9 @@ EOF
   if [ "$BROWSER" = 1 ]; then
     # open browser
     if [[ $(uname) == "Linux" ]]; then
-      xdg-open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
+      xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
     elif [[ $(uname) == "Darwin" ]]; then
-      open "file:///${script_dir}/outputs/${MODULE}.html" >/dev/null 2>&1
+      open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
     fi
     echo "${MODULE} image is on a browser."
   fi

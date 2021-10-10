@@ -2,7 +2,7 @@ MODULE="retro"
 TITLE=${MODULE^^}
 
 fn_retro() {
-	cat <<EOF >"${script_dir}/outputs/${MODULE}.html"
+	cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -105,14 +105,12 @@ fn_retro() {
 </html>
 EOF
 
-	# wkhtmltoimage --width "$WIDTH" --height "$HEIGHT" --enable-local-file-access "${script_dir}/outputs/retro.html" "${script_dir}/outputs/retroimage.jpg" >/dev/null 2>&1 || exit
-
-	# eval '"$CHROME"' --headless --screenshot="${script_dir}/outputs/retroimage.png" "${script_dir}/outputs/retro.html" >/dev/null 2>&1 || exit
+	
 	# check if $RETRO_OUTPUT exist
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi
-	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${script_dir}/outputs/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
 		echo "Something went wrong."
 		exit
 	}
