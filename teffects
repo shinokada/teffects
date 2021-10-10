@@ -19,7 +19,7 @@ if pgrep -f firefox; then
     read -r RES
     USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
     if [ "$USER_ANS" = "Y" ]; then
-        killall firefox
+        pkill -f firefox
     else
         echo "Exiting ..."
         exit
