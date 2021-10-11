@@ -30,7 +30,7 @@ else
 fi
 
 fn_rotate() {
-cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -78,7 +78,7 @@ p {
   float: left;
   transform: translateZ(25px);
   transform-origin: 50% 50% 25px;
-  letter-spacing: -5px;
+  letter-spacing: -1px;
 }
 
 .letter.out {
