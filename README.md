@@ -64,6 +64,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
 - [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
 - [blob](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
+- [bubble](https://github.com/shinokada/teffects/blob/master/docs/bubble.md)
 - [circulate](https://github.com/shinokada/teffects/blob/master/docs/circulate.md)
 - [clip-animate](https://github.com/shinokada/teffects/blob/master/docs/clip-animate.md)
 - [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)

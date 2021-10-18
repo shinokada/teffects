@@ -18,4 +18,4 @@ $ teffects clip-animate -t "TEFFECTS CLIP ANIMATE" -v "NEW CSS ANIMATION" -u "FO
 
 ## Credit
 
-Jump is inspired by [Daniel Riemer's Animated text fill](https://codepen.io/zitrusfrisch/pen/fjbal)
+Clip-animate is inspired by [Daniel Riemer's Animated text fill](https://codepen.io/zitrusfrisch/pen/fjbal)
