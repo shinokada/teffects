@@ -1,5 +1,8 @@
 # Squiggle
 
+<p align="center">
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/squiggle.gif" />
+</p>
 
 ## Options
 

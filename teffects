@@ -74,6 +74,7 @@ parser_definition() {
     cmd blob -- "Muliple colors blog style texts."
     cmd circulate -- "Circulating texts."
     cmd clip -- "Clip image."
+    cmd clip-animate -- "Animated clip texts."
     cmd covfete -- "Background clipping texts."
     cmd glow -- "Glowing texts."
     cmd jump -- "Jumping texts."
@@ -262,6 +263,30 @@ parser_definition_blob() {
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# clip-animate
+parser_definition_clip-animate() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} clip-animate [options] [arguments]" ''
+
+    msg -- 'Creates animated clip texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.'
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
+    param TEXTTOP -v --texttop init:="TEXT TOP" -- "$VAR_TEXT"
+    param TEXTUNDER -u --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -669,6 +694,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/clip.sh"
         fn_clip "$@"
+        ;;
+    clip-animate)
+        eval "$(getoptions parser_definition_clip-animate parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/clip-animate.sh"
+        fn_clip-animate "$@"
         ;;
     covfete)
         eval "$(getoptions parser_definition_covfete parse "$0")"

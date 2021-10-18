@@ -4,10 +4,7 @@ MODULE="circulate"
 TITLE=${MODULE^^}
 
 DCOLORS=(4D163D 840037 BD0034 BD0034 FDB731)
-# echo "default colors: "
-# echo "${DCOLORS[@]}"
-col_num=${#DCOLORS[@]}
-# echo "col_num: $col_num"
+COL_NUM=${#DCOLORS[@]}
 spaces() {
     echo "$1" | grep -o " " | wc -l | tr -d '[:space:]'
 }
@@ -16,30 +13,15 @@ fn_trim() {
     echo -e "$1" | sed -e 's/^[[:space:]]*//' | sed -e 's/[[:space:]]*$//'
 }
 
-# echo "colors: "
-# echo "${DCOLORS[@]}"
-# echo "COLORS: "
-# echo "${COLORS[@]}"
-# echo "ARRAY: $ARRAY"
 NARR=$(fn_trim "$COLORS")
-# echo "NARR: $NARR"
 read -ra user_input <<<"$NARR"
-# echo "user_input: "
-# echo "${user_input[@]}"
-# echo "${newarray[0]}"
-# echo "${newarray[1]}"
-spaces=$(spaces "${NARR[@]}")
-# echo "spaces: $spaces"
-# find min
-min=$((spaces < col_num ? spaces : col_num))
-# echo "min: $min"
+SPACES=$(spaces "${NARR[@]}")
+MIN=$((SPACES < COL_NUM ? SPACES : COL_NUM))
 i=0
-while [ $i -lt "$min" ]; do
-    # echo "before: $i"
+while [ $i -lt "$MIN" ]; do
     val=${user_input[$i]}
     DCOLORS[$i]=$val
     ((i++))
-    # echo "after: $i"
 done
 
 fn_circulate() {

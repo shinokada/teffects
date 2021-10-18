@@ -1,5 +1,9 @@
 # Circulate
 
+<p align="center">
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/circulate.gif" />
+</p>
+
 Circulating in texts for one line. If your line is long you need to adjust with font size `-s` and screen width `-w` options.
 
 ## Options
@@ -8,10 +12,10 @@ Find all the options using `teffects circulate -h`.
 
 ## Examples
 
-
+Change circulating colors using the `--colors` option. Use max of 6 hexdecimal colors without `#` symbol:
 
 ```
-$ teffects circulate -t Teffects --colors "eee 123 456 ccc"
+$ teffects circulate -t Teffects --colors "eee ed4bc7 4d76ed ccc"
 ```
 
 ## Credit
