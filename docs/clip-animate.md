@@ -1,10 +1,10 @@
-# Jump
+# Clip-animate
 
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip-animate.gif" />
 </p>
 
-This is a CSS animation effect and it will open a browser.
+This is a CSS clip animation effect and it will open a browser.
 
 ## Options
 
