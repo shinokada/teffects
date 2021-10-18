@@ -72,6 +72,7 @@ parser_definition() {
     cmd 3d -- "3D letters style texts."
     cmd arcade -- "Arcade typography style texts."
     cmd blob -- "Muliple colors blog style texts."
+    cmd circulate -- "Circulating texts."
     cmd clip -- "Clip image."
     cmd covfete -- "Background clipping texts."
     cmd glow -- "Glowing texts."
@@ -84,6 +85,7 @@ parser_definition() {
     cmd rotate -- "Rotating texts."
     cmd shade -- "Shaded style texts"
     cmd shadow -- "Styling with shadow lines"
+    cmd squiggle -- "Squiggly text."
     cmd split -- "Split style texts."
     cmd sticker -- "Sticker style texts."
     cmd stripe -- "Stripe, clip, and gradient style texts"
@@ -98,6 +100,8 @@ Arcade typography
     $SCRIPT_NAME arcade
 Blob text with muliple colors
     $SCRIPT_NAME blob
+Circulating texts
+    $SCRIPT_NAME circulate
 Glowing texts
     $SCRIPT_NAME glow
 Jumping texts
@@ -112,8 +116,10 @@ Retro banner:
     $SCRIPT_NAME retro
 Styling with shadow lines
     $SCRIPT_NAME shadow
-Split text: 
+Split text:
     $SCRIPT_NAME split
+Squiggly text:
+    $SCRIPT_NAME squiggle
 Sticker text: 
     $SCRIPT_NAME sticker
 Stripe text:
@@ -256,6 +262,34 @@ parser_definition_blob() {
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# circulate
+append_array() {
+    eval "$1+=(\"\$OPTARG\")"
+}
+
+parser_definition_circulate() {
+    array() { param ":append_array $@"; }
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} circulate [options] [arguments]" ''
+
+    msg -- 'Creates circulating texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    array COLORS --colors init:'COLORS=()' var:VALUE
+    param BCOLOR -b --bcolor init:="#030321" -- "$VAR_BCOLOR Default: #030321"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Circulating text" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -500,6 +534,28 @@ parser_definition_split() {
     disp :usage -h --help
 }
 
+# squiggle
+parser_definition_squiggle() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} squiggle [options] [arguments]" ''
+
+    msg -- 'Creates squiggley texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Squiggley text" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
 # sticker
 parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
@@ -597,6 +653,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/blob.sh"
         fn_blob "$@"
+        ;;
+    circulate)
+        eval "$(getoptions parser_definition_circulate parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/circulate.sh"
+        fn_circulate "$@"
         ;;
     clip)
         eval "$(getoptions parser_definition_clip parse "$0")"
@@ -701,6 +765,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/split.sh"
         fn_split "$@"
+        ;;
+    squiggle)
+        eval "$(getoptions parser_definition_squiggle parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/squiggle.sh"
+        fn_squiggle "$@"
         ;;
     sticker)
         eval "$(getoptions parser_definition_sticker parse "$0")"
