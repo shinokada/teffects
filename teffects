@@ -74,6 +74,7 @@ parser_definition() {
     cmd blob -- "Muliple colors blog style texts."
     cmd bubble -- "Bubble effect animation."
     cmd circulate -- "Circulating text animation."
+    cmd circulate2 -- "Circulating text animation."
     cmd clip -- "Clip image."
     cmd clip-animate -- "Animated clip texts."
     cmd covfete -- "Background clipping texts."
@@ -88,6 +89,7 @@ parser_definition() {
     cmd rotate -- "Rotating text animation."
     cmd shade -- "Shaded text animation."
     cmd shadow -- "Styling with shadow lines"
+    cmd smoky -- "Smoky text animation."
     cmd squiggle -- "Squiggly text animation."
     cmd split -- "Split style texts."
     cmd sticker -- "Sticker style texts."
@@ -121,6 +123,8 @@ Retro banner:
     $SCRIPT_NAME retro
 Styling with shadow lines
     $SCRIPT_NAME shadow
+Smoky text animation
+    $SCRIPT_NAME smoky
 Split text:
     $SCRIPT_NAME split
 Squiggly text:
@@ -345,6 +349,34 @@ parser_definition_circulate() {
     disp :usage -h --help
 }
 
+# circulate2
+# append_array() {
+#     eval "$1+=(\"\$OPTARG\")"
+# }
+
+parser_definition_circulate2() {
+    array() { param ":append_array $@"; }
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} circulate2 [options] [arguments]" ''
+
+    msg -- 'Creates circulating texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    array COLORS --colors init:'COLORS=()' var:VALUE
+    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Circulate 2" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
 # covfete
 parser_definition_covfete() {
     setup REST help:usage abbr:true -- \
@@ -563,6 +595,24 @@ parser_definition_shadow() {
     disp :usage -h --help
 }
 
+# smoky
+parser_definition_smoky() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} smoky [options] [arguments]" ''
+
+    msg -- 'Creates animaged smoky texts on a browser.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
+    param TEXT -t --text init:="Teffects smoky" -- "$VAR_TEXT"
+    disp :usage -h --help
+}
+
 # split
 parser_definition_split() {
     setup REST help:usage abbr:true -- \
@@ -721,6 +771,14 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/lib/circulate.sh"
         fn_circulate "$@"
         ;;
+    circulate2)
+        eval "$(getoptions parser_definition_circulate2 parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/circulate2.sh"
+        fn_circulate2 "$@"
+        ;;
     clip)
         eval "$(getoptions parser_definition_clip parse "$0")"
         parse "$@"
@@ -824,6 +882,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/shadow.sh"
         fn_shadow "$@"
+        ;;
+    smoky)
+        eval "$(getoptions parser_definition_smoky parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/smoky.sh"
+        fn_smoky "$@"
         ;;
     split)
         eval "$(getoptions parser_definition_split parse "$0")"
