@@ -1,7 +1,7 @@
 # Bubble
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip-bubble.gif" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/bubble.gif" />
 </p>
 
 This is a bubble animation effect and it will open a browser.

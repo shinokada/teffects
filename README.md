@@ -70,6 +70,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
 - [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
 - [glow](https://github.com/shinokada/teffects/blob/master/docs/glow.md)
+- [jump](https://github.com/shinokada/teffects/blob/master/docs/jump.md)
 - [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
 - [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
 - [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
