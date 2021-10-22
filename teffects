@@ -302,7 +302,7 @@ append_array() {
     eval "$1+=(\"\$OPTARG\")"
 }
 
-parser_definition_circulate() {
+parser_definition_circulate1() {
     array() { param ":append_array $@"; }
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} circulate [options] [arguments]" ''
@@ -330,7 +330,7 @@ parser_definition_circulate() {
 #     eval "$1+=(\"\$OPTARG\")"
 # }
 
-parser_definition_circulate2() {
+parser_definition_circulate() {
     array() { param ":append_array $@"; }
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} circulate2 [options] [arguments]" ''
@@ -789,14 +789,6 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/circulate.sh"
         fn_circulate "$@"
-        ;;
-    circulate2)
-        eval "$(getoptions parser_definition_circulate2 parse "$0")"
-        parse "$@"
-        eval "set -- $REST"
-        # shellcheck disable=SC1091
-        . "${script_dir}/lib/circulate2.sh"
-        fn_circulate2 "$@"
         ;;
     clip)
         eval "$(getoptions parser_definition_clip parse "$0")"

@@ -3,7 +3,7 @@ set +e
 MODULE="circulate"
 TITLE=${MODULE^^}
 
-DCOLORS=(4D163D 840037 FFFFFF BD0034 FDB731)
+DCOLORS=(f2385a f5a503 e9f1df 56d9cd 3aa1bf)
 COL_NUM=${#DCOLORS[@]}
 spaces() {
     echo "$1" | grep -o " " | wc -l | tr -d '[:space:]'
@@ -33,91 +33,79 @@ fn_circulate() {
 	<meta charset="UTF-8">
 <style>
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
-html, body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  vertical-align: middle;
-  font-weight: 800;
+body {
+	 background: ${BCOLOR};
+	 background-size: 0.2em 100%;
+	 font: ${SIZE}vw Open Sans, Impact;
+	 text-transform: uppercase;
+	 margin: 0;
 }
 
-body{
-  background: ${BCOLOR};
-  font-family: Arial;
-  font: ${SIZE}vw Open Sans, Impact;
+ svg {
+	 position: absolute;
+	 width: ${WIDTH}px;
+	 height: ${HEIGHT}px;
 }
 
-.container {
-	padding:${PADDING};
+/* Main styles */
+ .text {
+	 fill: none;
+	 stroke-width: 3;
+	 stroke-linejoin: round;
+	 stroke-dasharray: 70 330;
+	 stroke-dashoffset: 0;
+	 -webkit-animation: stroke 6s infinite linear;
+	 animation: stroke 6s infinite linear;
 }
-@import url(https://fonts.googleapis.com/css?family=Montserrat);
-
-svg {
-    display: block;
-    font: ${SIZE}vw 'Montserrat';
-    font: ${SIZE}vw Open Sans, Impact;
-    width: ${WIDTH}px;
-    height: ${HEIGHT}px;
-    margin: 0 auto;
+ .text:nth-child(5n + 1) {
+	 stroke: #${DCOLORS[0]};
+	 -webkit-animation-delay: -1.2s;
+	 animation-delay: -1.2s;
 }
-
-.text-copy {
-    fill: none;
-    stroke: white;
-    stroke-dasharray: 6% 29%;
-    stroke-width: 5px;
-    stroke-dashoffset: 0%;
-    animation: stroke-offset 5.5s infinite linear;
+ .text:nth-child(5n + 2) {
+	 stroke: #${DCOLORS[1]};
+	 -webkit-animation-delay: -2.4s;
+	 animation-delay: -2.4s;
 }
-
-.text-copy:nth-child(1){
-	stroke: #${DCOLORS[0]};
-	animation-delay: -1;
+ .text:nth-child(5n + 3) {
+	 stroke: #${DCOLORS[2]};
+	 -webkit-animation-delay: -3.6s;
+	 animation-delay: -3.6s;
 }
-
-.text-copy:nth-child(2){
-	stroke: #${DCOLORS[1]};
-	animation-delay: -2s;
+ .text:nth-child(5n + 4) {
+	 stroke: #${DCOLORS[3]};
+	 -webkit-animation-delay: -4.8s;
+	 animation-delay: -4.8s;
 }
-
-.text-copy:nth-child(3){
-	stroke: #${DCOLORS[2]};
-	animation-delay: -3s;
+ .text:nth-child(5n + 5) {
+	 stroke: #${DCOLORS[4]};
+	 -webkit-animation-delay: -6s;
+	 animation-delay: -6s;
 }
-
-.text-copy:nth-child(4){
-	stroke: #${DCOLORS[3]};
-	animation-delay: -4s;
+ @-webkit-keyframes stroke {
+	 100% {
+		 stroke-dashoffset: -400;
+	}
 }
-
-.text-copy:nth-child(5){
-	stroke: #${DCOLORS[4]};
-	animation-delay: -5s;
-}
-
-@keyframes stroke-offset{
-	100% {stroke-dashoffset: -35%;}
+ @keyframes stroke {
+	 100% {
+		 stroke-dashoffset: -400;
+	}
 }
 </style>
 </head>
 <body>
-<div class="container">
-	<svg>
-	<symbol id="s-text">
-		<text text-anchor="middle" x="50%" y="50%">${TEXT}</text>
-	</symbol>
-
-	<g class="g-ants">
-		<use xlink:href="#s-text" class="text-copy"></use>
-		<use xlink:href="#s-text" class="text-copy"></use>
-		<use xlink:href="#s-text" class="text-copy"></use>
-		<use xlink:href="#s-text" class="text-copy"></use>
-		<use xlink:href="#s-text" class="text-copy"></use>
-	</g>
+<svg>
+    <!-- Symbol-->
+    <symbol id="s-text"><text text-anchor="middle" x="50%" y="50%" dy=".35em">${TEXT}</text>
+    </symbol>
+    <!-- Duplicate symbols-->
+    <use class="text" xlink:href="#s-text"></use>
+    <use class="text" xlink:href="#s-text"></use>
+    <use class="text" xlink:href="#s-text"></use>
+    <use class="text" xlink:href="#s-text"></use>
+    <use class="text" xlink:href="#s-text"></use>
 </svg>
-</div>
 </body>
 </html>
 EOF
