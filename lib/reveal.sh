@@ -17,7 +17,7 @@ TITLE=${MODULE^^}
 # fi
 
 fn_reveal() {
-    cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+	cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -37,7 +37,7 @@ body, html {
 	 font-family: 'Lato';
 	 font-weight: 900;
 	 color: ${COLOR};
-     background-color: ${BCOLOR}
+     background-color: ${BCOLOR};
 	 position: relative;
 }
  .text {
@@ -63,10 +63,10 @@ body, html {
 	 transform: scaleX(0);
 }
  .text__first-bg {
-	 background-color: #5fbff9;
+	 background-color: ${TCOVER};
 }
  .text__second-bg {
-	 background-color: #f06543;
+	 background-color: ${BCOVER};
 }
  .text__second {
 	 margin-left: 15vmin;
@@ -77,7 +77,7 @@ body, html {
 	 bottom: 0;
 	 left: 0;
 	 right: 0;
-	 background-color: #fff;
+	 background-color: ${BCOLOR};
 	 border: none;
 	 border-bottom: 1px dotted grey;
 	 padding: 0;
@@ -92,11 +92,11 @@ body, html {
 <div class="container">
   <p class="text"> 
   <span class="text__first">
-  <span class="text__word">Hello </span>
+  <span class="text__word">${TEXT1} </span>
   <span class="text__first-bg"></span>
   </span>
   <br />
-  <span class="text__second"><span class="text__word">World</span>
+  <span class="text__second"><span class="text__word">${TEXT2}</span>
   <span class="text__second-bg"></span>
   </span>
   </p>
@@ -108,13 +108,13 @@ body, html {
 </html>
 EOF
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        fi
-        echo "${MODULE} image is on a browser."
-    fi
+	if [ "$BROWSER" = 1 ]; then
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		fi
+		echo "${MODULE} image is on a browser."
+	fi
 }
