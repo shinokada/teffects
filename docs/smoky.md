@@ -11,7 +11,7 @@ Find all the options using `teffects smoky -h`.
 ## Examples
 
 ```
-$ teffects smoky -t "Teffects rocks"
+$ teffects smoky -t "Teffects rocks"　-s 4
 ```
 
 ## Credit

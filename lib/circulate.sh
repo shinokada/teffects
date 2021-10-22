@@ -3,7 +3,7 @@ set +e
 MODULE="circulate"
 TITLE=${MODULE^^}
 
-DCOLORS=(4D163D 840037 BD0034 BD0034 FDB731)
+DCOLORS=(4D163D 840037 FFFFFF BD0034 FDB731)
 COL_NUM=${#DCOLORS[@]}
 spaces() {
     echo "$1" | grep -o " " | wc -l | tr -d '[:space:]'
@@ -32,6 +32,7 @@ fn_circulate() {
 	<title>${TITLE}</title>
 	<meta charset="UTF-8">
 <style>
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:800);
 html, body {
   width: 100%;
   height: 100%;
@@ -45,6 +46,7 @@ html, body {
 body{
   background: ${BCOLOR};
   font-family: Arial;
+  font: ${SIZE}vw Open Sans, Impact;
 }
 
 .container {
@@ -55,6 +57,7 @@ body{
 svg {
     display: block;
     font: ${SIZE}vw 'Montserrat';
+    font: ${SIZE}vw Open Sans, Impact;
     width: ${WIDTH}px;
     height: ${HEIGHT}px;
     margin: 0 auto;

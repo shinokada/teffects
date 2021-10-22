@@ -297,30 +297,6 @@ parser_definition_bubble() {
     disp :usage -h --help
 }
 
-# clip-animate
-parser_definition_clip-animate() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} clip-animate [options] [arguments]" ''
-
-    msg -- 'Creates animated clip texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.'
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
-    param TEXTTOP -v --texttop init:="TEXT TOP" -- "$VAR_TEXT"
-    param TEXTUNDER -u --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
 # circulate
 append_array() {
     eval "$1+=(\"\$OPTARG\")"
@@ -377,6 +353,30 @@ parser_definition_circulate2() {
     disp :usage -h --help
 }
 
+# clip-animate
+parser_definition_clip-animate() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} clip-animate [options] [arguments]" ''
+
+    msg -- 'Creates animated clip texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.'
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
+    param TEXTTOP -v --texttop init:="TEXT TOP" -- "$VAR_TEXT"
+    param TEXTUNDER -u --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
 # covfete
 parser_definition_covfete() {
     setup REST help:usage abbr:true -- \
@@ -403,7 +403,7 @@ parser_definition_glow() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} glow [options] [arguments]" ''
 
-    msg -- 'Creates animaged glowing texts on a browser.'
+    msg -- 'Creates animated glowing texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
     msg -- 'Example: teffects glow -t "Teffects Glow Effects" -l "2px" -p 150px -g "#ff3299"' ''
 
@@ -423,7 +423,7 @@ parser_definition_jump() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} jump [options] [arguments]" ''
 
-    msg -- 'Creates animaged glowing texts on a browser.'
+    msg -- 'Creates animated glowing texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
@@ -544,7 +544,7 @@ parser_definition_rotate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} rotate [options] [arguments]" ''
 
-    msg -- 'Creates animaged rotating texts on a browser.'
+    msg -- 'Creates animated rotating texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
     msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
 
@@ -553,6 +553,25 @@ parser_definition_rotate() {
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
+    param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
+    disp :usage -h --help
+}
+
+# reveal
+parser_definition_reveal() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} reveal [options] [arguments]" ''
+
+    msg -- 'Creates animaged revealing texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
+    param COLOR -c --color init:="#353535" -- "$VAR_COLOR Default: #353535"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
     disp :usage -h --help
 }
@@ -600,7 +619,7 @@ parser_definition_smoky() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} smoky [options] [arguments]" ''
 
-    msg -- 'Creates animaged smoky texts on a browser.'
+    msg -- 'Creates animated smoky texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
     msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
 
@@ -866,6 +885,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/rotate.sh"
         fn_rotate "$@"
+        ;;
+    reveal)
+        eval "$(getoptions parser_definition_reveal parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/reveal.sh"
+        fn_reveal "$@"
         ;;
     shade)
         eval "$(getoptions parser_definition_shade parse "$0")"
