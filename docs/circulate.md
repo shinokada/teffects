@@ -15,10 +15,10 @@ Find all the options using `teffects circulate -h`.
 Change circulating colors using the `--colors` option. Use max of 6 hexdecimal colors without `#` symbol:
 
 ```
-$ teffects circulate -t Teffects --colors "eee ed4bc7 4d76ed ccc"
+$ teffects circulate2 -t Teffects --colors "eee ed4bc7 4d76ed ccc"
 ```
 
 ## Credit
 
-Circulate is inspired by [Text Animation: Montserrat by Claire Larsen](https://codepen.io/ClaireLarsen/pen/XmVyVX).
+Circulate is inspired by [Cesar C.'s Animated text fill with svg text practice](https://codepen.io/cesar2535/pen/ByYXpN).
 
