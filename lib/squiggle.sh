@@ -2,7 +2,7 @@ MODULE="squiggle"
 TITLE=${MODULE^^}
 
 fn_squiggle() {
-    cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -111,6 +111,18 @@ p {
 .container {
 	padding:${PADDING};
 }
+
+.container::before{
+  content: "";
+  background-image: url('https://source.unsplash.com/rydQVdwcgUQ/${WIDTH}x${HEIGHT}');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: 0.75;
+}
 </style>
 </head>
 <body>
@@ -150,34 +162,34 @@ p {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+  # check if $RETRO_OUTPUT exist
+  if [ ! -d "$OUTPUT_DIR" ]; then
+    mkdir -p "$OUTPUT_DIR"
+  fi
+  eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    echo "Something went wrong."
+    exit
+  }
 
-    if [ "$IMAGE" = 1 ]; then
-        echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        fi
+  if [ "$IMAGE" = 1 ]; then
+    echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
     fi
+  fi
 
-    echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+  echo "The image location is $OUTPUT_DIR/${MODULE}.png."
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        fi
-        echo "${MODULE} image is on a browser."
+  if [ "$BROWSER" = 1 ]; then
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
     fi
+    echo "${MODULE} image is on a browser."
+  fi
 }
