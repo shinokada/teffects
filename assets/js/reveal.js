@@ -12,5 +12,5 @@ window.onload = function(){
     .to(firstBg, 0.2, {scaleX:0})
     .to(secBg, 0.2, {scaleX:0});
   
-  document.querySelector('.restart').onclick = function() {tl.restart()};
+  // document.querySelector('.restart').onclick = function() {tl.restart()};
 }

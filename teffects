@@ -44,6 +44,7 @@ script_dir=${self%/*}
 # Variables for options
 VAR_ALIGN="Text alignment. Default: center."
 VAR_BCOLOR="Background color. Enclose with quotes."
+VAR_BOPACITY="Background image opacity."
 VAR_BROWSER="A browser will be open as the default. Not to open it, use +o or --no-open."
 VAR_BIMG="Background image url."
 VAR_COLOR="Font color. Enclose with quotes."
@@ -290,9 +291,10 @@ parser_definition_bubble() {
     param BCOLOR -b --bcolor init:="#3498db" -- "$VAR_BCOLOR Default: #3498db"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param BIMG -i --back-img init:="https://source.unsplash.com/G8Fy93Jwfl8" -- "$VAR_BIMG Default: https://source.unsplash.com/G8Fy93Jwfl8"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
+    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="BUBBLE EFFECT" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
@@ -303,10 +305,34 @@ append_array() {
     eval "$1+=(\"\$OPTARG\")"
 }
 
-parser_definition_circulate1() {
+parser_definition_circulate() {
     array() { param ":append_array $@"; }
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} circulate [options] [arguments]" ''
+
+    msg -- 'Creates circulating texts.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    array COLORS --colors init:'COLORS=()' var:VALUE
+    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
+    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
+    param HEIGHT -e --height init:=900 validate:number -- "$VAR_HEIGHT"
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param BIMG -i --back-img init:="https://source.unsplash.com/3l3RwQdHRHg" -- "$VAR_BIMG Default: https://source.unsplash.com/3l3RwQdHRHg"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TEXT -t --text init:="Circulating Text" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1200 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+parser_definition_circulate1() {
+    array() { param ":append_array $@"; }
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} circulate1 [options] [arguments]" ''
 
     msg -- 'Creates circulating texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
@@ -322,34 +348,6 @@ parser_definition_circulate1() {
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Circulating text" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# circulate2
-# append_array() {
-#     eval "$1+=(\"\$OPTARG\")"
-# }
-
-parser_definition_circulate() {
-    array() { param ":append_array $@"; }
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} circulate2 [options] [arguments]" ''
-
-    msg -- 'Creates circulating texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    array COLORS --colors init:'COLORS=()' var:VALUE
-    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Circulate 2" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
@@ -570,13 +568,17 @@ parser_definition_reveal() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
-    param COLOR -c --color init:="#353535" -- "$VAR_COLOR Default: #353535"
-    param TCOVER -f --first-cover init:="#5fbff9" -- "First cover color. Default: #5fbff9"
-    param BCOVER -g --second-cover init:="#f06543" -- "Second cover color. Default #f06543"
+    param BIMG -i --back-img init:="https://source.unsplash.com/gOq27RHoL3s" -- "$VAR_BIMG Default: https://source.unsplash.com/gOq27RHoL3s"
+    param COLOR -c --color init:="#67CEC2" -- "$VAR_COLOR Default: #67CEC2"
+    param TCOVER -f --first-cover init:="#DF4041" -- "First cover color. Default: #DF4041"
+    param BCOVER -g --second-cover init:="#F6D242" -- "Second cover color. Default #F6D242"
+    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1."
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT1 -u --text init:="Teffects" -- "$VAR_TEXT"
     param TEXT2 -d --text init:="Reveal" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 
@@ -630,9 +632,12 @@ parser_definition_smoky() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param BIMG -i --back-img init:="https://source.unsplash.com/1L71sPT5XKc" -- "$VAR_BIMG Default: https://source.unsplash.com/1L71sPT5XKc"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects smoky" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
 

@@ -1,4 +1,4 @@
-set +e
+set +eu
 
 MODULE="circulate"
 TITLE=${MODULE^^}
@@ -13,16 +13,18 @@ fn_trim() {
     echo -e "$1" | sed -e 's/^[[:space:]]*//' | sed -e 's/[[:space:]]*$//'
 }
 
-NARR=$(fn_trim "$COLORS")
-read -ra user_input <<<"$NARR"
-SPACES=$(spaces "${NARR[@]}")
-MIN=$((SPACES < COL_NUM ? SPACES : COL_NUM))
-i=0
-while [ $i -lt "$MIN" ]; do
-    val=${user_input[$i]}
-    DCOLORS[$i]=$val
-    ((i++))
-done
+if [ -n "$COLORS" ]; then
+    NARR=$(fn_trim "$COLORS")
+    read -ra user_input <<<"$NARR"
+    SPACES=$(spaces "${NARR[@]}")
+    MIN=$((SPACES < COL_NUM ? SPACES : COL_NUM))
+    i=0
+    while [ $i -lt "$MIN" ]; do
+        val=${user_input[$i]}
+        DCOLORS[$i]=$val
+        ((i++))
+    done
+fi
 
 fn_circulate() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
@@ -92,9 +94,21 @@ body {
 		 stroke-dashoffset: -400;
 	}
 }
+.container::before{
+    content: "";
+    background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
+}
 </style>
 </head>
 <body>
+<div class="container">
 <svg>
     <!-- Symbol-->
     <symbol id="s-text"><text text-anchor="middle" x="50%" y="50%" dy=".35em">${TEXT}</text>
@@ -106,6 +120,7 @@ body {
     <use class="text" xlink:href="#s-text"></use>
     <use class="text" xlink:href="#s-text"></use>
 </svg>
+</div>
 </body>
 </html>
 EOF

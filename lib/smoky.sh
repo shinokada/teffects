@@ -3,22 +3,15 @@ TITLE=${MODULE^^}
 
 SPAN_TEXT=''
 for ((i = 0; i < ${#TEXT}; i++)); do
-    LETTER="${TEXT:$i:1}"
-    # replace spaces with &ensp;
-    SUB="${LETTER// /&nbsp;}"
-    # echo $SUB
-    SPAN_TEXT+="<span>${SUB}</span>"
+	LETTER="${TEXT:$i:1}"
+	# replace spaces with &ensp;
+	SUB="${LETTER// /&nbsp;}"
+	# echo $SUB
+	SPAN_TEXT+="<span>${SUB}</span>"
 done
 
-# for (( i=0; i<${#foo}; i++ )); do
-#   echo "${foo:$i:1}"
-# done
-
-echo "$TEXT"
-echo "$SPAN_TEXT"
-
 fn_smoky() {
-    cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+	cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -37,6 +30,18 @@ html, body {
 
 .container {
 padding:${PADDING};
+}
+
+.container::before{
+    content: "";
+	background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: 0.75;
 }
 
  body {
@@ -150,13 +155,13 @@ ${SPAN_TEXT}
 </html>
 EOF
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        fi
-        echo "${MODULE} image is on a browser."
-    fi
+	if [ "$BROWSER" = 1 ]; then
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		fi
+		echo "${MODULE} image is on a browser."
+	fi
 }

@@ -167,7 +167,7 @@ EOF
 	fi
 
 	if [ "$IMAGE" = 1 ]; then
-	    echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+		echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
 		# open browser
 		if [[ $(uname) == "Linux" ]]; then
 			xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
