@@ -154,8 +154,6 @@ EOF
 		exit
 	}
 
-	echo "${MODULE} image is done! Open $OUTPUT_DIR/${MODULE}.png."
-
 	if [ "$BROWSER" = 1 ]; then
 		# open browser
 		if [[ $(uname) == "Linux" ]]; then
@@ -165,16 +163,4 @@ EOF
 		fi
 		echo "${MODULE} image is on a browser."
 	fi
-
-	if [ "$IMAGE" = 1 ]; then
-    echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
-		# open browser
-		if [[ $(uname) == "Linux" ]]; then
-			xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-		elif [[ $(uname) == "Darwin" ]]; then
-			open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-		fi
-	fi
-
-    echo "The image location is $OUTPUT_DIR/${MODULE}.png."
 }
