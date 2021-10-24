@@ -373,9 +373,9 @@ parser_definition_clip-animate() {
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
-    param TEXTTOP -v --texttop init:="TEXT TOP" -- "$VAR_TEXT"
-    param TEXTUNDER -u --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
+    param TEXTTOP -t --texttop init:="TEXT TOP" -- "$VAR_TEXT"
+    param TEXT -u --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
+    param TEXTUNDER -v --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }
