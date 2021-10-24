@@ -80,6 +80,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [rotate](https://github.com/shinokada/teffects/blob/master/docs/rotate.md)
 - [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
 - [shadow](https://github.com/shinokada/teffects/blob/master/docs/shadow.md)
+- [silentfilm](https://github.com/shinokada/teffects/blob/master/docs/silentfilm.md)
 - [smoky](https://github.com/shinokada/teffects/blob/master/docs/smoky.md)
 - [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
 - [squiggle](https://github.com/shinokada/teffects/blob/master/docs/squiggle.md)
