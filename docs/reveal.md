@@ -16,6 +16,6 @@ $ teffects reveal -u "More text here" -d "And more and more" -s 8 -b "#333" -f "
 
 ## Credit
 
-Retro is inspired by [Artur Sedlukh's GSAP text reveal animation](https://codepen.io/sedlukha/pen/eRoYMZ).
+Reveal is inspired by [Artur Sedlukh's GSAP text reveal animation](https://codepen.io/sedlukha/pen/eRoYMZ).
 
 
