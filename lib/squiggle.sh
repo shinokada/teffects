@@ -121,7 +121,7 @@ p {
   right: 0px;
   bottom: 0px;
   left: 0px;
-  opacity: 0.75;
+  opacity: ${BOPACITY};
 }
 </style>
 </head>

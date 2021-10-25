@@ -23,21 +23,36 @@ background: ${BCOLOR};
 letter-spacing: 5px;
 text-align:center;
 }
-.container {
-padding:${PADDING}px;
-}
+
 body {
-    font: 400 1em/1.5 "Neuton";
+    font: 400 ${TSIZE}vw/1.5 "Neuton";
     background: ${BCOLOR};
     color: ${COLOR};
     text-align: center;
     margin: 0;
 }
+
+.container {
+padding:${PADDING}px;
+}
+
+.container::before{
+    content: "";
+	background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: ${BOPACITY};
+}
+
  p {
 	 text-transform: uppercase;
 	 letter-spacing: 0.5em;
 	 display: inline-block;
-	 border: 4px double rgba(255, 255, 255, .25);
+	 border: 4px double rgba(255, 255, 255, .75);
 	 border-width: 4px 0;
 	 padding: 1.5em 0em;
 }
@@ -72,6 +87,7 @@ body {
 </style>
 </head>
 <body>
+<div class="container">
 <p>
   ${TEXTTOP}
   <span>
@@ -79,6 +95,7 @@ body {
   </span>
   ${TEXTUNDER}
 </p>
+</div>
 </body>
 </html>
 EOF

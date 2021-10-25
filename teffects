@@ -298,12 +298,13 @@ parser_definition_bubble() {
     param BCOLOR -b --bcolor init:="#3498db" -- "$VAR_BCOLOR Default: #3498db"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -i --back-img init:="https://source.unsplash.com/G8Fy93Jwfl8" -- "$VAR_BIMG Default: https://source.unsplash.com/G8Fy93Jwfl8"
+    param BIMG -m --back-img init:="https://source.unsplash.com/G8Fy93Jwfl8" -- "$VAR_BIMG Default: https://source.unsplash.com/G8Fy93Jwfl8"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="BUBBLE EFFECT" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
     disp :usage -h --help
 }
 
@@ -328,11 +329,12 @@ parser_definition_circulate() {
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -i --back-img init:="https://source.unsplash.com/3l3RwQdHRHg" -- "$VAR_BIMG Default: https://source.unsplash.com/3l3RwQdHRHg"
+    param BIMG -m --back-img init:="https://source.unsplash.com/3l3RwQdHRHg" -- "$VAR_BIMG Default: https://source.unsplash.com/3l3RwQdHRHg"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Circulating Text" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1."
     disp :usage -h --help
 }
 
@@ -373,13 +375,16 @@ parser_definition_clip-animate() {
     param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param BIMG -m --back-img init:="https://source.unsplash.com/JgOeRuGD_Y4" -- "$VAR_BIMG Default: https://source.unsplash.com/JgOeRuGD_Y4"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
+    param TSIZE -r --top-size init:=3 validate:number -- "$VAR_SIZE Default: 4vw."
+    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 8vw."
     param TEXTTOP -t --texttop init:="TEXT TOP" -- "$VAR_TEXT"
     param TEXT -u --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
     param TEXTUNDER -v --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=0.25 -- "$VAR_BOPACITY Default:0.25"
     disp :usage -h --help
 }
 
@@ -565,17 +570,17 @@ parser_definition_reveal() {
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
-    param BIMG -i --back-img init:="https://source.unsplash.com/gOq27RHoL3s" -- "$VAR_BIMG Default: https://source.unsplash.com/gOq27RHoL3s"
+    param BIMG -m --back-img init:="https://source.unsplash.com/gOq27RHoL3s" -- "$VAR_BIMG Default: https://source.unsplash.com/gOq27RHoL3s"
     param COLOR -c --color init:="#67CEC2" -- "$VAR_COLOR Default: #67CEC2"
     param TCOVER -f --first-cover init:="#DF4041" -- "First cover color. Default: #DF4041"
     param BCOVER -g --second-cover init:="#F6D242" -- "Second cover color. Default #F6D242"
-    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1."
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT1 -u --text init:="Teffects" -- "$VAR_TEXT"
     param TEXT2 -d --text init:="Reveal" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1"
     disp :usage -h --help
 }
 
@@ -674,11 +679,12 @@ parser_definition_smoky() {
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param BIMG -i --back-img init:="https://source.unsplash.com/1L71sPT5XKc" -- "$VAR_BIMG Default: https://source.unsplash.com/1L71sPT5XKc"
+    param BIMG -m --back-img init:="https://source.unsplash.com/1L71sPT5XKc" -- "$VAR_BIMG Default: https://source.unsplash.com/1L71sPT5XKc"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
     param TEXT -t --text init:="Teffects smoky" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
     disp :usage -h --help
 }
 
@@ -720,11 +726,12 @@ parser_definition_squiggle() {
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -i --back-img init:="https://source.unsplash.com/rydQVdwcgUQ" -- "$VAR_BIMG Default: https://source.unsplash.com/rydQVdwcgUQ"
+    param BIMG -m --back-img init:="https://source.unsplash.com/rydQVdwcgUQ" -- "$VAR_BIMG Default: https://source.unsplash.com/rydQVdwcgUQ"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
     param TEXT -t --text init:="Squiggley text" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
     disp :usage -h --help
 }
 
