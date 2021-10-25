@@ -67,7 +67,16 @@ EOF
 		elif [[ $(uname) == "Darwin" ]]; then
 			open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
 		fi
+		echo "The image location is $OUTPUT_DIR/${MODULE}.png."
 	fi
 
-	echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+	if [ "$BROWSER" = 1 ]; then
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		fi
+		echo "${MODULE} image is on a browser."
+	fi
 }

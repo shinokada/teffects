@@ -77,7 +77,7 @@ parser_definition() {
     cmd blob -- "Muliple colors blog style texts."
     cmd bubble -- "Bubble effect animation."
     cmd circulate -- "Circulating text animation."
-    cmd circulate2 -- "Circulating text animation."
+    cmd circulate1 -- "Circulating text animation."
     cmd clip -- "Clip image."
     cmd clip-animate -- "Animated clip texts."
     cmd covfete -- "Background clipping texts."
@@ -207,6 +207,7 @@ parser_definition_clip() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "Font weight. Choose from 500|700|900."
     param FONT_NAME -f --font init:="Luckiest Guy" -- "Font name. Default: Luckiest Guy."
@@ -229,6 +230,7 @@ parser_definition_3d() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#fbd7e3" -- "$VAR_BCOLOR Default: #fbd7e3"
     param COLOR -c --color init:="#fcdde8" -- "$VAR_COLOR Default: #fcdde8"
@@ -250,6 +252,7 @@ parser_definition_arcade() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
@@ -260,7 +263,7 @@ parser_definition_arcade() {
     disp :usage -h --help
 }
 
-# blob
+# blob animation
 parser_definition_blob() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} arcade [options] [arguments]" ''
@@ -269,7 +272,8 @@ parser_definition_blob() {
     msg -- 'All parameters accepts --param value and --param=value form.'
 
     msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -280,7 +284,7 @@ parser_definition_blob() {
     disp :usage -h --help
 }
 
-# bubble
+# bubble animation
 parser_definition_bubble() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} bubble [options] [arguments]" ''
@@ -290,6 +294,7 @@ parser_definition_bubble() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#3498db" -- "$VAR_BCOLOR Default: #3498db"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -302,7 +307,7 @@ parser_definition_bubble() {
     disp :usage -h --help
 }
 
-# circulate
+# circulate animation
 append_array() {
     eval "$1+=(\"\$OPTARG\")"
 }
@@ -317,6 +322,7 @@ parser_definition_circulate() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     array COLORS --colors init:'COLORS=()' var:VALUE
     param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
@@ -340,6 +346,7 @@ parser_definition_circulate1() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     array COLORS --colors init:'COLORS=()' var:VALUE
     param BCOLOR -b --bcolor init:="#030321" -- "$VAR_BCOLOR Default: #030321"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
@@ -361,7 +368,8 @@ parser_definition_clip-animate() {
     msg -- 'All parameters accepts --param value and --param=value form.'
 
     msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -384,6 +392,7 @@ parser_definition_covfete() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
     param COLOR -c --color init:="#f49e4c" -- "$VAR_COLOR Default: #f49e4c"
@@ -396,7 +405,7 @@ parser_definition_covfete() {
     disp :usage -h --help
 }
 
-# glow
+# glow animation
 parser_definition_glow() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} glow [options] [arguments]" ''
@@ -407,6 +416,7 @@ parser_definition_glow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
     param GCOLOR -g --gcolor init:="#00c2ba" -- "$VAR_GCOLOR Default: #00c2ba"
     param LPADDING -l --letterpadding init:="0 5px" -- "$VAR_LPADDING"
@@ -416,7 +426,7 @@ parser_definition_glow() {
     disp :usage -h --help
 }
 
-# jump
+# jump animation
 parser_definition_jump() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} jump [options] [arguments]" ''
@@ -426,6 +436,7 @@ parser_definition_jump() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="aquamarine" -- "$VAR_BCOLOR Default: aquamarine"
     param COLOR -c --color init:="#de38c8" -- "$VAR_COLOR Default: #de38c8"
     param LPADDING -l --letterpadding init:="0 7px" -- "$VAR_LPADDING"
@@ -444,6 +455,7 @@ parser_definition_layer() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#d52e3f" -- "$VAR_BCOLOR Default: #d52e3f"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -455,7 +467,7 @@ parser_definition_layer() {
     disp :usage -h --help
 }
 
-# neon
+# neon animation
 parser_definition_neon() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} neon [options] [arguments]" ''
@@ -465,6 +477,7 @@ parser_definition_neon() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -485,6 +498,7 @@ parser_definition_pinchy() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -505,6 +519,7 @@ parser_definition_popart() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
@@ -527,6 +542,7 @@ parser_definition_retro() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -536,7 +552,7 @@ parser_definition_retro() {
     disp :usage -h --help
 }
 
-# reveal
+# reveal animiation
 parser_definition_reveal() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} reveal [options] [arguments]" ''
@@ -547,6 +563,7 @@ parser_definition_reveal() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
     param BIMG -i --back-img init:="https://source.unsplash.com/gOq27RHoL3s" -- "$VAR_BIMG Default: https://source.unsplash.com/gOq27RHoL3s"
     param COLOR -c --color init:="#67CEC2" -- "$VAR_COLOR Default: #67CEC2"
@@ -562,7 +579,7 @@ parser_definition_reveal() {
     disp :usage -h --help
 }
 
-# rotate
+# rotate animation
 parser_definition_rotate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} rotate [options] [arguments]" ''
@@ -573,6 +590,7 @@ parser_definition_rotate() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
@@ -580,7 +598,7 @@ parser_definition_rotate() {
     disp :usage -h --help
 }
 
-# shade
+# shade animation
 parser_definition_shade() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} shade [options] [arguments]" ''
@@ -590,6 +608,7 @@ parser_definition_shade() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -609,6 +628,7 @@ parser_definition_shadow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag LOWER_CASE -l --lower -- "text-transform:lowercase"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -617,7 +637,7 @@ parser_definition_shadow() {
     disp :usage -h --help
 }
 
-# silentfilm
+# silentfilm animation
 parser_definition_silentfilm() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} silentfilm [options] [arguments]" ''
@@ -628,6 +648,7 @@ parser_definition_silentfilm() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
     param CONTWIDTH -c --cont-width init:="500" -- "$VAR_CONTWIDTH Default: 500"
@@ -639,7 +660,7 @@ parser_definition_silentfilm() {
     disp :usage -h --help
 }
 
-# smoky
+# smoky animation
 parser_definition_smoky() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} smoky [options] [arguments]" ''
@@ -650,6 +671,7 @@ parser_definition_smoky() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param BIMG -i --back-img init:="https://source.unsplash.com/1L71sPT5XKc" -- "$VAR_BIMG Default: https://source.unsplash.com/1L71sPT5XKc"
@@ -669,6 +691,7 @@ parser_definition_split() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
     param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
@@ -682,7 +705,7 @@ parser_definition_split() {
     disp :usage -h --help
 }
 
-# squiggle
+# squiggle animation
 parser_definition_squiggle() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} squiggle [options] [arguments]" ''
@@ -692,6 +715,7 @@ parser_definition_squiggle() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -713,6 +737,7 @@ parser_definition_sticker() {
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -726,7 +751,7 @@ parser_definition_sticker() {
     disp :usage -h --help
 }
 
-# stripe
+# stripe animation
 parser_definition_stripe() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} stripe [options] [arguments]" ''
@@ -736,6 +761,7 @@ parser_definition_stripe() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -756,6 +782,7 @@ parser_definition_strokeshadow() {
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BEHIND --behind -- "Set the color behind the text."
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
@@ -816,6 +843,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/circulate.sh"
         fn_circulate "$@"
+        ;;
+    circulate1)
+        eval "$(getoptions parser_definition_circulate1 parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/circulate1.sh"
+        fn_circulate1 "$@"
         ;;
     clip)
         eval "$(getoptions parser_definition_clip parse "$0")"

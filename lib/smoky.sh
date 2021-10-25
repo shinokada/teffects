@@ -155,6 +155,17 @@ ${SPAN_TEXT}
 </html>
 EOF
 
+	if [ "$IMAGE" = 1 ]; then
+		echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		fi
+		echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+	fi
+
 	if [ "$BROWSER" = 1 ]; then
 		# open browser
 		if [[ $(uname) == "Linux" ]]; then

@@ -8,12 +8,12 @@ ZOOM_TIME=$(echo "(${LEN}*${DELAY_CONST}+999)/1000" | bc)
 i=0
 SPAN=""
 while [ $i -lt $LEN ]; do
-    SPAN+="<span style="--i:$((i + 1))">${TEXT:$i:1}</span>"
-    i=$(($i + 1))
+  SPAN+="<span style="--i:$((i + 1))">${TEXT:$i:1}</span>"
+  i=$(($i + 1))
 done
 
 fn_jump() {
-    cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+  cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -73,13 +73,24 @@ fn_jump() {
 </html>
 EOF
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        fi
-        echo "${MODULE} image is on a browser."
+  if [ "$IMAGE" = 1 ]; then
+    echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
     fi
+    echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+  fi
+
+  if [ "$BROWSER" = 1 ]; then
+    # open browser
+    if [[ $(uname) == "Linux" ]]; then
+      xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+    elif [[ $(uname) == "Darwin" ]]; then
+      open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+    fi
+    echo "${MODULE} image is on a browser."
+  fi
 }
