@@ -18,4 +18,4 @@ $ teffects shade -t "Teffects Shade" -s 20 -e 600
 
 ## Credit
 
-[Shaded Text by Rafael González](https://codepen.io/rgg/pen/ozLzbz/)
+Shade is inspired by [Shaded Text by Rafael González](https://codepen.io/rgg/pen/ozLzbz/).

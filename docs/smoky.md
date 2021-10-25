@@ -16,5 +16,5 @@ $ teffects smoky -t "Teffects rocks"　-s 4
 
 ## Credit
 
-Circulate is inspired by [Bennett Feely's Smoky Text](https://codepen.io/bennettfeely/pen/lgybC).
+Smoky is inspired by [Bennett Feely's Smoky Text](https://codepen.io/bennettfeely/pen/lgybC).
 

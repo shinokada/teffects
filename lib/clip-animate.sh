@@ -64,7 +64,7 @@ padding:${PADDING}px;
 	 margin: 0 auto;
 	 text-shadow: 0 0 80px rgba(255, 255, 255, .5);
 	/* Clip Background Image */
-	 background: url(${script_dir}/assets/img/animated-text-fill.png) repeat-y;
+	 background: url(${script_dir}/assets/img/animated-text-fill-${ANIM_IMG}.png) repeat-y;
 	 -webkit-background-clip: text;
 	 background-clip: text;
 	/* Animate Background Image */

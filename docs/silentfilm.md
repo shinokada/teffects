@@ -16,6 +16,6 @@ $ teffects silentfilm
 
 ## Credit
 
-Retro is inspired by [Dimitra Vasilopoulou's Silent Movie Text Effect](https://codepen.io/mimikos/pen/QMjjzy).
+Silentfilm is inspired by [Dimitra Vasilopoulou's Silent Movie Text Effect](https://codepen.io/mimikos/pen/QMjjzy).
 
 

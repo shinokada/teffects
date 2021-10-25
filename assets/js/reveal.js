@@ -6,11 +6,11 @@ window.onload = function(){
     word  = document.querySelectorAll('.text__word');
   
   tl
-    .to(firstBg, 0.2, {scaleX:1})
-    .to(secBg, 0.2, {scaleX:1})
-    .to(word, 0.1, {opacity:1}, "-=0.1")  
-    .to(firstBg, 0.2, {scaleX:0})
-    .to(secBg, 0.2, {scaleX:0});
+    .to(firstBg, 0.6, {scaleX:1})
+    .to(secBg, 0.6, {scaleX:1})
+    .to(word, 0.2, {opacity:1}, "-=0.1")  
+    .to(firstBg, 0.6, {scaleX:0})
+    .to(secBg, 0.6, {scaleX:0});
   
   // document.querySelector('.restart').onclick = function() {tl.restart()};
 }

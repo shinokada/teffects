@@ -16,4 +16,4 @@ $ teffects shadow -t "Awesome"
 
 ## Credit
 
-[Styling Text with SVG (Second Shadow) by Code School](https://codepen.io/team/codeschool/pen/BKrRwg/)
+Shadow is inspired by [Styling Text with SVG (Second Shadow) by Code School](https://codepen.io/team/codeschool/pen/BKrRwg/).

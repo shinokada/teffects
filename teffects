@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.0.6"
+VERSION="1.0.7"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -362,6 +362,7 @@ parser_definition_circulate1() {
 }
 
 # clip-animate
+ANIM_TYPES='red | blue | purple'
 parser_definition_clip-animate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} clip-animate [options] [arguments]" ''
@@ -372,6 +373,7 @@ parser_definition_clip-animate() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
+    param ANIM_IMG --animate-image --pattern validate:anim_type pattern:"$ANIM_TYPES" init:="red" -- "Animated background select from red, blue, or purple. Default: red"
     param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -386,6 +388,14 @@ parser_definition_clip-animate() {
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     param BOPACITY -y --back-opacity init:=0.25 -- "$VAR_BOPACITY Default:0.25"
     disp :usage -h --help
+}
+anim_type() {
+    # Normalization only
+    case $OPTARG in
+    red) OPTARG="red" ;;
+    blue) OPTARG="blue" ;;
+    purple) OPTARG="purple" ;;
+    esac
 }
 
 # covfete
