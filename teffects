@@ -85,6 +85,7 @@ parser_definition() {
     cmd jump -- "Jumping text animation."
     cmd layer -- "Layered text-shadow effect."
     cmd neon -- "Neon light style text animation."
+    cmd new-neon -- "Neon light text animation."
     cmd pinchy -- "Pinchy style texts."
     cmd popart -- "Pop art style texts."
     cmd retro -- "Retro style texts."
@@ -121,6 +122,8 @@ Layered text-shadow effect
     $SCRIPT_NAME layer
 Neon light text
     $SCRIPT_NAME neon
+New-neon
+    $SCRIPT_NAME new-neon
 Pop art effect
     $SCRIPT_NAME popart 
 Retro banner: 
@@ -186,6 +189,8 @@ if [ -n "$(ls "$OUTPUT_DIR")" ]; then
     echo "Removing files in $OUTPUT_DIR."
     rm -- "$OUTPUT_DIR/"*.*
 fi
+
+ALIGN_TYPES='left | center | right'
 
 # clip
 font_type() {
@@ -254,7 +259,7 @@ parser_definition_arcade() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -274,7 +279,7 @@ parser_definition_blob() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
@@ -493,12 +498,35 @@ parser_definition_neon() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE  Default: 10vw."
+    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    disp :usage -h --help
+}
+
+# new-neon animation
+parser_definition_new-neon() {
+    setup REST help:usage abbr:true -- \
+        "Usage: ${2##*/} new-neon [options] [arguments]" ''
+
+    msg -- 'Creates an image with animated neon style text. This opens the default browser.'
+    msg -- 'All parameters accepts --param value and --param=value form.' ''
+
+    msg label:"OPTIONS" -- "DESCRIPTION"
+    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
+    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
+    param BCOLOR -b --bcolor init:="#090000" -- "$VAR_BCOLOR Default: #090000"
+    param NEON -n --neon init:=1 validate:number -- "Neon style from 1 to 9. Default: 1."
+    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
+    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
@@ -515,7 +543,7 @@ parser_definition_pinchy() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
@@ -536,7 +564,7 @@ parser_definition_popart() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
     param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -664,7 +692,7 @@ parser_definition_silentfilm() {
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
     param CONTWIDTH -c --cont-width init:="500" -- "$VAR_CONTWIDTH Default: 500"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -801,7 +829,7 @@ parser_definition_strokeshadow() {
     flag BEHIND --behind -- "Set the color behind the text."
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" -- "$VAR_ALIGN"
+    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
     param SCOLOR -c --color init:="#db2777" -- "Shadow color"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
@@ -924,6 +952,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/lib/neon.sh"
         fn_neon "$@"
+        ;;
+    new-neon)
+        eval "$(getoptions parser_definition_new-neon parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/lib/new-neon.sh"
+        fn_new-neon "$@"
         ;;
     pinchy)
         eval "$(getoptions parser_definition_pinchy parse "$0")"
