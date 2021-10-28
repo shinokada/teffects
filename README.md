@@ -9,6 +9,14 @@ Teffects automates creating header images for your articles, email, presentation
 
 ## Requirement
 
+- Bash version 5 or higher.
+
+    If you are using macOS:
+
+    ```sh
+    brew install bash
+    ```
+
 - Firefox: Teffects uses Firefox to take a screenshot.
 - To run the clip command you need [wkhtmlpdf/wkhtmltoimage](https://wkhtmltopdf.org/downloads.html).
 
