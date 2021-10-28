@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.1.0"
+VERSION="1.1.1"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -101,6 +101,12 @@ if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
 elif [[ $(uname) == "Darwin" ]]; then
     FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
+fi
+
+# check bash version
+if ((BASH_VERSINFO[0] < 5)); then
+    printf '%s\n' "Error: This requires Bash v5.0 or higher. You have version $BASH_VERSION." 1>&2
+    exit 2
 fi
 
 # check if Firefox is running. If it is, ask if the script can close it.
