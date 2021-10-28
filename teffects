@@ -60,96 +60,36 @@ VAR_TEXT="Your text to print."
 VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
 
 # shellcheck disable=SC1091
-. "${script_dir}/lib/getoptions.sh"
-
-# shellcheck disable=SC1083
-parser_definition() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} [command] [options...] [arguments...]"
-    msg -- '' 'Options:'
-    disp :usage -h --help
-    disp VERSION --version
-
-    msg -- '' 'Commands: '
-    msg -- 'Use command -h for a command help.'
-    cmd 3d -- "3D letters style texts."
-    cmd arcade -- "Arcade typography style texts."
-    cmd blob -- "Muliple colors blog style texts."
-    cmd bubble -- "Bubble effect animation."
-    cmd circulate -- "Circulating text animation."
-    cmd circulate1 -- "Circulating text animation."
-    cmd clip -- "Clip image."
-    cmd clip-animate -- "Animated clip texts."
-    cmd covfete -- "Background clipping texts."
-    cmd glow -- "Glowing text animation."
-    cmd jump -- "Jumping text animation."
-    cmd layer -- "Layered text-shadow effect."
-    cmd neon -- "Neon light style text animation."
-    cmd new-neon -- "Neon light text animation."
-    cmd pinchy -- "Pinchy style texts."
-    cmd popart -- "Pop art style texts."
-    cmd retro -- "Retro style texts."
-    cmd reveal -- "Reveal text animation."
-    cmd rotate -- "Rotating text animation."
-    cmd shade -- "Shaded text animation."
-    cmd shadow -- "Styling with shadow lines"
-    cmd silentfilm -- "Silent movie text effect animation."
-    cmd smoky -- "Smoky text animation."
-    cmd squiggle -- "Squiggly text animation."
-    cmd split -- "Split style texts."
-    cmd sticker -- "Sticker style texts."
-    cmd stripe -- "Stripe, clip, and gradient text animation."
-    cmd strokeshadow -- "Strokes and shadows effect texts."
-
-    msg -- '' "Examples:
-Clip an image 
-    $SCRIPT_NAME clip
-3D letters
-    $SCRIPT_NAME 3d
-Arcade typography
-    $SCRIPT_NAME arcade
-Blob text with muliple colors
-    $SCRIPT_NAME blob
-Bubble effect
-    $SCRIPT_NAME bubble
-Circulating texts
-    $SCRIPT_NAME circulate
-Glowing texts
-    $SCRIPT_NAME glow
-Jumping texts
-    $SCRIPT_NAME jump
-Layered text-shadow effect
-    $SCRIPT_NAME layer
-Neon light text
-    $SCRIPT_NAME neon
-New-neon
-    $SCRIPT_NAME new-neon
-Pop art effect
-    $SCRIPT_NAME popart 
-Retro banner: 
-    $SCRIPT_NAME retro
-Styling with shadow lines
-    $SCRIPT_NAME shadow
-Smoky text animation
-    $SCRIPT_NAME smoky
-Split text:
-    $SCRIPT_NAME split
-Squiggly text:
-    $SCRIPT_NAME squiggle
-Sticker text: 
-    $SCRIPT_NAME sticker
-Stripe text:
-    $SCRIPT_NAME stripe
-Strokes and shadows effects
-    $SCRIPT_NAME strokeshadow
-Silent movie text effect animation
-    $SCRIPT_NAME talkie
-
-Display the version:
-    $SCRIPT_NAME --version
-Display help:
-    $SCRIPT_NAME -h | --help
-"
+{
+    . "${script_dir}/lib/getoptions.sh"
+    . "${script_dir}/lib/main_definition.sh"
+    . "${script_dir}/lib/3d_definition.sh"
+    . "${script_dir}/lib/arcade_definition.sh"
+    . "${script_dir}/lib/blob_definition.sh"
+    . "${script_dir}/lib/bubble_definition.sh"
+    . "${script_dir}/lib/circulate_definition.sh"
+    . "${script_dir}/lib/circulate1_definition.sh"
+    . "${script_dir}/lib/clip_definition.sh"
+    . "${script_dir}/lib/covfete_definition.sh"
+    . "${script_dir}/lib/glow_definition.sh"
+    . "${script_dir}/lib/jump_definition.sh"
+    . "${script_dir}/lib/layer_definition.sh"
+    . "${script_dir}/lib/neon_definition.sh"
+    . "${script_dir}/lib/new-neon_definition.sh"
+    . "${script_dir}/lib/pinchy_definition.sh"
+    . "${script_dir}/lib/popart_definition.sh"
+    . "${script_dir}/lib/retro_definition.sh"
+    . "${script_dir}/lib/reveal_definition.sh"
+    . "${script_dir}/lib/rotate_definition.sh"
+    . "${script_dir}/lib/shade_definition.sh"
+    . "${script_dir}/lib/shadow_definition.sh"
+    . "${script_dir}/lib/silentfilm_definition.sh"
+    . "${script_dir}/lib/smoky_definition.sh"
+    . "${script_dir}/lib/split_definition.sh"
+    . "${script_dir}/lib/squiggle_definition.sh"
+    . "${script_dir}/lib/sticker_definition.sh"
+    . "${script_dir}/lib/stripe_definition.sh"
+    . "${script_dir}/lib/strokeshadow_definition.sh"
 }
 
 eval "$(getoptions parser_definition parse "$0") exit 1"
@@ -204,196 +144,6 @@ font_type() {
 FONT_ATT=''
 FONT_WEIGHT='500 | 700 | 900'
 
-parser_definition_clip() {
-    setup REST plus:true help:usage abbr:true -- \
-        "Usage: ${2##*/} clip [options...] [arguments...]" ''
-
-    msg -- 'Creates cliped texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param WEIGHT -b --bold validate:font_type pattern:"$FONT_WEIGHT" -- "Font weight. Choose from 500|700|900."
-    param FONT_NAME -f --font init:="Luckiest Guy" -- "Font name. Default: Luckiest Guy."
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BKIMG -i --image init:="${script_dir}/images/flower.jpg" -- "Background image. Use an absolute path. Default flower.jpg"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=120 validate:number -- "$VAR_SIZE Default: 120px."
-    param TEXT -t --text init:="It's Friday." -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# 3d
-parser_definition_3d() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} 3d [options] [arguments]" ''
-
-    msg -- 'Creates 3d texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#fbd7e3" -- "$VAR_BCOLOR Default: #fbd7e3"
-    param COLOR -c --color init:="#fcdde8" -- "$VAR_COLOR Default: #fcdde8"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Three D" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# arcade
-parser_definition_arcade() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} arcade [options] [arguments]" ''
-
-    msg -- 'Creates arcade texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param TEXT -t --text init:="arcade" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# blob animation
-parser_definition_blob() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} arcade [options] [arguments]" ''
-
-    msg -- 'Creates blob texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.'
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="THE<br>BLOB" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# bubble animation
-parser_definition_bubble() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} bubble [options] [arguments]" ''
-
-    msg -- 'Creates animated bubble effect.'
-    msg -- 'All parameters accepts --param value and --param=value form.'
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#3498db" -- "$VAR_BCOLOR Default: #3498db"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -m --back-img init:="https://source.unsplash.com/G8Fy93Jwfl8" -- "$VAR_BIMG Default: https://source.unsplash.com/G8Fy93Jwfl8"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="BUBBLE EFFECT" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
-    disp :usage -h --help
-}
-
-# circulate animation
-append_array() {
-    eval "$1+=(\"\$OPTARG\")"
-}
-
-parser_definition_circulate() {
-    array() { param ":append_array $@"; }
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} circulate [options] [arguments]" ''
-
-    msg -- 'Creates circulating texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    array COLORS --colors init:'COLORS=()' var:VALUE
-    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -m --back-img init:="https://source.unsplash.com/3l3RwQdHRHg" -- "$VAR_BIMG Default: https://source.unsplash.com/3l3RwQdHRHg"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Circulating Text" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1."
-    disp :usage -h --help
-}
-
-parser_definition_circulate1() {
-    array() { param ":append_array $@"; }
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} circulate1 [options] [arguments]" ''
-
-    msg -- 'Creates circulating texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    array COLORS --colors init:'COLORS=()' var:VALUE
-    param BCOLOR -b --bcolor init:="#030321" -- "$VAR_BCOLOR Default: #030321"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Circulating text" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# clip-animate
-ANIM_TYPES='red | blue | purple'
-parser_definition_clip-animate() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} clip-animate [options] [arguments]" ''
-
-    msg -- 'Creates animated clip texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.'
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ANIM_IMG --animate-image --pattern validate:anim_type pattern:"$ANIM_TYPES" init:="red" -- "Animated background select from red, blue, or purple. Default: red"
-    param BCOLOR -b --bcolor init:="#090d00" -- "$VAR_BCOLOR Default: #090d00"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -m --back-img init:="https://source.unsplash.com/JgOeRuGD_Y4" -- "$VAR_BIMG Default: https://source.unsplash.com/JgOeRuGD_Y4"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param TSIZE -r --top-size init:=3 validate:number -- "$VAR_SIZE Default: 4vw."
-    param SIZE -s --size init:=8 validate:number -- "$VAR_SIZE Default: 8vw."
-    param TEXTTOP -t --texttop init:="TEXT TOP" -- "$VAR_TEXT"
-    param TEXT -u --text init:="ANIMATED TEXT" -- "$VAR_TEXT"
-    param TEXTUNDER -v --textunder init:="TEXT UNDER" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=0.25 -- "$VAR_BOPACITY Default:0.25"
-    disp :usage -h --help
-}
 anim_type() {
     # Normalization only
     case $OPTARG in
@@ -401,444 +151,6 @@ anim_type() {
     blue) OPTARG="blue" ;;
     purple) OPTARG="purple" ;;
     esac
-}
-
-# covfete
-parser_definition_covfete() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} covfete [options] [arguments]" ''
-
-    msg -- 'Covfete texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#ab3428" -- "$VAR_BCOLOR Default: #ab3428"
-    param COLOR -c --color init:="#f49e4c" -- "$VAR_COLOR Default: #f49e4c"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=15 validate:number -- "$VAR_SIZE Default: 15vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH."
-    disp :usage -h --help
-}
-
-# glow animation
-parser_definition_glow() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} glow [options] [arguments]" ''
-
-    msg -- 'Creates animated glowing texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects glow -t "Teffects Glow Effects" -l "2px" -p 150px -g "#ff3299"' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
-    param GCOLOR -g --gcolor init:="#00c2ba" -- "$VAR_GCOLOR Default: #00c2ba"
-    param LPADDING -l --letterpadding init:="0 5px" -- "$VAR_LPADDING"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
-    param TEXT -t --text init:="Teffects glow" -- "$VAR_TEXT"
-    disp :usage -h --help
-}
-
-# jump animation
-parser_definition_jump() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} jump [options] [arguments]" ''
-
-    msg -- 'Creates animated glowing texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="aquamarine" -- "$VAR_BCOLOR Default: aquamarine"
-    param COLOR -c --color init:="#de38c8" -- "$VAR_COLOR Default: #de38c8"
-    param LPADDING -l --letterpadding init:="0 7px" -- "$VAR_LPADDING"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
-    param TEXT -t --text init:="TEFFECTS JUMP" -- "$VAR_TEXT"
-    disp :usage -h --help
-}
-
-# layer
-parser_definition_layer() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} layer [options] [arguments]" ''
-
-    msg -- 'Creates layered texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#d52e3f" -- "$VAR_BCOLOR Default: #d52e3f"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# neon animation
-parser_definition_neon() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} neon [options] [arguments]" ''
-
-    msg -- 'Creates an image with animated neon style text. This opens the default browser.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#192824" -- "$VAR_BCOLOR Default: #192824"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE  Default: 10vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# new-neon animation
-parser_definition_new-neon() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} new-neon [options] [arguments]" ''
-
-    msg -- 'Creates an image with animated neon style text. This opens the default browser.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#090000" -- "$VAR_BCOLOR Default: #090000"
-    param NEON -n --neon init:=1 validate:number -- "Neon style from 1 to 9. Default: 1."
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE  Default: 10vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# pinchy
-parser_definition_pinchy() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} pinchy [options] [arguments]" ''
-
-    msg -- 'Creates pinchy texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# popart
-parser_definition_popart() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} popart [options] [arguments]" ''
-
-    msg -- 'Creates pop art texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#faff04" -- "$VAR_BCOLOR Default: #faff04"
-    param COLOR -c --color init:="#ff1f8f" -- "$VAR_COLOR Default: #ff1f8f"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-
-    disp :usage -h --help
-}
-
-# retro
-parser_definition_retro() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} retro [options] [arguments]" ''
-
-    msg -- 'Creates retro texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param SUB_TEXT -s --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
-    param TEXT -t --text init:="RETRO" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# reveal animiation
-parser_definition_reveal() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} reveal [options] [arguments]" ''
-
-    msg -- 'Creates animaged revealing texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
-    param BIMG -m --back-img init:="https://source.unsplash.com/gOq27RHoL3s" -- "$VAR_BIMG Default: https://source.unsplash.com/gOq27RHoL3s"
-    param COLOR -c --color init:="#67CEC2" -- "$VAR_COLOR Default: #67CEC2"
-    param TCOVER -f --first-cover init:="#DF4041" -- "First cover color. Default: #DF4041"
-    param BCOVER -g --second-cover init:="#F6D242" -- "Second cover color. Default #F6D242"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT1 -u --text init:="Teffects" -- "$VAR_TEXT"
-    param TEXT2 -d --text init:="Reveal" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1"
-    disp :usage -h --help
-}
-
-# rotate animation
-parser_definition_rotate() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} rotate [options] [arguments]" ''
-
-    msg -- 'Creates animated rotating texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
-    param TEXT -t --text init:="Teffects can" -- "$VAR_TEXT"
-    disp :usage -h --help
-}
-
-# shade animation
-parser_definition_shade() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} shade [options] [arguments]" ''
-
-    msg -- 'Creates animated shade-style texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:=" #d0d0d0" -- "$VAR_BCOLOR Default: #d0d0d0"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE  Default: 10vw."
-    param TEXT -t --text init:="SHADE" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# shadow
-parser_definition_shadow() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} shadow [options] [arguments]" ''
-
-    msg -- 'Creates shadow styling texts. Limited to max 3-4 words. Width and height are fixed to 1200x400.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag LOWER_CASE -l --lower -- "text-transform:lowercase"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#ebe7e0" -- "$VAR_BCOLOR Default: #ebe7e0"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw"
-    param TEXT -t --text init:="TEFFECTS SHADOW" -- "$VAR_TEXT Default: Teffects SVG"
-    disp :usage -h --help
-}
-
-# silentfilm animation
-parser_definition_silentfilm() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} silentfilm [options] [arguments]" ''
-
-    msg -- 'Silent movie text effect animation.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#fff" -- "$VAR_BCOLOR Default: #fff"
-    param CONTWIDTH -c --cont-width init:="500" -- "$VAR_CONTWIDTH Default: 500"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=4 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -u --text init:="Bertie Van Alystyne, Esquire, his father's hope and pride, breakfasts early &#8213; in the afternoon." -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# smoky animation
-parser_definition_smoky() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} smoky [options] [arguments]" ''
-
-    msg -- 'Creates animated smoky texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param BIMG -m --back-img init:="https://source.unsplash.com/1L71sPT5XKc" -- "$VAR_BIMG Default: https://source.unsplash.com/1L71sPT5XKc"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw."
-    param TEXT -t --text init:="Teffects smoky" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
-    disp :usage -h --help
-}
-
-# split
-parser_definition_split() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} split [options] [arguments]" ''
-
-    msg -- 'Creates split texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#000" -- "$VAR_BCOLOR Default: #000"
-    param BOCOLOR -o --bocolor init:="#eee" -- "Body color"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="SPLIT" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# squiggle animation
-parser_definition_squiggle() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} squiggle [options] [arguments]" ''
-
-    msg -- 'Creates squiggley texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
-    param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param BIMG -m --back-img init:="https://source.unsplash.com/rydQVdwcgUQ" -- "$VAR_BIMG Default: https://source.unsplash.com/rydQVdwcgUQ"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Squiggley text" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
-    disp :usage -h --help
-}
-
-# sticker
-parser_definition_sticker() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} sticker [options] [arguments]" ''
-
-    msg -- 'Creates sticker texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#eee" -- "$VAR_BCOLOR Default: #eee"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param LSIZE -l --lsize init:=14 -- "Top text font-size. Default: 14vw"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param SUB_TEXT -u --subtext init:="Text Effect" -- "Subtext. $VAR_TEXT"
-    param TEXT -t --text init:="STICKER" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# stripe animation
-parser_definition_stripe() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} stripe [options] [arguments]" ''
-
-    msg -- 'Creates animaged stripe-texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
-    param BCOLOR -b --bcolor init:="#ffed94" -- "$VAR_BCOLOR Default: #ffed94"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw"
-    param TEXT -t --text init:="STRIPE" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
-}
-
-# strokeshadow
-parser_definition_strokeshadow() {
-    setup REST help:usage abbr:true -- \
-        "Usage: ${2##*/} strokeshadow [options] [arguments]" ''
-
-    msg -- 'Creates stroke-shadow texts.'
-    msg -- 'All parameters accepts --param value and --param=value form.' ''
-
-    msg label:"OPTIONS" -- "DESCRIPTION"
-    flag BEHIND --behind -- "Set the color behind the text."
-    flag BROWSER -o +o --{no-}open on:1 no:0 init:@no -- "$VAR_BROWSER"
-    flag IMAGE -i +i --{no-}image on:1 no:0 init:@on -- "$VAR_IMAGE"
-    param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#fef3c7" -- "$VAR_BCOLOR Default: #fef3c7"
-    param SCOLOR -c --color init:="#db2777" -- "Shadow color"
-    param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
-    param SIZE -s --size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param TEXT -t --text init:="Stroke & shadow" -- "$VAR_TEXT"
-    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
-    disp :usage -h --help
 }
 
 number() {
@@ -854,7 +166,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/3d.sh"
+        . "${script_dir}/src/3d.sh"
         fn_3d "$@"
         ;;
     arcade)
@@ -862,7 +174,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/arcade.sh"
+        . "${script_dir}/src/arcade.sh"
         fn_arcade "$@"
         ;;
     blob)
@@ -870,7 +182,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/blob.sh"
+        . "${script_dir}/src/blob.sh"
         fn_blob "$@"
         ;;
     bubble)
@@ -878,7 +190,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/bubble.sh"
+        . "${script_dir}/src/bubble.sh"
         fn_bubble "$@"
         ;;
     circulate)
@@ -886,7 +198,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/circulate.sh"
+        . "${script_dir}/src/circulate.sh"
         fn_circulate "$@"
         ;;
     circulate1)
@@ -894,7 +206,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/circulate1.sh"
+        . "${script_dir}/src/circulate1.sh"
         fn_circulate1 "$@"
         ;;
     clip)
@@ -902,7 +214,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/clip.sh"
+        . "${script_dir}/src/clip.sh"
         fn_clip "$@"
         ;;
     clip-animate)
@@ -910,7 +222,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/clip-animate.sh"
+        . "${script_dir}/src/clip-animate.sh"
         fn_clip-animate "$@"
         ;;
     covfete)
@@ -918,7 +230,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/covfete.sh"
+        . "${script_dir}/src/covfete.sh"
         fn_covfete "$@"
         ;;
     glow)
@@ -926,7 +238,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/glow.sh"
+        . "${script_dir}/src/glow.sh"
         fn_glow "$@"
         ;;
     jump)
@@ -934,7 +246,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/jump.sh"
+        . "${script_dir}/src/jump.sh"
         fn_jump "$@"
         ;;
     layer)
@@ -942,7 +254,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/layer.sh"
+        . "${script_dir}/src/layer.sh"
         fn_layer "$@"
         ;;
     neon)
@@ -950,7 +262,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/neon.sh"
+        . "${script_dir}/src/neon.sh"
         fn_neon "$@"
         ;;
     new-neon)
@@ -958,7 +270,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/new-neon.sh"
+        . "${script_dir}/src/new-neon.sh"
         fn_new-neon "$@"
         ;;
     pinchy)
@@ -966,7 +278,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/pinchy.sh"
+        . "${script_dir}/src/pinchy.sh"
         fn_pinchy "$@"
         ;;
     popart)
@@ -974,7 +286,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/popart.sh"
+        . "${script_dir}/src/popart.sh"
         fn_popart "$@"
         ;;
     retro)
@@ -982,7 +294,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/retro.sh"
+        . "${script_dir}/src/retro.sh"
         fn_retro "$@"
         ;;
     rotate)
@@ -990,7 +302,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/rotate.sh"
+        . "${script_dir}/src/rotate.sh"
         fn_rotate "$@"
         ;;
     reveal)
@@ -998,7 +310,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/reveal.sh"
+        . "${script_dir}/src/reveal.sh"
         fn_reveal "$@"
         ;;
     shade)
@@ -1006,7 +318,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/shade.sh"
+        . "${script_dir}/src/shade.sh"
         fn_shade "$@"
         ;;
     shadow)
@@ -1014,7 +326,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/shadow.sh"
+        . "${script_dir}/src/shadow.sh"
         fn_shadow "$@"
         ;;
     silentfilm)
@@ -1022,7 +334,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/silentfilm.sh"
+        . "${script_dir}/src/silentfilm.sh"
         fn_silentfilm "$@"
         ;;
     smoky)
@@ -1030,7 +342,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/smoky.sh"
+        . "${script_dir}/src/smoky.sh"
         fn_smoky "$@"
         ;;
     split)
@@ -1038,7 +350,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/split.sh"
+        . "${script_dir}/src/split.sh"
         fn_split "$@"
         ;;
     squiggle)
@@ -1046,7 +358,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/squiggle.sh"
+        . "${script_dir}/src/squiggle.sh"
         fn_squiggle "$@"
         ;;
     sticker)
@@ -1054,7 +366,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/sticker.sh"
+        . "${script_dir}/src/sticker.sh"
         fn_sticker "$@"
         ;;
     stripe)
@@ -1062,7 +374,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/stripe.sh"
+        . "${script_dir}/src/stripe.sh"
         fn_stripe "$@"
         ;;
     strokeshadow)
@@ -1070,7 +382,7 @@ if [ $# -gt 0 ]; then
         parse "$@"
         eval "set -- $REST"
         # shellcheck disable=SC1091
-        . "${script_dir}/lib/strokeshadow.sh"
+        . "${script_dir}/src/strokeshadow.sh"
         fn_strokeshadow "$@"
         ;;
     --) ;; # no subcommand, arguments only
