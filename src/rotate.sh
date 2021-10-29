@@ -1,20 +1,7 @@
 MODULE="rotate"
 TITLE=${MODULE^^}
 
-# for line-height
-# if [ "$SIZE" -gt 0 ]; then
-#     LHEIGHT=$(echo "$SIZE*1.1" | bc)
-#     LINE_HEIGHT="${LHEIGHT%%.*}"
-# fi
-
 WORD_COLORS=(wisteria belize pomegranate green midnight)
-
-# n=$((n - 1))
-# echo "${WORD_COLORS[$n]}"
-# for i in "${WORD_COLORS[@]}"; do
-#     echo $i
-# done
-# echo "${#@}"
 
 SPAN_TEXT=''
 if ((${#@} > 0)); then

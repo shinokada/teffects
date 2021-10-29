@@ -28,7 +28,8 @@ parser_definition() {
     cmd reveal -- "Reveal text animation."
     cmd rotate -- "Rotating text animation."
     cmd shade -- "Shaded text animation."
-    cmd shadow -- "Styling with shadow lines"
+    cmd shadow -- "Styling with shadow lines."
+    cmd shadow2 -- "Shadow style effects."
     cmd silentfilm -- "Silent movie text effect animation."
     cmd smoky -- "Smoky text animation."
     cmd squiggle -- "Squiggly text animation."
@@ -36,6 +37,7 @@ parser_definition() {
     cmd sticker -- "Sticker style texts."
     cmd stripe -- "Stripe, clip, and gradient text animation."
     cmd strokeshadow -- "Strokes and shadows effect texts."
+    cmd transmission -- "Type-writer effect."
 
     msg -- '' "Examples:
 Clip an image 
@@ -80,6 +82,8 @@ Strokes and shadows effects
     $SCRIPT_NAME strokeshadow
 Silent movie text effect animation
     $SCRIPT_NAME talkie
+Type-writer effect
+    $SCRIPT_NAME transmission
 
 Display the version:
     $SCRIPT_NAME --version

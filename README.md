@@ -81,6 +81,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [jump](https://github.com/shinokada/teffects/blob/master/docs/jump.md)
 - [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
 - [neon](https://github.com/shinokada/teffects/blob/master/docs/neon.md)
+- [new-neon](https://github.com/shinokada/teffects/blob/master/docs/new-neon.md)
 - [pinchy](https://github.com/shinokada/teffects/blob/master/docs/pinchy.md)
 - [popart](https://github.com/shinokada/teffects/blob/master/docs/popart.md)
 - [retro](https://github.com/shinokada/teffects/blob/master/docs/retro.md)
@@ -95,6 +96,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [sticker](https://github.com/shinokada/teffects/blob/master/docs/sticker.md)
 - [stripe](https://github.com/shinokada/teffects/blob/master/docs/stripe.md)
 - [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
+- [transmission](https://github.com/shinokada/teffects/blob/master/docs/transmission.md)
 
 ## Reference
 

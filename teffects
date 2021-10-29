@@ -57,6 +57,8 @@ VAR_LPADDING="Letter padding. Default: 10px. e.g. 5px 10px."
 VAR_PADDING="Container padding. Default: 100px. e.g. 50px 100px."
 VAR_SIZE="Font-size. Use a number without a unit."
 VAR_TEXT="Your text to print."
+VAR_TTEXT="Title text to print."
+VAR_STEXT="Sub text to print."
 VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
 
 # shellcheck disable=SC1091
@@ -83,6 +85,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/rotate_definition.sh"
     . "${script_dir}/lib/shade_definition.sh"
     . "${script_dir}/lib/shadow_definition.sh"
+    . "${script_dir}/lib/shadow2_definition.sh"
     . "${script_dir}/lib/silentfilm_definition.sh"
     . "${script_dir}/lib/smoky_definition.sh"
     . "${script_dir}/lib/split_definition.sh"
@@ -90,6 +93,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/sticker_definition.sh"
     . "${script_dir}/lib/stripe_definition.sh"
     . "${script_dir}/lib/strokeshadow_definition.sh"
+    . "${script_dir}/lib/transmission_definition.sh"
 }
 
 eval "$(getoptions parser_definition parse "$0") exit 1"
@@ -335,6 +339,14 @@ if [ $# -gt 0 ]; then
         . "${script_dir}/src/shadow.sh"
         fn_shadow "$@"
         ;;
+    shadow2)
+        eval "$(getoptions parser_definition_shadow2 parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/shadow2.sh"
+        fn_shadow2 "$@"
+        ;;
     silentfilm)
         eval "$(getoptions parser_definition_silentfilm parse "$0")"
         parse "$@"
@@ -390,6 +402,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/strokeshadow.sh"
         fn_strokeshadow "$@"
+        ;;
+    transmission)
+        eval "$(getoptions parser_definition_transmission parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/transmission.sh"
+        fn_transmission "$@"
         ;;
     --) ;; # no subcommand, arguments only
     esac
