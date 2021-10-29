@@ -73,6 +73,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/circulate1_definition.sh"
     . "${script_dir}/lib/clip_definition.sh"
     . "${script_dir}/lib/covfete_definition.sh"
+    . "${script_dir}/lib/dashed-shadow_definition.sh"
     . "${script_dir}/lib/glow_definition.sh"
     . "${script_dir}/lib/jump_definition.sh"
     . "${script_dir}/lib/layer_definition.sh"
@@ -242,6 +243,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/covfete.sh"
         fn_covfete "$@"
+        ;;
+    dashed-shadow)
+        eval "$(getoptions parser_definition_dashed-shadow parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/dashed-shadow.sh"
+        fn_dashed-shadow "$@"
         ;;
     glow)
         eval "$(getoptions parser_definition_glow parse "$0")"

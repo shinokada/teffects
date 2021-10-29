@@ -17,6 +17,7 @@ parser_definition() {
     cmd clip -- "Clip image."
     cmd clip-animate -- "Animated clip texts."
     cmd covfete -- "Background clipping texts."
+    cmd dashed-shadow -- "Dashed-shadow animation effects."
     cmd glow -- "Glowing text animation."
     cmd jump -- "Jumping text animation."
     cmd layer -- "Layered text-shadow effect."
@@ -52,6 +53,8 @@ Bubble effect
     $SCRIPT_NAME bubble
 Circulating texts
     $SCRIPT_NAME circulate
+Dashed-shadow effects
+    $SCRIPT_NAME
 Glowing texts
     $SCRIPT_NAME glow
 Jumping texts

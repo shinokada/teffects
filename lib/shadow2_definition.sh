@@ -1,12 +1,11 @@
 # shadow2
-
 SHADOW_TYPES='elegant | deep | inset | retro | long'
 
 parser_definition_shadow2() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} shadow [options] [arguments]" ''
 
-    msg -- 'Creates shadow styling texts. Limited to max 3-4 words. Width and height are fixed to 1200x400.'
+    msg -- 'Creates shadow styling texts.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"

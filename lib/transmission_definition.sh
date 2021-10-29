@@ -3,9 +3,8 @@ parser_definition_transmission() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} transmission [options] [arguments]" ''
 
-    msg -- 'Creates animated rotating texts.'
+    msg -- 'Creates type-writer style animation.'
     msg -- 'All parameters accepts --param value and --param=value form.' ''
-    msg -- 'Example: teffects rotate -t "I" "speak English" "can not fly" "like programming"' ''
 
     msg label:"OPTIONS" -- "DESCRIPTION"
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
