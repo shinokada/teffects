@@ -1,10 +1,11 @@
 # Neon
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-7.png"/>
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-8.png"/>
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-9.png"/>
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.gif"/>
+<img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.png"/>
+<img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-7.png"/>
+<img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-8.png"/>
+<img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon-9.png"/>
+<img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.gif"/>
 </p>
 
 ## Options
