@@ -1,7 +1,11 @@
 # Shadow2
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow2.png" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow-default.png"/>
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow-deep.png"/>
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow-inset.png"/>
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow-retro.png"/>
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/shadow-long.png"/>
 </p>
 
 ## Options

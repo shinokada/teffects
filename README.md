@@ -70,6 +70,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 ## More details
 
 - [3d](https://github.com/shinokada/teffects/blob/master/docs/3d.md)
+- [animate](https://github.com/shinokada/teffects/blob/master/docs/animate.md)
 - [arcade](https://github.com/shinokada/teffects/blob/master/docs/arcade.md)
 - [blob](https://github.com/shinokada/teffects/blob/master/docs/blob.md)
 - [bubble](https://github.com/shinokada/teffects/blob/master/docs/bubble.md)
@@ -77,6 +78,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [clip-animate](https://github.com/shinokada/teffects/blob/master/docs/clip-animate.md)
 - [clip](https://github.com/shinokada/teffects/blob/master/docs/clip.md)
 - [covfete](https://github.com/shinokada/teffects/blob/master/docs/covfete.md)
+- [dashed-shadow](https://github.com/shinokada/teffects/blob/master/docs/dashed-shadow.md)
 - [glow](https://github.com/shinokada/teffects/blob/master/docs/glow.md)
 - [jump](https://github.com/shinokada/teffects/blob/master/docs/jump.md)
 - [layer](https://github.com/shinokada/teffects/blob/master/docs/layer.md)
@@ -89,6 +91,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [rotate](https://github.com/shinokada/teffects/blob/master/docs/rotate.md)
 - [shade](https://github.com/shinokada/teffects/blob/master/docs/shade.md)
 - [shadow](https://github.com/shinokada/teffects/blob/master/docs/shadow.md)
+- [shadow2](https://github.com/shinokada/teffects/blob/master/docs/shadow2.md)
 - [silentfilm](https://github.com/shinokada/teffects/blob/master/docs/silentfilm.md)
 - [smoky](https://github.com/shinokada/teffects/blob/master/docs/smoky.md)
 - [split](https://github.com/shinokada/teffects/blob/master/docs/split.md)
@@ -97,6 +100,7 @@ $ teffects clip -d -t "Amazing Heading" ~/Downloads
 - [stripe](https://github.com/shinokada/teffects/blob/master/docs/stripe.md)
 - [strokeshadow](https://github.com/shinokada/teffects/blob/master/docs/strokeshadow.md)
 - [transmission](https://github.com/shinokada/teffects/blob/master/docs/transmission.md)
+- [type](https://github.com/shinokada/teffects/blob/master/docs/type.md)
 
 ## Reference
 
