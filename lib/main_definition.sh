@@ -9,6 +9,7 @@ parser_definition() {
     msg -- '' 'Commands: '
     msg -- 'Use command -h for a command help.'
     cmd 3d -- "3D letters style texts."
+    cmd animate -- "Animation (balance, shrink, fall, rotate, extend) effects."
     cmd arcade -- "Arcade typography style texts."
     cmd blob -- "Muliple colors blog style texts."
     cmd bubble -- "Bubble effect animation."
@@ -39,12 +40,15 @@ parser_definition() {
     cmd stripe -- "Stripe, clip, and gradient text animation."
     cmd strokeshadow -- "Strokes and shadows effect texts."
     cmd transmission -- "Type-writer effect."
+    cmd type -- "Type-writer effect."
 
     msg -- '' "Examples:
 Clip an image 
     $SCRIPT_NAME clip
 3D letters
     $SCRIPT_NAME 3d
+Animation effects
+    $SCRIPT_NAME
 Arcade typography
     $SCRIPT_NAME arcade
 Blob text with muliple colors
@@ -87,6 +91,8 @@ Silent movie text effect animation
     $SCRIPT_NAME talkie
 Type-writer effect
     $SCRIPT_NAME transmission
+Type-writer effect 2
+    $SCRIPT_NAME
 
 Display the version:
     $SCRIPT_NAME --version

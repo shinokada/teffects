@@ -1,21 +1,6 @@
 MODULE="slientfilm"
 TITLE=${MODULE^^}
 
-# WORD_COLORS=(wisteria belize pomegranate green midnight)
-
-# SPAN_TEXT=''
-# if ((${#@} > 0)); then
-#   for TEXTS in "$@"; do
-#     # replace spaces with &ensp;
-#     SUB="${TEXTS// /&ensp;}"
-#     RAN=$((RANDOM % 4))
-#     ADJ=${WORD_COLORS[$RAN]}
-#     SPAN_TEXT+="<span class='word $ADJ'>${SUB}</span>"
-#   done
-# else
-#   SPAN_TEXT="<span class='word wisteria'>rotates.</span><span class='word belize'>do&ensp;more.</span>"
-# fi
-
 fn_silentfilm() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>

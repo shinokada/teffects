@@ -1,7 +1,7 @@
 # Dashed-shadow
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/dashed-shadow.gif" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/dashed-shadow.png" />
 </p>
 
 ## Options

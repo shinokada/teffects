@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.1.1"
+VERSION="1.1.2"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -66,6 +66,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/getoptions.sh"
     . "${script_dir}/lib/main_definition.sh"
     . "${script_dir}/lib/3d_definition.sh"
+    . "${script_dir}/lib/animate_definition.sh"
     . "${script_dir}/lib/arcade_definition.sh"
     . "${script_dir}/lib/blob_definition.sh"
     . "${script_dir}/lib/bubble_definition.sh"
@@ -95,6 +96,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/stripe_definition.sh"
     . "${script_dir}/lib/strokeshadow_definition.sh"
     . "${script_dir}/lib/transmission_definition.sh"
+    . "${script_dir}/lib/type_definition.sh"
 }
 
 eval "$(getoptions parser_definition parse "$0") exit 1"
@@ -179,6 +181,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/3d.sh"
         fn_3d "$@"
+        ;;
+    animate)
+        eval "$(getoptions parser_definition_animate parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/animate.sh"
+        fn_animate "$@"
         ;;
     arcade)
         eval "$(getoptions parser_definition_arcade parse "$0")"
@@ -419,6 +429,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/transmission.sh"
         fn_transmission "$@"
+        ;;
+    type)
+        eval "$(getoptions parser_definition_type parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/type.sh"
+        fn_type "$@"
         ;;
     --) ;; # no subcommand, arguments only
     esac

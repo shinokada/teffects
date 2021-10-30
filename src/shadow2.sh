@@ -1,23 +1,6 @@
 MODULE="shadow2"
 TITLE=${MODULE^^}
 
-# for line-height
-# if [ "$SIZE" -gt 0 ]; then
-#     LHEIGHT=$(echo "$SIZE*1.2" | bc)
-#     LINE_HEIGHT="${LHEIGHT%%.*}"
-# fi
-
-# TEXT=$(echo $TEXT | tr '[:lower:]' '[:upper:]')
-# WIDTH=1200
-# HEIGHT=400
-
-# if [ "$LOWER_CASE" ]; then
-#     # echo "$TEXT_TRANSFORM"
-#     CASE="text-transform:lowercase;"
-# else
-#     CASE=""
-# fi
-
 fn_shadow2() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>

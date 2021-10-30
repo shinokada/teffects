@@ -1,7 +1,8 @@
 # Neon
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.png" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.png"/>
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.gif"/>
 </p>
 
 ## Options
