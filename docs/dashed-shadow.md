@@ -2,6 +2,7 @@
 
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/dashed-shadow.png" />
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/dashed-shadow.gif" />
 </p>
 
 ## Options
