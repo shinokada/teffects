@@ -1,4 +1,4 @@
-# Neon
+# New-neon
 
 <p align="center">
 <img width="300" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/new-neon.png"/>
