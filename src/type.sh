@@ -1,6 +1,16 @@
 MODULE="type"
 TITLE=${MODULE^^}
 
+SPAN_TEXT='['
+if ((${#@} > 0)); then
+    for TEXT in "$@"; do
+        SPAN_TEXT+="'${TEXT}',"
+    done
+    SPAN_TEXT+=']'
+else
+    SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.'']"
+fi
+
 fn_type() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
@@ -44,7 +54,7 @@ padding:${PADDING};
  .word {
 	 margin: auto;
 	 color: white;
-	 font: 700 normal 2.6666666667em 'Montserrat', sans-serif;
+	 font: 700 normal ${SIZE}vw 'Montserrat', sans-serif;
 	 text-shadow: 1px 2px #288ce3, 2px 4px #288ce3, 3px 6px #288ce3, 4px 8px #288ce3, 5px 10px #288ce3, 6px 12px #288ce3, 7px 14px #288ce3, 8px 16px #288ce3, 9px 18px #288ce3, 10px 20px #288ce3;
 }
  
@@ -55,7 +65,7 @@ padding:${PADDING};
 <div class="word"></div>
 </div>
 <script>
-words = ['Teffects can ','Type','Shade', 'jump', 'and animate']
+words = ${SPAN_TEXT}
 </script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
 "></script>

@@ -12,6 +12,7 @@ Find all the options using `teffects type -h`.
 
 ```
 $ teffects type -t "Teffects rocks"　-s 4
+$ teffects type 'Star Wars: ' 'It is a period of civil war.' 'Rebel spaceships,''striking from a hidden base, ' 'have won their first victory...' -s 4
 ```
 
 ## Credit

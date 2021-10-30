@@ -11,7 +11,7 @@ parser_definition_transmission() {
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
-    param BIMG -m --back-img init:="https://unsplash.it/1800/800?image=893" -- "$VAR_BIMG Default: https://unsplash.it/1800/800?image=893"
+    param BIMG -m --back-img init:="https://source.unsplash.com/5YM26lUicfU" -- "$VAR_BIMG Default: https://source.unsplash.com/5YM26lUicfU"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param TSIZE -s --title-size init:=4 validate:number -- "$VAR_SIZE Default: 6vw."
     param SSIZE -z --sub-size init:=2 validate:number -- "$VAR_SIZE Default: 2vw."
@@ -20,5 +20,6 @@ parser_definition_transmission() {
 consectetur adipiscing elit. 
 Maecenas at nunc eu urna volutpat rhoncus. 
 Vivamus molestie, turpis eu lobortis consectetur." -- "$VAR_STEXT"
+    param BOPACITY -y --back-opacity init:=1 -- "$VAR_BOPACITY Default:1"
     disp :usage -h --help
 }

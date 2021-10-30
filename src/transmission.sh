@@ -4,11 +4,11 @@ MODULE="transmission"
 TITLE=${MODULE^^}
 
 T_LEN=${#TTEXT}
-TSPAN_CHILD=""
+TSPAN_STYLE=""
 DELAY=1
 for ((t = 1; t <= ${T_LEN}; t++)); do
     DELAY=$(bc <<<"$DELAY+0.05")
-    TSPAN_CHILD+=".mast__title span:nth-child(${t}) {
+    TSPAN_STYLE+=".mast__title span:nth-child(${t}) {
     animation-delay: ${DELAY}s;
     }
     
@@ -86,17 +86,7 @@ body {
     z-index: 2;
     position: relative;
 }
-.mast__bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
-    background-position: 50%;
-}
+
 .mast__header {
     padding: 5%;
 }
@@ -111,7 +101,8 @@ body {
     animation: letter-glow 0.7s 0s ease both;
 }
 
-${TSPAN_CHILD}
+${TSPAN_STYLE}
+
 .mast__text {
     font-family: "Cutive Mono", monospace;
     font-size: ${SSIZE}vw;
@@ -144,12 +135,23 @@ ${SSPAN_CHILD}
 }
 }
 
+.mast::before{
+  content: "";
+  background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+  background-size: cover;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  opacity: ${BOPACITY};
+}
+
 </style>
 </head>
 <body>
 <main>
     <section class="mast">
-        <figure class="mast__bg" style="background-image:url(${BIMG})"></figure>
         <header class="mast__header">
             <h1 class="mast__title js-spanize">${TTEXT}</h1> 
             <hr class="sep"/>
