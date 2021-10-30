@@ -11,6 +11,7 @@ parser_definition_new-neon() {
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#090000" -- "$VAR_BCOLOR Default: #090000"
+    param BIMG -m --back-img init:="https://source.unsplash.com/7PqRZK6rbaE" -- "$VAR_BIMG Default: https://source.unsplash.com/7PqRZK6rbaE"
     param NEON -n --neon init:=1 validate:number -- "Neon style from 1 to 9. Default: 1."
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
@@ -18,5 +19,7 @@ parser_definition_new-neon() {
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE  Default: 10vw."
     param TEXT -t --text init:="Teffects" -- "$VAR_TEXT"
     param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
+    param BOPACITY -y --back-opacity init:=0.75 -- "$VAR_BOPACITY Default:0.75"
+
     disp :usage -h --help
 }

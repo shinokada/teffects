@@ -54,7 +54,7 @@ padding:${PADDING};
 .word span {
 	cursor: pointer;
 	display: inline-block;
-	font-size: 100px;
+	font-size: ${SIZE}vw;
 	user-select: none;
 	line-height: 1.2;
 }
@@ -154,8 +154,8 @@ padding:${PADDING};
 
 /* Other styles */
 body {
-	background-color: skyblue;
-	color: #fff;
+	background-color: ${BCOLOR};
+	color: ${COLOR};
 	display: flex;
 	font-family: 'Roboto', sans-serif;
 	justify-content: center;
@@ -170,24 +170,6 @@ body {
 	top: 40px;
 	left: 50%;
 	transform: translateX(-50%);
-}
-
-footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	text-align: center;
-	letter-spacing: 1px;
-}
-
-footer i {
-	color: red;
-}
-
-footer a {
-	color: #3C97BF;
-	text-decoration: none;
 }
 </style>
 </head>

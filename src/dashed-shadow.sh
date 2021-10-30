@@ -51,7 +51,7 @@ body {
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: ${SIZE}vw;
     text-align: ${ALIGN};
-    line-height: 1.2;
+    line-height: 1.4;
 }
 
 .container{
@@ -98,10 +98,10 @@ body {
 }
 .hello {
     font-family: 'Cookie', cursive;
-    font-size: 140pt;
+    font-size: ${SIZE}vw;
 }
 .sorta-block {
-    font-size: 50pt;
+    font-size: ${SIZE}vw;
     line-height: 1.1em;
     z-index: 3;
     position: relative;
@@ -117,14 +117,14 @@ body {
 }
 .hipsterish {
     font-family: 'Sancreek', cursive;
-    font-size: 70pt;
+    font-size: ${SIZE}vw;
 }
 .dashed-shadow-text {
-    font-size: 140pt;
+    font-size: ${SIZE}vw;
     line-height: 0.7em;
 }
 .shadow {
-    font-size: 120pt;
+    font-size: ${SIZE}vw;
     line-height: 0.8em;
 }
 
@@ -148,7 +148,7 @@ body {
 }
 
 .sorta-block {
-    font-size: 50pt;
+    font-size: ${SIZE}vw;
     line-height: 1.1em;
     -moz-transform: skew(0, -5deg);
     -ms-transform: skew(0, -5deg);
