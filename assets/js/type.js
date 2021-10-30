@@ -1,5 +1,4 @@
 var
-  // words = ['hey I like SASS','I used to like LESS','I also heart Jade'],
   part,
   i = 0,
   offset = 0,

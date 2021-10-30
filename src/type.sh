@@ -49,7 +49,7 @@ padding:${PADDING};
  body {
 	 display: flex;
 	 height: 100%;
-	 background-color: #55a4e9;
+	 background-color: ${BCOLOR};
 }
  .word {
 	 margin: auto;

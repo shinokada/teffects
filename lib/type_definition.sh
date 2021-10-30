@@ -9,7 +9,7 @@ parser_definition_type() {
     flag BROWSER -o +o --{no-}open on:1 no:0 init:@on -- "$VAR_BROWSER"
     flag IMAGE -i +i --{no-}image on:1 no:0 init:@no -- "$VAR_IMAGE"
     param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
-    param BCOLOR -b --bcolor init:="#111" -- "$VAR_BCOLOR Default: #111"
+    param BCOLOR -b --bcolor init:="#55a4e9" -- "$VAR_BCOLOR Default: #55a4e9"
     param COLOR -c --color init:="#fff" -- "$VAR_COLOR Default: #fff"
     param BIMG -m --back-img init:="https://source.unsplash.com/lNxMcE8mvIM" -- "$VAR_BIMG Default: https://source.unsplash.com/lNxMcE8mvIM"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
