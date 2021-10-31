@@ -19,4 +19,4 @@ dquote> third line here."
 
 ## Credit
 
-Shadow is inspired by [Stephen Scaff's Transmission: Glowing Text Animation](https://codepen.io/StephenScaff/pen/oLBqmw).
+Transmission is inspired by [Stephen Scaff's Transmission: Glowing Text Animation](https://codepen.io/StephenScaff/pen/oLBqmw).

@@ -22,4 +22,4 @@ $ teffects shadow2 -t "Awesome" -y deep
 
 ## Credit
 
-Shadow is inspired by [Jorge Epuñan's CSS3 text-shadow effects](https://codepen.io/juanbrujo/pen/yGpAK) and [roikles's Long Shadow Gradient Mixin](https://codepen.io/roikles/pen/xbydH).
+Shadow2 is inspired by [Jorge Epuñan's CSS3 text-shadow effects](https://codepen.io/juanbrujo/pen/yGpAK) and [roikles's Long Shadow Gradient Mixin](https://codepen.io/roikles/pen/xbydH).

@@ -17,5 +17,5 @@ $ teffects type 'Star Wars: ' 'It is a period of civil war.' 'Rebel spaceships,'
 
 ## Credit
 
-Smoky is inspired by [Jack Armley's Text typing thingamy](https://codepen.io/jackarmley/pen/WvGJPB).
+Type is inspired by [Jack Armley's Text typing thingamy](https://codepen.io/jackarmley/pen/WvGJPB).
 

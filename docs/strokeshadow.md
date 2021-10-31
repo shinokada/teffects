@@ -19,4 +19,4 @@ $ teffects strokeshadow -c purple -t "Article heading" -s 170 -e 400 -w 1400 -d 
 
 ## Credit
 
-Sticker is inspired by [Stephanie Eckles's CSS Sticker](https://codepen.io/5t3ph/pen/mdVZYpr).
+Strokeshadow is inspired by [Stephanie Eckles's CSS Sticker](https://codepen.io/5t3ph/pen/mdVZYpr).

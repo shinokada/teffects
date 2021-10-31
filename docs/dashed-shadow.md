@@ -17,4 +17,4 @@ $ teffects dashed-shadow -t "Awesome"
 
 ## Credit
 
-Shadow is inspired by [Lucas Bebber's CSS Dashed Shadow](https://codepen.io/lbebber/pen/BzoHi).
+Dashed-shadow is inspired by [Lucas Bebber's CSS Dashed Shadow](https://codepen.io/lbebber/pen/BzoHi).
