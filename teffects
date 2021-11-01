@@ -106,6 +106,9 @@ eval "set -- $REST"
 # check os
 if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
+    # For Ubuntu close xdg-open
+    # because when it is open a new image doesn't display
+    pkill -f eog | exit
 elif [[ $(uname) == "Darwin" ]]; then
     FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi
@@ -122,7 +125,7 @@ if pgrep -f firefox; then
     read -r RES
     USER_ANS=$(echo "$RES" | cut -c 1-1 | tr "[:lower:]" "[:upper:]")
     if [ "$USER_ANS" = "Y" ]; then
-        pkill -f firefox
+        pkill -f firefox | exit
     else
         echo "Exiting ..."
         exit
