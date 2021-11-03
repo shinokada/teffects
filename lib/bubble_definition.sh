@@ -1,4 +1,3 @@
-# bubble animation
 parser_definition_bubble() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} bubble [options] [arguments]" ''

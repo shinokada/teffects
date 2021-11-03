@@ -1,4 +1,3 @@
-# smoky animation
 parser_definition_smoky() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} smoky [options] [arguments]" ''

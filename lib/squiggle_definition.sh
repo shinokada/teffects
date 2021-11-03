@@ -1,4 +1,3 @@
-# squiggle animation
 parser_definition_squiggle() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} squiggle [options] [arguments]" ''

@@ -1,4 +1,3 @@
-# layer
 parser_definition_layer() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} layer [options] [arguments]" ''

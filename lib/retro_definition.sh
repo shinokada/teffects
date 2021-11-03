@@ -1,4 +1,3 @@
-# retro
 parser_definition_retro() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} retro [options] [arguments]" ''

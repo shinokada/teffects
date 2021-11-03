@@ -1,4 +1,3 @@
-# 3d
 parser_definition_3d() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} 3d [options] [arguments]" ''

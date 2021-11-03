@@ -1,4 +1,3 @@
-# clip-animate
 ANIM_TYPES='red | blue | purple'
 parser_definition_clip-animate() {
     setup REST help:usage abbr:true -- \

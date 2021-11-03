@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.1.2"
+VERSION="1.1.3"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -108,7 +108,7 @@ if [[ $(uname) == "Linux" ]]; then
     FIREFOX="/usr/bin/firefox"
     # For Ubuntu close xdg-open
     # because when it is open a new image doesn't display
-    pkill -f eog | exit
+    # pkill -f eog | exit
 elif [[ $(uname) == "Darwin" ]]; then
     FIREFOX="/Applications/Firefox.app/Contents/MacOS/firefox"
 fi

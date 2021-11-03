@@ -1,4 +1,3 @@
-# shade animation
 parser_definition_shade() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} shade [options] [arguments]" ''

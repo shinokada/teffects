@@ -1,4 +1,3 @@
-# blob animation
 parser_definition_blob() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} arcade [options] [arguments]" ''

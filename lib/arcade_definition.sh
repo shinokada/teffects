@@ -1,4 +1,3 @@
-# arcade
 parser_definition_arcade() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} arcade [options] [arguments]" ''

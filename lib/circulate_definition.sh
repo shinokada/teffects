@@ -1,4 +1,3 @@
-# circulate animation
 append_array() {
     eval "$1+=(\"\$OPTARG\")"
 }

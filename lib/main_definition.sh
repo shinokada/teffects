@@ -1,4 +1,3 @@
-# shellcheck disable=SC1083
 parser_definition() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} [command] [options...] [arguments...]"

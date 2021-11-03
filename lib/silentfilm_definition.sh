@@ -1,4 +1,3 @@
-# silentfilm animation
 parser_definition_silentfilm() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} silentfilm [options] [arguments]" ''

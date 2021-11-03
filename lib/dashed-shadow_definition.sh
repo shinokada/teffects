@@ -1,4 +1,3 @@
-# dashed-shadow animation
 DASHED_TYPES='h | s | i | d'
 
 parser_definition_dashed-shadow() {

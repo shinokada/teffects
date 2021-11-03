@@ -1,4 +1,3 @@
-# covfete
 parser_definition_covfete() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} covfete [options] [arguments]" ''

@@ -1,4 +1,3 @@
-# transmission animation
 parser_definition_transmission() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} transmission [options] [arguments]" ''

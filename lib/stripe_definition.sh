@@ -1,4 +1,3 @@
-# stripe animation
 parser_definition_stripe() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} stripe [options] [arguments]" ''

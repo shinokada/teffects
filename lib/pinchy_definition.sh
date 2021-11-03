@@ -1,4 +1,3 @@
-# pinchy
 parser_definition_pinchy() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} pinchy [options] [arguments]" ''

@@ -1,4 +1,3 @@
-# glow animation
 parser_definition_glow() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} glow [options] [arguments]" ''

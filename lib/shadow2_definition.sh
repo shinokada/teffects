@@ -1,4 +1,3 @@
-# shadow2
 SHADOW_TYPES='elegant | deep | inset | retro | long'
 
 parser_definition_shadow2() {

@@ -1,4 +1,3 @@
-# animate
 parser_definition_animate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} animate [options] [arguments]" ''

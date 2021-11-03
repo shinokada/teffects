@@ -1,4 +1,3 @@
-# sticker
 parser_definition_sticker() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} sticker [options] [arguments]" ''

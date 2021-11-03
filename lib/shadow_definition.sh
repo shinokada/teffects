@@ -1,4 +1,3 @@
-# shadow
 parser_definition_shadow() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} shadow [options] [arguments]" ''

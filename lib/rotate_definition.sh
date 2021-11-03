@@ -1,4 +1,3 @@
-# rotate animation
 parser_definition_rotate() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} rotate [options] [arguments]" ''

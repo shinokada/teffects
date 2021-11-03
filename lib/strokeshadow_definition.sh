@@ -1,4 +1,3 @@
-# strokeshadow
 parser_definition_strokeshadow() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} strokeshadow [options] [arguments]" ''

@@ -1,4 +1,3 @@
-# reveal animiation
 parser_definition_reveal() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} reveal [options] [arguments]" ''

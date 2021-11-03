@@ -1,4 +1,3 @@
-# popart
 parser_definition_popart() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} popart [options] [arguments]" ''

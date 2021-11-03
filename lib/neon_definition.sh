@@ -1,4 +1,3 @@
-# neon animation
 parser_definition_neon() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} neon [options] [arguments]" ''

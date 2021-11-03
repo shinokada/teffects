@@ -1,4 +1,3 @@
-# jump animation
 parser_definition_jump() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} jump [options] [arguments]" ''

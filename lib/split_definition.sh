@@ -1,4 +1,3 @@
-# split
 parser_definition_split() {
     setup REST help:usage abbr:true -- \
         "Usage: ${2##*/} split [options] [arguments]" ''
