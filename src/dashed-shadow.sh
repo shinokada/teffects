@@ -167,6 +167,14 @@ ${CONTENT}
 </html>
 EOF
 
+    if [ ! -d "$OUTPUT_DIR" ]; then
+        mkdir -p "$OUTPUT_DIR"
+    fi
+    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+        echo "Something went wrong."
+        exit
+    }
+
     if [ "$IMAGE" = 1 ]; then
         echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
         # open browser

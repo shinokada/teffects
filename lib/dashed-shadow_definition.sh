@@ -13,9 +13,11 @@ parser_definition_dashed-shadow() {
     param ALIGN -a --align init=:"center" pattern:"$ALIGN_TYPES" -- "$VAR_ALIGN"
     param BCOLOR -b --bcolor init:="#e8e3c7" -- "$VAR_BCOLOR Default: #e8e3c7"
     param COLOR -c --color init:="#ba9186" -- "$VAR_COLOR Default: #ba9186"
+    param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
     param SIZE -s --title-size init:=10 validate:number -- "$VAR_SIZE Default: 10vw."
-    param STYLE -y --style pattern:"$DASHED_TYPES" -- "Select from ${DASHED_TYPES}."
+    param STYLE -y --style init:=h pattern:"$DASHED_TYPES" -- "Select from ${DASHED_TYPES}."
     param TEXT -t --text init:="Teffects Transmission" -- "$VAR_TEXT"
+    param WIDTH -w --width init:=1600 validate:number -- "$VAR_WIDTH"
     disp :usage -h --help
 }

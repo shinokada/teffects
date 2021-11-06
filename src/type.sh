@@ -8,8 +8,10 @@ if ((${#@} > 0)); then
     done
     SPAN_TEXT+=']'
 else
-    SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.'']"
+    SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.']"
 fi
+
+echo "$SPAN_TEXT"
 
 fn_type() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
@@ -64,35 +66,36 @@ padding:${PADDING};
 <div class="container">
 <div class="word"></div>
 </div>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
+"></script>
 <script>
 words = ${SPAN_TEXT}
 </script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js
-"></script>
 <script type="text/javascript" src="${script_dir}/assets/js/type.js"></script>
 </body>
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+    # # no image will be created
+    # if [ ! -d "$OUTPUT_DIR" ]; then
+    #     mkdir -p "$OUTPUT_DIR"
+    # fi
+    # eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    #     echo "Something went wrong."
+    #     exit
+    # }
 
-    if [ "$IMAGE" = 1 ]; then
-        echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        fi
-        echo "The image location is $OUTPUT_DIR/${MODULE}.png."
-    fi
+    # if [ "$IMAGE" = 1 ]; then
+    #     echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+    #     # open browser
+    #     if [[ $(uname) == "Linux" ]]; then
+    #         xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    #     elif [[ $(uname) == "Darwin" ]]; then
+    #         open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    #     fi
+    #     echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+    # fi
 
     if [ "$BROWSER" = 1 ]; then
         # open browser

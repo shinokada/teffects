@@ -50,7 +50,6 @@ h1 {
 </html>
 EOF
 
-	# check if $RETRO_OUTPUT exist
 	if [ ! -d "$OUTPUT_DIR" ]; then
 		mkdir -p "$OUTPUT_DIR"
 	fi

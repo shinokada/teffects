@@ -165,16 +165,25 @@ ${SSPAN_CHILD}
 </html>
 EOF
 
-    if [ "$IMAGE" = 1 ]; then
-        echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        fi
-        echo "The image location is $OUTPUT_DIR/${MODULE}.png."
-    fi
+    # no image will be created
+    # if [ ! -d "$OUTPUT_DIR" ]; then
+    #     mkdir -p "$OUTPUT_DIR"
+    # fi
+    # eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+    #     echo "Something went wrong."
+    #     exit
+    # }
+
+    # if [ "$IMAGE" = 1 ]; then
+    #     echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+    #     # open browser
+    #     if [[ $(uname) == "Linux" ]]; then
+    #         xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    #     elif [[ $(uname) == "Darwin" ]]; then
+    #         open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+    #     fi
+    #     echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+    # fi
 
     if [ "$BROWSER" = 1 ]; then
         # open browser

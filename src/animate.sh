@@ -3,15 +3,15 @@ TITLE=${MODULE^^}
 
 SPAN_TEXT=''
 for ((i = 0; i < ${#TEXT}; i++)); do
-    LETTER="${TEXT:$i:1}"
-    # replace spaces with &ensp;
-    SUB="${LETTER// /&nbsp;}"
-    # echo $SUB
-    SPAN_TEXT+="<span>${SUB}</span>"
+	LETTER="${TEXT:$i:1}"
+	# replace spaces with &ensp;
+	SUB="${LETTER// /&nbsp;}"
+	# echo $SUB
+	SPAN_TEXT+="<span>${SUB}</span>"
 done
 
 fn_animate() {
-    cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
+	cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -184,33 +184,32 @@ body {
 </html>
 EOF
 
-    # check if $RETRO_OUTPUT exist
-    if [ ! -d "$OUTPUT_DIR" ]; then
-        mkdir -p "$OUTPUT_DIR"
-    fi
-    eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
-        echo "Something went wrong."
-        exit
-    }
+	if [ ! -d "$OUTPUT_DIR" ]; then
+		mkdir -p "$OUTPUT_DIR"
+	fi
+	eval "$FIREFOX" --headless --screenshot "${OUTPUT_DIR}/${MODULE}.png" "file:///${OUTPUT_DIR}/${MODULE}.html" --window-size="${WIDTH},${HEIGHT}" >/dev/null 2>&1 || {
+		echo "Something went wrong."
+		exit
+	}
 
-    if [ "$IMAGE" = 1 ]; then
-        echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
-        fi
-        echo "The image location is $OUTPUT_DIR/${MODULE}.png."
-    fi
+	if [ "$IMAGE" = 1 ]; then
+		echo "Opening $OUTPUT_DIR/${MODULE}.png ..."
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "$OUTPUT_DIR/${MODULE}.png" >/dev/null 2>&1
+		fi
+		echo "The image location is $OUTPUT_DIR/${MODULE}.png."
+	fi
 
-    if [ "$BROWSER" = 1 ]; then
-        # open browser
-        if [[ $(uname) == "Linux" ]]; then
-            xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        elif [[ $(uname) == "Darwin" ]]; then
-            open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
-        fi
-        echo "${MODULE} image is on a browser."
-    fi
+	if [ "$BROWSER" = 1 ]; then
+		# open browser
+		if [[ $(uname) == "Linux" ]]; then
+			xdg-open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		elif [[ $(uname) == "Darwin" ]]; then
+			open "file:///${OUTPUT_DIR}/${MODULE}.html" >/dev/null 2>&1
+		fi
+		echo "${MODULE} image is on a browser."
+	fi
 }
