@@ -8,8 +8,10 @@ if ((${#@} > 0)); then
     done
     SPAN_TEXT+=']'
 else
-    SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.'']"
+    SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.']"
 fi
+
+# echo "$SPAN_TEXT"
 
 fn_type() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"
@@ -36,7 +38,7 @@ padding:${PADDING};
 
 .container::before{
     content: "";
-	background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-image: url('${BIMG}');
 	background-size: cover;
 	position: absolute;
 	top: 0px;

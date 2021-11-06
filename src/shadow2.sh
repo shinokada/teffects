@@ -44,7 +44,7 @@ h1 {
 }
 .inset {
     color: #202020;
-    background-color: #2d2d2d;
+    background-color: #7d7d7d;
     letter-spacing: .1em;
     text-shadow: -1px -1px 1px #111, 2px 2px 1px #363636;
 }

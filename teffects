@@ -82,6 +82,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/new-neon_definition.sh"
     . "${script_dir}/lib/pinchy_definition.sh"
     . "${script_dir}/lib/popart_definition.sh"
+    . "${script_dir}/lib/puppeteer_definition.sh"
     . "${script_dir}/lib/retro_definition.sh"
     . "${script_dir}/lib/reveal_definition.sh"
     . "${script_dir}/lib/rotate_definition.sh"
@@ -440,6 +441,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/type.sh"
         fn_type "$@"
+        ;;
+    puppeteer)
+        eval "$(getoptions parser_definition_puppeteer parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/puppeteer.sh"
+        fn_puppeteer "$@"
         ;;
     --) ;; # no subcommand, arguments only
     esac

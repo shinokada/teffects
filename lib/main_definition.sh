@@ -25,6 +25,7 @@ parser_definition() {
     cmd new-neon -- "Neon light text animation."
     cmd pinchy -- "Pinchy style texts."
     cmd popart -- "Pop art style texts."
+    cmd puppeteer -- "Testing pupetter.js"
     cmd retro -- "Retro style texts."
     cmd reveal -- "Reveal text animation."
     cmd rotate -- "Rotating text animation."

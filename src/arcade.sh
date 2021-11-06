@@ -72,6 +72,18 @@ html, body {
 	text-align:${ALIGN};
 }
 
+.container::before{
+    content: "";
+	background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: ${BOPACITY};
+}
+
 .snow-bros li {
   width: 80px;
   height: 80px;
