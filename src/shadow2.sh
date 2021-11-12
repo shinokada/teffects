@@ -65,8 +65,6 @@ h1 {
     text-align: center;
     text-shadow: 1px 1px rgb(123 25 15 / 50%), 2px 2px rgb(129 28 18 / 51%), 3px 3px rgb(135 31 20 / 52%), 4px 4px rgb(140 33 22 / 53%), 5px 5px rgb(145 36 24 / 54%), 6px 6px rgb(150 38 26 / 55%), 7px 7px rgb(154 40 28 / 56%), 8px 8px rgb(158 42 30 / 57%), 9px 9px rgb(162 44 31 / 58%), 10px 10px rgb(166 45 33 / 59%), 11px 11px rgb(169 47 34 / 60%), 12px 12px rgb(173 48 36 / 61%), 13px 13px rgb(176 50 37 / 62%), 14px 14px rgb(178 51 38 / 63%), 15px 15px rgb(181 52 39 / 64%), 16px 16px rgb(184 54 40 / 65%), 17px 17px rgb(186 55 41 / 66%), 18px 18px rgb(189 56 42 / 67%), 19px 19px rgb(191 57 43 / 68%), 20px 20px rgb(193 58 44 / 69%), 21px 21px rgb(195 59 45 / 70%), 22px 22px rgb(197 60 46 / 71%), 23px 23px rgb(199 61 47 / 72%), 24px 24px rgb(201 62 47 / 73%), 25px 25px rgb(202 62 48 / 74%), 26px 26px rgb(204 63 49 / 75%), 27px 27px rgb(206 64 49 / 76%), 28px 28px rgb(207 65 50 / 77%), 29px 29px rgb(209 65 51 / 78%), 30px 30px rgb(210 66 51 / 79%), 31px 31px rgb(211 67 52 / 80%), 32px 32px rgb(213 67 52 / 81%), 33px 33px rgb(214 68 53 / 82%), 34px 34px rgb(215 69 53 / 83%), 35px 35px rgb(216 69 54 / 84%), 36px 36px rgb(218 70 54 / 85%), 37px 37px rgb(219 70 55 / 86%), 38px 38px rgb(220 71 55 / 87%), 39px 39px rgb(221 71 56 / 88%), 40px 40px rgb(222 72 56 / 89%), 41px 41px rgb(223 72 57 / 90%), 42px 42px rgb(224 73 57 / 91%), 43px 43px rgb(225 73 57 / 92%), 44px 44px rgb(225 73 58 / 93%), 45px 45px rgb(226 74 58 / 94%), 46px 46px rgb(227 74 58 / 95%), 47px 47px rgb(228 75 59 / 96%), 48px 48px rgb(229 75 59 / 97%), 49px 49px rgb(230 75 59 / 98%), 50px 50px rgb(230 76 60 / 99%);
 }
-
-
 </style>
 </head>
 <body class="${SHADOW_TYPE}">

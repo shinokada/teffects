@@ -11,7 +11,7 @@ else
     SPAN_TEXT="['Lorem ipsum dolor amet.','Consectetur adipiscing.','Praesent placerat nulla.']"
 fi
 
-echo "$SPAN_TEXT"
+# echo "$SPAN_TEXT"
 
 fn_type() {
     cat <<EOF >"${OUTPUT_DIR}/${MODULE}.html"

@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.1.4"
+VERSION="1.1.5"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -73,6 +73,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/circulate_definition.sh"
     . "${script_dir}/lib/circulate1_definition.sh"
     . "${script_dir}/lib/clip_definition.sh"
+    . "${script_dir}/lib/clip-animate_definition.sh"
     . "${script_dir}/lib/covfete_definition.sh"
     . "${script_dir}/lib/dashed-shadow_definition.sh"
     . "${script_dir}/lib/glow_definition.sh"

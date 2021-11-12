@@ -49,8 +49,6 @@ text {
   font-weight: 900;
   ${CASE};
 }
-
-
 </style>
 </head>
 <body>
