@@ -43,10 +43,17 @@ body {
 	 margin: 0;
 }
 
+.container {
+	padding:${PADDING};
+}
+
  svg {
-	 position: absolute;
-	 width: ${WIDTH}px;
-	 height: ${HEIGHT}px;
+	display: block;
+    font: ${SIZE}vw Open Sans, Impact;
+    width: ${WIDTH}px;
+    height: ${HEIGHT}px;
+    margin: 0 auto;
+	position:relative;
 }
 
 /* Main styles */
@@ -109,7 +116,7 @@ body {
 </head>
 <body>
 <div class="container">
-<svg>
+<svg overflow="auto">
     <!-- Symbol-->
     <symbol id="s-text"><text text-anchor="middle" x="50%" y="50%" dy=".35em">${TEXT}</text>
     </symbol>

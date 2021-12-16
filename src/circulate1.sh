@@ -51,12 +51,12 @@ body{
 
 .container {
 	padding:${PADDING};
+    position:relative;
 }
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 svg {
     display: block;
-    font: ${SIZE}vw 'Montserrat';
     font: ${SIZE}vw Open Sans, Impact;
     width: ${WIDTH}px;
     height: ${HEIGHT}px;

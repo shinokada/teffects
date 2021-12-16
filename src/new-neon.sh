@@ -26,7 +26,7 @@ padding:${PADDING};
 }
 .container::before{
     content: "";
-	background-image: url('${BIMG}/${WIDTH}x${HEIGHT}');
+	background-image: url('${BIMG}');
 	background-size: cover;
 	position: absolute;
 	top: 0px;

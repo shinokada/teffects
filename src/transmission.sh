@@ -59,7 +59,8 @@ body {
     width: 3em;
     height: 1px;
     margin: 1em 0;
-    background-color: rgba(255, 255, 255, 0.4);
+    background-color: #fff;
+    opacity: 0.4;
 }
 .mast {
     position: relative;

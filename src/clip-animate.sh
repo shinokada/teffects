@@ -55,6 +55,7 @@ padding:${PADDING}px;
 	 border: 4px double rgba(255, 255, 255, .75);
 	 border-width: 4px 0;
 	 padding: 1.5em 0em;
+     position:relative;
 }
  p span {
 	 font: 700 ${SIZE}vw "Oswald", sans-serif;
