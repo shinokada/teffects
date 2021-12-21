@@ -24,6 +24,7 @@ parser_definition() {
     cmd neon -- "Neon light style text animation."
     cmd new-neon -- "Neon light text animation."
     cmd pinchy -- "Pinchy style texts."
+    cmd plain -- "Plain style texts."
     cmd popart -- "Pop art style texts."
     cmd retro -- "Retro style texts."
     cmd reveal -- "Reveal text animation."
@@ -68,6 +69,8 @@ Neon light text
     $SCRIPT_NAME neon
 New-neon
     $SCRIPT_NAME new-neon
+Plain effect
+    $SCRIPT_NAME plain
 Pop art effect
     $SCRIPT_NAME popart 
 Retro banner: 

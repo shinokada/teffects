@@ -3,7 +3,7 @@
 set -eu
 
 # shellcheck disable=SC2034
-VERSION="1.1.6"
+VERSION="1.1.7"
 SCRIPT_NAME=$(basename "$0")
 OUTPUT_DIR="$HOME/.cache/teffects"
 
@@ -50,6 +50,8 @@ VAR_BIMG="Background image url."
 VAR_CONTWIDTH="Content width."
 VAR_COLOR="Font color. Enclose with quotes."
 VAR_GCOLOR="Grow color. Enclose with quotes."
+VAR_FONT_FAMILY="Google font family name."
+VAR_FONT_WEIGHT="Font weight, normal, bold, 100 - 900."
 VAR_HEIGHT="Image height. Default: 1200px."
 VAR_IMAGE="A image will be open as the default. Not to open it, use +i or --no-image."
 VAR_OUTPUT_DIR="Output directory. Use an absolute path without a trailing slash. Default: ${OUTPUT_DIR} directory."
@@ -82,6 +84,7 @@ VAR_WIDTH="Image width. Use a number without px. Default: 1600px."
     . "${script_dir}/lib/neon_definition.sh"
     . "${script_dir}/lib/new-neon_definition.sh"
     . "${script_dir}/lib/pinchy_definition.sh"
+    . "${script_dir}/lib/plain_definition.sh"
     . "${script_dir}/lib/popart_definition.sh"
     . "${script_dir}/lib/retro_definition.sh"
     . "${script_dir}/lib/reveal_definition.sh"
@@ -313,6 +316,14 @@ if [ $# -gt 0 ]; then
         # shellcheck disable=SC1091
         . "${script_dir}/src/pinchy.sh"
         fn_pinchy "$@"
+        ;;
+    plain)
+        eval "$(getoptions parser_definition_plain parse "$0")"
+        parse "$@"
+        eval "set -- $REST"
+        # shellcheck disable=SC1091
+        . "${script_dir}/src/plain.sh"
+        fn_plain "$@"
         ;;
     popart)
         eval "$(getoptions parser_definition_popart parse "$0")"

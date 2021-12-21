@@ -15,7 +15,7 @@ parser_definition_shadow2() {
     param BIMG -m --back-img init:="" -- "$VAR_BIMG Default: none"
     param HEIGHT -e --height init:=1200 validate:number -- "$VAR_HEIGHT"
     param OUTPUT_DIR -d --dir init:="${OUTPUT_DIR}" -- "$VAR_OUTPUT_DIR"
-    param PADDING -p --padding init:="100px" -- "$VAR_PADDING"
+    param PADDING -p --padding init:="100" -- "$VAR_PADDING"
     param SIZE -s --size init:=6 validate:number -- "$VAR_SIZE Default: 6vw"
     param SHADOW_TYPE -u --style init:="elegant" pattern:"$SHADOW_TYPES" -- "Shadow types: $SHADOW_TYPES."
     param TEXT -t --text init:="TEFFECTS SHADOW" -- "$VAR_TEXT Default: Teffects SVG"
