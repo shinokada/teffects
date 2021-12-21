@@ -19,9 +19,21 @@ html, body {
 	align-items: center;
 }
 
+body{
+	background-image: url('${BIMG}');
+	background-size: cover;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	opacity: ${BOPACITY};
+}
 .container{
     padding:${PADDING};
 }
+
+
 
 h1 {
     font-family: "Avant Garde", Avantgarde, "Century Gothic", CenturyGothic, "AppleGothic", Lato, sans-serif;
