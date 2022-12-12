@@ -2,6 +2,10 @@
 
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/teffects.png" />
+</p>
+<p align="center">
+<a href="https://shinokada.github.io/teffects/">https://shinokada.github.io/teffects/</a>
+</p>
 
 ## Overview
 
@@ -11,11 +15,11 @@ Teffects automates creating header images for your articles, email, presentation
 
 - Bash version 5 or higher.
 
-    If you are using macOS:
+If you are using macOS:
 
-    ```sh
-    brew install bash
-    ```
+```sh
+brew install bash
+```
 
 - Firefox: Teffects uses Firefox to take a screenshot.
 - To run the clip command you need [wkhtmlpdf/wkhtmltoimage](https://wkhtmltopdf.org/downloads.html).
