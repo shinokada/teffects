@@ -1,11 +1,11 @@
-# Text Effects, TEFFECTS
-
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/teffects.png" />
 </p>
 <p align="center">
 <a href="https://shinokada.github.io/teffects/">https://shinokada.github.io/teffects/</a>
 </p>
+
+# Text Effects - TEFFECTS
 
 ## Overview
 
