@@ -56,10 +56,54 @@
       maxLevel: 3,
       auto2top: true,
       repo: 'shinokada/teffects',
-      routerMode: 'history'
+      routerMode: 'history',
+      ga: 'G-B4WX2V302K',
+      search: 'auto', // default
+
+      search: [
+        '/',            // => /README.md
+      ],
+
+      // complete configuration parameters
+      search: {
+        maxAge: 86400000, // Expiration time, the default one day
+        paths: [], // or 'auto'
+        placeholder: 'Type to search',
+
+        // Localization
+        placeholder: {
+          '/': 'Type to search',
+        },
+
+        noData: 'No Results!',
+
+        // Headline depth, 1 - 6
+        depth: 2,
+
+        hideOtherSidebarContent: false, // whether or not to hide other sidebar content
+
+        // To avoid search index collision
+        // between multiple websites under the same domain
+        // namespace: 'website-1',
+
+        // Use different indexes for path prefixes (namespaces).
+        // NOTE: Only works in 'auto' mode.
+        //
+        // When initialiazing an index, we look for the first path from the sidebar.
+        // If it matches the prefix from the list, we switch to the corresponding index.
+        // pathNamespaces: ['/zh-cn', '/ru-ru', '/ru-ru/v1'],
+
+        // You can provide a regexp to match prefixes. In this case,
+        // the matching substring will be used to identify the index
+        pathNamespaces: /^(\/(zh-cn|ru-ru))?(\/(v1|v2))?/,
+      },
     };
   </script>
-  <script src="//cdn.jsdelivr.net/npm/docsify@4.12.2/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/docsify.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/search.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/ga.min.js"></script>
+
+
 </body>
 
 </html>
