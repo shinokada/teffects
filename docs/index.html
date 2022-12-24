@@ -8,12 +8,8 @@
   <meta name="description" content="Text effects using Bash script" />
   <meta name="viewport"
     content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/lib/themes/vue.css" />
-  <style>
-    .markdown-section {
-      max-width: 700px;
-    }
-  </style>
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:creator" content="@shinokada">
   <meta name="twitter:title" content="Teffects">
@@ -52,13 +48,14 @@
   <div id="app"></div>
   <script>
     window.$docsify = {
+      loadSidebar: true,
       subMaxLevel: 1,
       maxLevel: 3,
       auto2top: true,
       repo: 'shinokada/teffects',
       routerMode: 'history',
       ga: 'G-B4WX2V302K',
-      // search: 'auto', // default
+      search: 'auto',
       // search: [
       //   '/',            // => /README.md
       // ],
@@ -69,7 +66,7 @@
         placeholder: 'Type to search',
         noData: 'No Results!',
         // Headline depth, 1 - 6
-        depth: 2,
+        depth: 3,
         hideOtherSidebarContent: false, // whether or not to hide other sidebar content
       },
     };
