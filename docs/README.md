@@ -2,7 +2,7 @@
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/teffects.png" />
 </p>
 <p align="center">
-<a href="https://shinokada.github.io/teffects/">https://shinokada.github.io/teffects/</a>
+<a href="https://teffects.codewithshin.com/">https://teffects.codewithshin.com/</a>
 </p>
 
 # Text Effects - TEFFECTS
