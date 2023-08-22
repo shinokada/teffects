@@ -66,7 +66,7 @@ $ teffects clip -h
 Examples:
 
 ```sh
-$ teffects 3d -t "Your Heading"-d ~/Downloads
+$ teffects 3d -t "Your Heading" -d ~/Downloads
 $ teffects arcade -t "Awesome Heading" -d ~/Downloads
 $ teffects clip -d -t "Amazing Heading" ~/Downloads
 ```
@@ -93,7 +93,6 @@ $ teffects 3d -d ~/Downloads
 
 ## Animate
 
-
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/animate.gif" />
 </p>
@@ -112,11 +111,10 @@ $ teffects animate -t "Teffects rocks"　-s 4
 
 Animate is inspired by [Florin Pop's Letter Animation](https://codepen.io/FlorinPop17/pen/WEBNyx).
 
-
 ## Arcade
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/arcade.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/arcade.png" />
 </p>
 
 ### Options
@@ -157,7 +155,6 @@ $ teffects blob -t "Create Your Programming Article Heading Image with Teffects"
 ### Credit
 
 Blob is inspired by [Amli's Animated Blobs Text - Multiple Colors](https://codepen.io/uzcho_/pen/LaPqWJ)
-
 
 ## Bubble
 
@@ -227,11 +224,10 @@ $ teffects clip-animate -t "TEFFECTS CLIP ANIMATE" -v "NEW CSS ANIMATION" -u "FO
 
 Clip-animate is inspired by [Daniel Riemer's Animated text fill](https://codepen.io/zitrusfrisch/pen/fjbal)
 
-
 ## Clip
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/clip.png" />
 </p>
 
 ### Options
@@ -318,7 +314,6 @@ $ teffects glow -t "Teffects Glow Effects" -l "2px" -p 150px -g "#ff3299"
 
 Glow is inspired by [kiran raj r's Css Text Effect--Glow Effect3](https://codepen.io/kiran-r-raj/pen/OJmQQwO)
 
-
 ## Jump
 
 <p align="center">
@@ -342,11 +337,10 @@ $ teffects jump -t "LOREM IPSUM" -c "#eee" -b "#EF6667" -s 4
 
 Jump is inspired by [kiran raj r's Css Text Effect--fade Effect](https://codepen.io/kiran-r-raj/pen/QWvaPwE)
 
-
 ## Layer
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/layer.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/layer.png" />
 </p>
 
 ### Options
@@ -383,7 +377,6 @@ $ teffects neon -t "Teffects NEON LIGHTS" -b purple -s 80 -e 800 -w 1020
 
 [Neon light text by Sarah Fossheim](https://codepen.io/fossheim/pen/PoqKoLY)
 
-
 ## New-neon
 
 <p align="center">
@@ -410,7 +403,6 @@ $ teffects new-neon -t "Teffects NEON LIGHTS" -n 5
 
 [Erik Jung's Neon text-shadow effect](https://codepen.io/erikjung/pen/XdWEKE)
 
-
 ## Pinchy
 
 <p align="center">
@@ -434,7 +426,7 @@ Inspired by [Pinchy Type with CSS text-shadow by Bennett Feely](https://codepen.
 ## Popart
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/popart.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/popart.png" />
 </p>
 
 ### Options
@@ -455,7 +447,7 @@ $ teffects popart -t "Bold, bright" -e 600 -b purple -s 200 -a left
 ## Retro
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/retro.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/retro.png" />
 </p>
 
 ### Options
@@ -475,7 +467,7 @@ Retro is inspired by [Yoav Kadosh's Retro Text Effect Pure CSS](https://codepen.
 ## Reveal
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/reveal.gif" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/reveal.gif" />
 </p>
 
 ### Options
@@ -495,7 +487,7 @@ Reveal is inspired by [Artur Sedlukh's GSAP text reveal animation](https://codep
 ## Rotate
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/rotate.gif" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/rotate.gif" />
 </p>
 
 This is a CSS animation effect and it will open a browser.
@@ -514,7 +506,6 @@ $ teffects rotate -t "Create header image" -s 4 "for Medium article" "for Blog" 
 
 Rotate is inspired by [Rachel Smith's Rotating text](https://codepen.io/rachsmith/full/BNKJme).
 
-
 ## Shade
 
 <p align="center">
@@ -530,7 +521,7 @@ Find all the options using `teffects shade -h`.
 ### Examples
 
 ```sh
-$ teffects shade -t "Teffects Shade" -s 20 -e 600 
+$ teffects shade -t "Teffects Shade" -s 20 -e 600
 ```
 
 ### Credit
@@ -586,7 +577,7 @@ Shadow2 is inspired by [Jorge Epuñan's CSS3 text-shadow effects](https://codepe
 ## Silent film
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/silentfilm.gif" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/silentfilm.gif" />
 </p>
 
 ### Options
@@ -622,7 +613,6 @@ $ teffects smoky -t "Teffects rocks"　-s 4
 ### Credit
 
 Smoky is inspired by [Bennett Feely's Smoky Text](https://codepen.io/bennettfeely/pen/lgybC).
-
 
 ## Split
 
@@ -664,7 +654,7 @@ You can add HTML text as the following example:
 ```
 $ teffects squiggle -t 'Squiggly Text
   <p class="small">– with – <p/>
-  SVG Filters 
+  SVG Filters
   <p class="small">(you can even edit this text)</p>
   <p class="smaller">(Here more text)</p>'
 ```
@@ -676,7 +666,7 @@ Squiggle is inspired by [Squiggly Text by Lucas Bebber](https://codepen.io/lbebb
 ## Sticker
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/sticker.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/sticker.png" />
 </p>
 
 ### Options
@@ -696,7 +686,7 @@ Sticker is inspired by [Stephanie Eckles's CSS Sticker](https://codepen.io/5t3ph
 ## Stripe
 
 <p align="center">
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/stripe.gif" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/stripe.gif" />
 </p>
 
 ### Options
@@ -707,7 +697,7 @@ Find all the options using `teffects stripe -h`.
 
 ```sh
 $ teffects stripe
-$ teffects stripe -t "Lorem ipsum dolor sit amet" -s 8 -e 600 -b "#eee" 
+$ teffects stripe -t "Lorem ipsum dolor sit amet" -s 8 -e 600 -b "#eee"
 ```
 
 ### Credit
@@ -718,7 +708,7 @@ Stripe is inspired by [Animating striped text with background clip and gradients
 
 <p align="center">
 <img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/strokeshadow.png" />
-<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/strokeshadow2.png" /> 
+<img width="500" src="https://raw.githubusercontent.com/shinokada/teffects/main/images/strokeshadow2.png" />
 </p>
 
 ### Options
